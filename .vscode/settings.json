@@ -16,6 +16,10 @@
     "idf.toolsPathWin": "C:\\Users\\lucas\\.espressif",
     "idf.flashType": "UART",
     "files.associations": {
-        "config.h": "c"
+        "config.h": "c",
+        "logica_control.h": "c",
+        "sdkconfig.h": "c",
+        "projdefs.h": "c",
+        "leq_task.h": "c"
     }
 }
