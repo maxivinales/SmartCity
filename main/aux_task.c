@@ -1,9 +1,11 @@
 #include "aux_task.h"
 #include <math.h>
 
-#define _f 100.0
+#define _f 100.0 
 
 TaskHandle_t TaskHandle_aux;                                    // "variable para manejar las tareas"
+
+extern void filtro_II_d_I(int32_t muestra, float* _k_veces_to_p, float* _x, float* _y, float* _SOS);
 
 void aux_task(void *parameter){
     printf("Iniciando aux_task\n");
