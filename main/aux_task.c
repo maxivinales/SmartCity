@@ -12,7 +12,6 @@ const struct filtro_IIR_2ord A_weighting_0 = {.b_0 = 0.197012037038803, .b_1 = 0
 const struct filtro_IIR_2ord A_weighting_1 = {.b_0 = 1, .b_1 = -2, .b_2 = 1, .a_1 = -1.893870472908020, .a_2 = 0.895159780979157, .k_f = 1};
 const struct filtro_IIR_2ord A_weighting_2 = {.b_0 = 1, .b_1 = -2, .b_2 = 1, .a_1 = -1.994614481925964, .a_2 = 0.994621694087982, .k_f = 1.18927645683289};
 
-
 void aux_task(void *parameter){
     printf("Iniciando aux_task\n"); 
 
@@ -25,11 +24,20 @@ void aux_task(void *parameter){
 
     float n = 0;
     
-    struct filtro_IIR_2ord *punt = malloc(3*sizeof(struct filtro_IIR_2ord));
-    struct filtro_IIR_2ord *aux_punt;
+    struct filtro_IIR_2ord *punt = malloc(3*sizeof(struct filtro_IIR_2ord));    // reservo memoria para tener todos los parametros del filtro en direcciones contiguas
+    struct filtro_IIR_2ord *aux_punt;                                               // es para no perder la direccion donde empiezan los parametros del filtro
+
+    float *x_1, *x_2, *x_3, *y_1, *y_2, *y_3; // buffers de x[n] e y[n]
+    x_1 = malloc(3*sizeof(float));
+    x_2 = malloc(3*sizeof(float));
+    x_3 = malloc(3*sizeof(float));
+    y_1 = malloc(3*sizeof(float));
+    y_2 = malloc(3*sizeof(float));
+    y_3 = malloc(3*sizeof(float));
+
 
     aux_punt = punt;
-
+    // guardo en memoria los parametros del filtro
     *punt = A_weighting_0;
     *(punt + 1) = A_weighting_1;
     *(punt + 2) = A_weighting_2;
@@ -46,9 +54,8 @@ void aux_task(void *parameter){
         if(n>= (48000.0/_f)){
             n=0;
         }
-        */
 
-       float *punt_f;
+        float *punt_f;
 
        for (int i=0; i<3; i++){
         punt_f = &punt->b_0;
@@ -60,6 +67,12 @@ void aux_task(void *parameter){
         punt++;
        }
        punt = aux_punt;
+
+        */
+       // la idea es generar un seno y pasarlo por el filtro, luego acumular la salida del filtro, luego calcular el Leq y verificar que el filtro cumpla con la tabla IV de la IRAM4074-1
+
+       seno = _A*sin(omega_m*n);
+
 
 
 
