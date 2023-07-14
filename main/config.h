@@ -39,15 +39,15 @@
 
 
 
-enum SOS_index{     // enumera los coeficientes del filtro
-    K_f = 0,        // constante proporcional del filtro
-    b_0 = 1,
-    b_1 = 2,
-    b_2 = 3,
-    a_0 = 4,        // a_0 debe ser siempre = 1
-    a_1 = 5,
-    a_2 = 6
-};
+// enum SOS_index{     // enumera los coeficientes del filtro
+//     K_f = 0,        // constante proporcional del filtro
+//     b_0 = 1,
+//     b_1 = 2,
+//     b_2 = 3,
+//     a_0 = 4,        // a_0 debe ser siempre = 1
+//     a_1 = 5,
+//     a_2 = 6
+// };
 
 typedef enum    //definimos un tipo de datos categoricos, para trabajar mas comodamente
 {               //puede tomar uno de los valores a continuacion
