@@ -1,20 +1,25 @@
 #include "logica_control.h"
 
 #include "Leq_task.c"
+#include "aux_task.c"
 
 TaskHandle_t TaskHandle_control;
+QueueHandle_t msg_queue_toControl = NULL;
 
 void control_task(void *parameter){
     printf("Iniciando control_task\n");
+    aux_launch();   // lanzo mi tarea auxiliar
 
     while (1)
     {
-        printf("control_task\n");
-        vTaskDelay(pdMS_TO_TICKS(500));
+        // printf("control_task\n");
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
 
 esp_err_t control_launch(){
+    msg_queue_toControl = xQueueCreate(MSG_QUEUE_LENGTH, sizeof(struct data_t));
+
     xTaskCreatePinnedToCore(             // Use xTaskCreate() in vanilla FreeRTOS
         control_task,        // Function to be called
         "control_task",          // Name of task
@@ -33,5 +38,12 @@ esp_err_t control_kill(){
         vTaskDelete(TaskHandle_control);
         TaskHandle_control = NULL;
     }
+
+    if (msg_queue_toControl != NULL)
+    {
+        vQueueDelete(msg_queue_toControl);
+        msg_queue_toControl = NULL;
+    }
+
     return(ESP_OK);                     // con este tipo de comandos indico si algo no sale bien
 }

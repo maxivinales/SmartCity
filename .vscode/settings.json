@@ -20,6 +20,10 @@
         "logica_control.h": "c",
         "sdkconfig.h": "c",
         "projdefs.h": "c",
-        "leq_task.h": "c"
+        "leq_task.h": "c",
+        "math.h": "c",
+        "aux_task.h": "c",
+        "task.h": "c",
+        "freertosconfig.h": "c"
     }
 }
