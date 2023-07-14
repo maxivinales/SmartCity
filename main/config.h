@@ -63,7 +63,6 @@ struct data_t{
     char  value_str[20]; //string que se puede usar depende de lo que uno necesite
 };
 
-
 esp_err_t loadConfig();
 esp_err_t saveConfig();
 

@@ -2,18 +2,24 @@
 
 #include "Leq_task.c"
 #include "aux_task.c"
+#include "config.h"
 
 TaskHandle_t TaskHandle_control;
 QueueHandle_t msg_queue_toControl = NULL;
 
 void control_task(void *parameter){
+    struct data_t msd_control_buffer;
     printf("Iniciando control_task\n");
     aux_launch();   // lanzo mi tarea auxiliar
 
+    TickType_t xPeriod = pdMS_TO_TICKS(30000);
+
     while (1)
     {
-        // printf("control_task\n");
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        if (xQueueReceive(msg_queue_toControl, (void *)&msg_queue_toControl, xPeriod) == pdTRUE){
+            printf("dentro de control task papu\n");
+        }
+        // vTaskDelay(pdMS_TO_TICKS(1000));        // miro cada 10 ms
     }
 }
 
