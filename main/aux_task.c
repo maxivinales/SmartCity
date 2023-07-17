@@ -5,7 +5,7 @@
 
 TaskHandle_t TaskHandle_aux;                                    // "variable para manejar las tareas"
 
-extern void filtro_II_d_I(int32_t muestra, float* _k_veces_to_p, float* _x, float* _y, float* _SOS);    // filtro
+extern void filtro_II_d_I(float* muestra_p, float* _k_veces_to_p, float* _x, float* _y, float* _SOS);    // filtro
 
 // Ponderacion tipo A
 const struct filtro_IIR_2ord A_weighting_0 = {.b_0 = 0.197012037038803, .b_1 = 0.394024074077606, .b_2 = 0.197012037038803, .a_1 = -0.224558457732201, .a_2 = 0.012606625445187, .k_f = 1};
@@ -27,6 +27,12 @@ void aux_task(void *parameter){
     struct filtro_IIR_2ord *punt = malloc(3*sizeof(struct filtro_IIR_2ord));    // reservo memoria para tener todos los parametros del filtro en direcciones contiguas
     struct filtro_IIR_2ord *aux_punt;                                               // es para no perder la direccion donde empiezan los parametros del filtro
 
+    aux_punt = punt;
+    // guardo en memoria los parametros del filtro
+    *punt = A_weighting_0;
+    *(punt + 1) = A_weighting_1;
+    *(punt + 2) = A_weighting_2;
+
     float *x_1, *x_2, *x_3, *y_1, *y_2, *y_3; // buffers de x[n] e y[n]
     x_1 = malloc(3*sizeof(float));
     x_2 = malloc(3*sizeof(float));
@@ -35,13 +41,11 @@ void aux_task(void *parameter){
     y_2 = malloc(3*sizeof(float));
     y_3 = malloc(3*sizeof(float));
 
+    float _k_veces_to_p = 0.000003695;
 
-    aux_punt = punt;
-    // guardo en memoria los parametros del filtro
-    *punt = A_weighting_0;
-    *(punt + 1) = A_weighting_1;
-    *(punt + 2) = A_weighting_2;
-    // punt = aux_punt;
+    // para prueba de entero a flotante
+    int enterito = 67108863;
+    float flotantesito;
 
     
 
@@ -71,7 +75,29 @@ void aux_task(void *parameter){
         */
        // la idea es generar un seno y pasarlo por el filtro, luego acumular la salida del filtro, luego calcular el Leq y verificar que el filtro cumpla con la tabla IV de la IRAM4074-1
 
-       seno = _A*sin(omega_m*n);
+        // seno = _A*sin(omega_m*n);
+        // filtro_II_d_I(A, &_k_veces_to_p, x_1, y_1, punt);
+        // punt++;
+        // filtro_II_d_I(A, &_k_veces_to_p, x_1, y_1, punt);
+        // punt++;
+
+        // n++;
+        // if(n>= ((48000.0/_f) - 1)){
+        //     n=0;
+        // }
+
+        // __asm__(
+        //     "float.s %[flotante], %[entero], 0\n\t"
+        //     :[flotante] "+f" (flotantesito)   // salidas
+        //     :[entero] "r" (enterito)          // entradas
+        // );
+
+        seno = _A*sin(omega_m*n);
+
+        casting_y_escala(&enterito, &flotantesito, _k_veces_to_p);
+        printf("enterito = %d\tflotantesito = %f\n", enterito, flotantesito);
+
+       
 
 
 
@@ -100,4 +126,13 @@ esp_err_t aux_kill(){
         TaskHandle_aux = NULL;
     }
     return(ESP_OK);                     // con este tipo de comandos indico si algo no sale bien
+}
+
+void casting_y_escala(int* muestra_cuentas, float* muestra_p, float k_veces_to_p){
+   __asm__(
+        "float.s %[flotante], %[entero], 0\n\t"
+        "mul.s %[flotante], %[flotante],%[ka]\n\t"
+        :[flotante] "+f" (*muestra_p)                                  // salidas
+        :[entero] "r" (*muestra_cuentas), [ka] "f" (k_veces_to_p)        // entradas
+    );
 }

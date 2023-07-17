@@ -18,8 +18,8 @@ struct filtro_IIR_2ord
     // esp_err_t carga_filtro(float);
 };
 
-
 esp_err_t aux_launch();
 esp_err_t aux_kill();
+void casting_y_escala(int* , float* , float);
 
 #endif

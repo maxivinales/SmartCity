@@ -32,7 +32,7 @@
  
   .text                   # Code section
   .align                  # Align the byte boundaries - needed?
-  .global filtro_II_d_I         # Make the symbol available to C++ for call
+  .global filtro_II_d_I         # Make the symbol available to C/C++ for call
   .type   filtro_II_d_I,@function
 filtro_II_d_I:
   entry a1,    32           # Create a window for execution
@@ -42,22 +42,21 @@ filtro_II_d_I:
   lsi y_2, y, 4             # y[2] = y[1] o y[n-2] = y[n-1]
   lsi y_1, y, 0             # y[1] = y[0] o y[n-1] = y[n]
 
-  lsi k_f, SOS, 0           # tomo el valor de k_f de el primer elemento del vector
-  lsi b_0, SOS, 4           # b_0 = SOS[1]
-  lsi b_1, SOS, 8           # b_1 = SOS[2]
-  lsi b_2, SOS, 12          # b_2 = SOS[3]
-  lsi a_1, SOS, 20          # a_1 = SOS[5]
-  lsi a_2, SOS, 24          # a_2 = SOS[6]
+  lsi b_0, SOS, 0           # b_0 = SOS[0]
+  lsi b_1, SOS, 4           # b_1 = SOS[1]
+  lsi b_2, SOS, 8           # b_2 = SOS[2]
+  lsi a_1, SOS, 12          # a_1 = SOS[3]
+  lsi a_2, SOS, 16          # a_2 = SOS[4]
+  lsi k_f, SOS, 20          # tomo el valor de k_f de el primer elemento del vector
 
-  float.s x_0, m, 0         # paso a flotante la muestra en veces
-  mul.s x_0, x_0, k_veces_to_p  # paso de unidades
+  lsi x_0, m, 0             # tomo la muestra ya en unidades de presion
   
-  mul.s x_0, x_0, k_f       # aplico la constante k del filtro
   madd.s y_0, b_0, x_0      # y[n] = b_0*x[n]
   msub.s y_0, a_1, y_1      # y[n] = y[n] - a_1*y[n-1]
   madd.s y_0, b_1, x_1      # y[n] = y[n] + b_1*x[n-1]
   msub.s y_0, a_2, y_2      # y[n] = y[n] - a_2*y[n-2]
   madd.s y_0, b_2, x_2      # y[n] = y[n] + b_2*x[n-2]
+  mul.s y_0, y_0, k_f       # aplico la constante k del filtro
   
   ssi x_0, x, 0             # guardo x[n] en memoria
   ssi x_1, x, 4             # guardo x[n-1] en memoria
