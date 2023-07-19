@@ -19,7 +19,7 @@
 138094	139991	7109547210525202	esp-idf/console/CMakeFiles/__idf_console.dir/esp_console_repl.c.obj	244afa2c29e92c12
 38810	39725	7109546208552679	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/i2c_periph.c.obj	b0a84e5b44e98a14
 35	91	7109545813081533	project_elf_src_esp32.c	22db17aa9e717b9a
-9	12727	7112944386939523	build.ninja	b9cb8188d3040897
+5	15798	7114873098838759	build.ninja	b9cb8188d3040897
 7966	9637	7109545906537246	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/psa_crypto_ecp.c.obj	68c71ae8923ce4f3
 51899	53535	7109546346289481	esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/src/ets_timer_legacy.c.obj	81fbb3f5a70affce
 118923	119002	7109547002228187	esp-idf/esp_wifi/libesp_wifi.a	c627c5829717e4b7
@@ -32,7 +32,7 @@
 39675	40740	7109546216638475	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/ledc_periph.c.obj	db2ac03c283b78a1
 5342	7041	7109545881618154	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/oid.c.obj	b7ac60f69414bd83
 101864	105082	7109546861915409	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/esp_supplicant/src/esp_wpa2.c.obj	c640b06afca67ca6
-86	486	7110514091055769	esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj	cd9c68b2c0a3751
+96	500	7112988877340727	esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj	7fe260ff14d07f7
 5008	6528	7109545876058545	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/md.c.obj	ac4119254698d25a
 124020	126746	7109547078030968	esp-idf/driver/CMakeFiles/__idf_driver.dir/gpio/gpio.c.obj	d1b3ea871bc8ad4d
 36701	37888	7109546189200416	esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32/touch_sensor_hal.c.obj	6096c8fced49109b
@@ -172,7 +172,7 @@
 52564	54456	7109546355525478	esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/src/esp_timer.c.obj	83f3ec7b7123b661
 131491	133943	7109547150780494	esp-idf/driver/CMakeFiles/__idf_driver.dir/pulse_cnt.c.obj	9d7c32119a897d74
 10917	12000	7109545931271569	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/sha256.c.obj	1596ebf2a25db2d4
-68	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+74	425	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
 135081	136973	7109547180329071	esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/esp_crt_bundle/esp_crt_bundle.c.obj	99fa183275f12846
 10977	12071	7109545931672833	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/sha512.c.obj	e125056a44c819e3
 9862	12157	7109545932419396	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/rsa.c.obj	f1be67c1e1e7328c
@@ -224,7 +224,7 @@
 38653	39674	7109546207582613	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/gpio_periph.c.obj	376c202d3f6008b
 65843	68043	7109546490969134	esp-idf/lwip/CMakeFiles/__idf_lwip.dir/lwip/src/api/tcpip.c.obj	19ce6280c854d614
 14792	16259	7109545974003786	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_cookie.c.obj	db192edd911df52a
-5903	6359	7110571869193613	.bin_timestamp	9b8c6b1bb12c06bb
+6386	6864	7112992096759861	.bin_timestamp	9b8c6b1bb12c06bb
 15078	16616	7109545977634512	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_ciphersuites.c.obj	fb84625075fcb8a6
 15224	17394	7109545984926896	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_client.c.obj	5d0ac663bc84c19e
 160627	164406	7109547454052395	esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/esp_spiffs.c.obj	e8a5aef7a57e0f46
@@ -240,13 +240,13 @@
 56139	62711	7109546437596295	esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_page.cpp.obj	3a4f4df4eb8695c5
 17284	18231	7109545993729549	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_tls13_server.c.obj	f9c256c83270c80c
 81413	83408	7109546644708675	esp-idf/lwip/CMakeFiles/__idf_lwip.dir/lwip/src/netif/ppp/ipv6cp.c.obj	8cbaa804dc18c77d
-68	354	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+74	425	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
 17418	18423	7109545995149674	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_tls13_generic.c.obj	2d8a7b26dd9e772e
 111150	112779	7109546938497329	esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir/src/esp_eth_phy_dp83848.c.obj	52ab88e1365f291
 16011	18492	7109545994946500	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_tls12_client.c.obj	2bca3561ffde5e70
 59649	61389	7109546424325198	esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/src/phy_override.c.obj	de8c93eb8cf9f9f1
 91418	93544	7109546746869610	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/common/wpa_common.c.obj	c38726199bd13cde
-68	354	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+74	425	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
 15340	18535	7109545995209674	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/ssl_tls.c.obj	10b376cf4a362c16
 16618	18742	7109545999024240	esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/C_/Users/lucas/esp/esp-idf/components/mbedtls/port/mbedtls_debug.c.obj	a35ea4edebef6ee5
 17710	19144	7109546002586032	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_init.c.obj	ef9c0e6b397658c4
@@ -263,7 +263,7 @@
 108813	110149	7109546912537984	esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/deprecated/esp_adc_cal_common_legacy.c.obj	da3ca41d4da1c4f2
 17862	19942	7109546010945390	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common_loader.c.obj	f653aaaa9a0c6710
 81500	83326	7109546644451472	esp-idf/lwip/CMakeFiles/__idf_lwip.dir/lwip/src/netif/ppp/magic.c.obj	f30c40b055cd0e6f
-68	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+74	425	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
 18466	20248	7109546012728921	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common.c.obj	7d716296fdbcaff2
 18523	20449	7109546015845187	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp_image_format.c.obj	64b1d62a96aa1ea1
 24345	26278	7109546072052358	esp-idf/pthread/CMakeFiles/__idf_pthread.dir/pthread.c.obj	afaa78602625e92a
@@ -284,7 +284,7 @@
 19959	21461	7109546025237967	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/flash_qio_mode.c.obj	1ca305d14127ef54
 38109	38810	7109546199159747	esp-idf/soc/CMakeFiles/__idf_soc.dir/dport_access_common.c.obj	58540942ef8bde5a
 107023	108488	7109546896165712	esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/mesh_event.c.obj	577d385cdc4199dc
-68	354	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+74	425	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
 20251	21642	7109546027324501	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/idf/bootloader_sha.c.obj	5d320fdbc5fcdd70
 64172	66326	7109546473352642	esp-idf/lwip/CMakeFiles/__idf_lwip.dir/lwip/src/api/if_api.c.obj	feb02056a6568fd6
 82782	84459	7109546655617596	esp-idf/lwip/CMakeFiles/__idf_lwip.dir/lwip/src/netif/ppp/lcp.c.obj	680698d6062fa0f
@@ -305,7 +305,7 @@
 122605	124611	7109547056551618	esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/ringbuf.c.obj	e07ff0c115fed4a5
 21451	22447	7109546035511082	esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/spi_flash_chip_drivers.c.obj	d9024e4f55385551
 20961	22475	7109546034743040	esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition_target.c.obj	f9e30baff9de367f
-68	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
+74	425	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
 20881	22499	7109546035207421	esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/partition.c.obj	cc77c70c50332251
 45731	46675	7109546278114798	esp-idf/freertos/CMakeFiles/__idf_freertos.dir/FreeRTOS-Kernel/portable/xtensa/xtensa_context.S.obj	523471601856681
 21712	22775	7109546039434019	esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/spi_flash_chip_gd.c.obj	2a0505fcd66fb320
@@ -410,7 +410,7 @@
 101318	103248	7109546843315254	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/esp_supplicant/src/esp_common.c.obj	8e958edcbaf23863
 32251	33041	7109546141632577	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_regi2c.c.obj	16162e6ada39a1ba
 31506	33144	7109546140809258	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj	c46cf685ee432338
-6361	6541	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+63	248	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
 31313	33219	7109546143222625	esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/port/arch/xtensa/esp_ipc_isr.c.obj	19e48f5a82841135
 66255	68811	7109546499204400	esp-idf/lwip/CMakeFiles/__idf_lwip.dir/lwip/src/apps/sntp/sntp.c.obj	c5904a2d64f088e9
 101611	103854	7109546849501410	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/wps/wps_enrollee.c.obj	a30b22fd89b7c68b
@@ -449,7 +449,7 @@
 35629	36701	7109546177922511	esp-idf/hal/CMakeFiles/__idf_hal.dir/i2s_hal.c.obj	334e5e1927767cd2
 35883	36765	7109546178574003	esp-idf/hal/CMakeFiles/__idf_hal.dir/sdm_hal.c.obj	9c964d9076793811
 58737	64315	7109546454249579	esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/src/nvs_types.cpp.obj	a5e10e58eb250a63
-68	354	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+74	425	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
 36311	37500	7109546185700457	esp-idf/hal/CMakeFiles/__idf_hal.dir/twai_hal_iram.c.obj	21aaf79b991f91ed
 36455	37581	7109546186670082	esp-idf/hal/CMakeFiles/__idf_hal.dir/aes_hal.c.obj	591feb7018dc0adc
 36613	37762	7109546188770573	esp-idf/hal/CMakeFiles/__idf_hal.dir/touch_sensor_hal.c.obj	a9ace14feaa99f84
@@ -634,7 +634,7 @@
 87081	88644	7109546697344738	esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/esp_netif_objects.c.obj	d0757a8d2ada72d6
 88553	90193	7109546713224634	esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/esp_pbuf_ref.c.obj	fdcad7ec15204f95
 88508	90261	7109546713674996	esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/lwip/netif/wlanif.c.obj	574f22264b533562
-1039	5045	7110571855730195	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+1279	5479	7112992082490351	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
 88673	90768	7109546718244454	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/port/eloop.c.obj	760145537f30532e
 118578	118666	7109546998867536	esp-idf/esp_eth/libesp_eth.a	a7c452c0ca90df7b
 90086	92003	7109546731623924	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/wpa_auth_ie.c.obj	7afebd8c866e9edc
@@ -647,7 +647,7 @@
 92171	94050	7109546750672859	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/ms_funcs.c.obj	387da6f74a5e6407
 92257	94213	7109546753732864	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/ccmp.c.obj	438a37a424d27c09
 125024	126811	7109547078667634	esp-idf/driver/CMakeFiles/__idf_driver.dir/spi_bus_lock.c.obj	76f1f8c0a843788
-68	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+74	425	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
 136505	138126	7109547192556294	esp-idf/unity/CMakeFiles/__idf_unity.dir/unity_utils_freertos.c.obj	a12024a24a53977f
 94038	96931	7109546770894872	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/sha256-prf.c.obj	d3b0376b2d350460
 121613	121771	7109547029911929	esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a	7240ccf7c6f07386
@@ -696,7 +696,7 @@
 105120	107532	7109546885636277	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/aes-ccm.c.obj	d0530f846884839e
 105619	107543	7109546885903204	esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/aes-unwrap.c.obj	96ab7294a918d209
 107376	108779	7109546897695716	esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/wifi_default_ap.c.obj	676347082dbd76d
-942	1038	7110571816004178	esp-idf/main/libmain.a	1f48e7e55e625918
+1186	1279	7112992040907819	esp-idf/main/libmain.a	1f48e7e55e625918
 108001	109403	7109546905245272	esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_cali.c.obj	7d57aab3500ebf63
 107532	109578	7109546906468442	esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj	b1e967a187809bc6
 139318	141478	7109547214054107	esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_end.c.obj	1f59f99386450111
@@ -757,7 +757,7 @@
 136047	137475	7109547186261086	esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/app_trace_util.c.obj	2988d70310aa7830
 164420	165055	7109547461325395	esp-idf/spiffs/libspiffs.a	3ff0efce1421d9e6
 121142	121223	7109547024452317	esp-idf/esp_partition/libesp_partition.a	c32e1ec658f82b7a
-487	585	7110514092166375	esp-idf/esp_app_format/libesp_app_format.a	f6aa25344498c2a4
+500	603	7112988878521367	esp-idf/esp_app_format/libesp_app_format.a	f6aa25344498c2a4
 154875	157076	7109547381714639	esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/port/freertos/ffsystem.c.obj	b6eacb447bbd419d
 121403	121521	7109547027406653	esp-idf/mbedtls/mbedtls/library/libmbedtls.a	11bc0f4ad01fc175
 141951	143217	7109547243285653	esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/src/esp_lcd_panel_io.c.obj	b32714f5080f546
@@ -814,7 +814,7 @@
 148737	151356	7109547324276669	esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/src/core_dump_common.c.obj	eb4228383e75f93c
 139946	141358	7109547225724762	esp-idf/xtensa/libxtensa.a	3b7081c7ba694fc6
 139838	142018	7109547231101164	esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_rem.c.obj	2f2edf81ea0c166c
-606	872	7110514094715282	esp-idf/main/CMakeFiles/__idf_main.dir/filtro.S.obj	d7ee32a05a790bb2
+85	446	7114860574445010	esp-idf/main/CMakeFiles/__idf_main.dir/filtro.S.obj	d7ee32a05a790bb2
 140119	142053	7109547231963640	esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_str.c.obj	ec862ec11635c5d6
 139723	142080	7109547231923697	esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_hashtable.c.obj	756b034512e2db70
 140051	142108	7109547232195130	esp-idf/console/CMakeFiles/__idf_console.dir/argtable3/arg_lit.c.obj	29857b1afd550fd7
@@ -871,278 +871,110 @@
 162616	165572	7109547466419828	esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/handlers.c.obj	a9ffc6a2cf5238f3
 160761	165614	7109547466709850	esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/manager.c.obj	6114a531604d7280
 163078	165660	7109547467715479	esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/scheme_console.c.obj	f019638ca39e7451
-77	931	7110571814692469	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
+78	1183	7112992039699805	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
 163959	166128	7109547472965155	esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/scheme_softap.c.obj	d19361975f05c484
-1039	5045	7110571855730195	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+1279	5479	7112992082490351	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
 172424	172619	7109547538225760	CMakeFiles/Sonometro_IoT.elf.dir/project_elf_src_esp32.c.obj	b690caca044de659
-5046	5902	7110571864380863	Sonometro_IoT.elf	6982cbf69a66fcd1
-5903	6359	7110571869193613	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6361	6541	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-85	876	7110571814160017	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-94	937	7110571814682465	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-117	19397	7112944386939523	build.ninja	b9cb8188d3040897
-55	434	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-55	434	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-55	434	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-55	434	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-55	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-55	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-55	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-55	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-65	890	7112944397180675	esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj	8713f1d049cd3cf3
-891	1023	7112944398782325	esp-idf/esp_app_format/libesp_app_format.a	f6aa25344498c2a4
-1040	1275	7112944400978840	esp-idf/main/CMakeFiles/__idf_main.dir/filtro.S.obj	d7ee32a05a790bb2
-1033	1913	7112944407187690	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-1048	1923	7112944407117295	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-1024	1933	7112944407319647	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-1938	2035	7112944408890066	esp-idf/main/libmain.a	1f48e7e55e625918
-2036	7096	7112944459138270	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-2036	7096	7112944459138270	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-7097	8261	7112944470868333	Sonometro_IoT.elf	6982cbf69a66fcd1
-8263	8763	7112944476162414	.bin_timestamp	9b8c6b1bb12c06bb
-8263	8763	7112944476162414	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-8764	8944	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-8764	8944	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-54	433	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-54	433	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-54	433	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-54	433	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-54	433	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-54	433	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-54	433	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-54	433	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-75	407	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-75	407	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-75	407	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-75	407	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-75	407	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-75	407	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-75	407	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-75	407	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-81	434	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-81	434	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-81	434	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-81	434	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-81	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-81	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-81	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-81	434	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-68	335	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-68	335	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-68	335	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-68	335	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-68	335	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-68	335	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-68	335	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-68	335	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-53	350	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-53	350	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-53	350	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-53	350	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-53	350	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-53	350	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-53	350	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-53	350	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-57	358	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-57	358	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-57	358	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-57	358	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-57	358	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-57	358	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-57	358	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-57	358	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-63	351	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-63	351	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-63	351	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-63	351	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-63	351	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-63	351	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-63	351	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-63	351	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-72	382	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-72	382	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-72	382	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-72	382	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-72	382	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-72	382	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-72	382	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-72	382	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-82	915	7112966618099803	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-92	932	7112966618140084	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-100	955	7112966618381080	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-963	1076	7112966620155888	esp-idf/main/libmain.a	1f48e7e55e625918
-1077	5813	7112966667199815	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1077	5813	7112966667199815	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5814	6810	7112966677220158	Sonometro_IoT.elf	6982cbf69a66fcd1
-6811	7251	7112966681902268	.bin_timestamp	9b8c6b1bb12c06bb
-6811	7251	7112966681902268	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-7254	7452	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-7254	7452	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-79	370	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-79	370	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-79	370	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-79	370	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-79	370	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-79	370	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-79	370	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-79	370	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-92	916	7112966853303351	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-102	933	7112966853399909	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-110	948	7112966853460373	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-957	1051	7112966854959736	esp-idf/main/libmain.a	1f48e7e55e625918
-1051	5143	7112966895518010	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1051	5143	7112966895518010	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5144	5939	7112966903580091	Sonometro_IoT.elf	6982cbf69a66fcd1
-5940	6371	7112966908172315	.bin_timestamp	9b8c6b1bb12c06bb
-5940	6371	7112966908172315	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6374	6541	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6374	6541	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-62	352	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-62	352	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-62	352	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-62	352	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-62	352	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-62	352	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-62	352	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-62	352	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-71	951	7112967738315178	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-80	1009	7112967738739699	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-89	1020	7112967738861044	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-1029	1186	7112967740567196	esp-idf/main/libmain.a	1f48e7e55e625918
-1187	5024	7112967779022310	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1187	5024	7112967779022310	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5025	5866	7112967787609742	Sonometro_IoT.elf	6982cbf69a66fcd1
-5867	6296	7112967792231793	.bin_timestamp	9b8c6b1bb12c06bb
-5867	6296	7112967792231793	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6297	6495	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6297	6495	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-56	341	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-56	341	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-56	341	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-56	341	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-56	341	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-56	341	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-56	341	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-56	341	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-51	337	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-51	337	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-51	337	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-51	337	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-51	337	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-51	337	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-51	337	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-51	337	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-59	883	7112968953810192	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-68	929	7112968954121468	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-75	939	7112968954162095	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-948	1080	7112968956003820	esp-idf/main/libmain.a	1f48e7e55e625918
-1080	4824	7112968992981464	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1080	4824	7112968992981464	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-4825	5695	7112969001903394	Sonometro_IoT.elf	6982cbf69a66fcd1
-5697	6133	7112969006533998	.bin_timestamp	9b8c6b1bb12c06bb
-5697	6133	7112969006533998	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6135	6309	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6135	6309	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-64	489	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-64	489	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-64	489	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-64	489	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-64	489	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-64	489	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-64	489	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-64	489	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-81	1107	7112970055241081	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-88	1182	7112970055532682	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-72	1236	7112970056301609	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-1244	1399	7112970058488909	esp-idf/main/libmain.a	1f48e7e55e625918
-1399	5447	7112970098617165	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1399	5447	7112970098617165	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5448	6399	7112970108211324	Sonometro_IoT.elf	6982cbf69a66fcd1
-6400	6833	7112970112835252	.bin_timestamp	9b8c6b1bb12c06bb
-6400	6833	7112970112835252	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6835	7010	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6835	7010	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-72	754	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-72	754	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-72	754	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-72	754	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-72	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-72	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-72	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-72	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-82	1369	7112973483537524	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-90	1381	7112973483512059	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-98	1400	7112973483779142	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-1407	1527	7112973485531436	esp-idf/main/libmain.a	1f48e7e55e625918
-1527	5508	7112973525052916	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1527	5508	7112973525052916	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5509	6453	7112973534471635	Sonometro_IoT.elf	6982cbf69a66fcd1
-6455	6927	7112973539512946	.bin_timestamp	9b8c6b1bb12c06bb
-6455	6927	7112973539512946	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6930	7099	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6930	7099	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-282	606	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-282	606	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-282	606	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-282	606	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-282	606	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-282	606	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-282	606	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-282	606	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-293	1219	7112974333407528	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-300	1254	7112974333550155	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-309	1277	7112974333610041	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-1283	1388	7112974335361031	esp-idf/main/libmain.a	1f48e7e55e625918
-1388	5618	7112974377322072	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1388	5618	7112974377322072	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5619	6499	7112974386171255	Sonometro_IoT.elf	6982cbf69a66fcd1
-6500	6998	7112974391418672	.bin_timestamp	9b8c6b1bb12c06bb
-6500	6998	7112974391418672	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-7000	7199	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-7000	7199	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-64	354	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-64	354	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-64	354	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-64	354	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-64	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-64	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-64	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-64	354	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-72	393	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-72	393	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-72	393	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-72	393	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-72	393	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-72	393	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-72	393	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-72	393	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-90	942	7112980066886317	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-82	954	7112980066941659	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-100	976	7112980067062210	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-986	1091	7112980068713267	esp-idf/main/libmain.a	1f48e7e55e625918
-1091	5285	7112980110319250	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-1091	5285	7112980110319250	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5286	6206	7112980119550328	Sonometro_IoT.elf	6982cbf69a66fcd1
-6207	6697	7112980124759671	.bin_timestamp	9b8c6b1bb12c06bb
-6207	6697	7112980124759671	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6700	6869	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6700	6869	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-104	373	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-104	373	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
-104	373	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
-104	373	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
-104	373	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
-104	373	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
-104	373	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
-104	373	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
-87	855	7112980966051708	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
-76	879	7112980966155366	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
-96	895	7112980966215494	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
-903	997	7112980967709940	esp-idf/main/libmain.a	1f48e7e55e625918
-997	5109	7112981008498936	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-997	5109	7112981008498936	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
-5109	5911	7112981016593040	Sonometro_IoT.elf	6982cbf69a66fcd1
-5912	6359	7112981021300982	.bin_timestamp	9b8c6b1bb12c06bb
-5912	6359	7112981021300982	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
-6361	6546	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
-6361	6546	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+5480	6385	7112992091630498	Sonometro_IoT.elf	6982cbf69a66fcd1
+6386	6864	7112992096759861	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
+63	248	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+68	1156	7112992039372681	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
+61	1090	7112992038783259	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
+7	23644	7114873098838759	build.ninja	b9cb8188d3040897
+124	501	7114873105012118	esp-idf/main/CMakeFiles/__idf_main.dir/product_and_acu.S.obj	4f6f773b83ffe431
+91	506	7114873105062123	esp-idf/main/CMakeFiles/__idf_main.dir/cast_and_scale.S.obj	73361e880ad14892
+81	678	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+81	678	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+81	678	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+81	678	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+81	678	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+81	678	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+81	678	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+81	678	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
+59	381	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+59	381	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+59	381	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+59	381	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+59	381	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+59	381	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+59	381	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+59	381	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
+76	1111	7114873501816737	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
+68	1126	7114873501966719	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
+86	1178	7114873502516728	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
+1185	1396	7114873505486734	esp-idf/main/libmain.a	515fb97ac87a9e0d
+1397	7072	7114873561945987	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+1397	7072	7114873561945987	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+7073	8493	7114873576173630	Sonometro_IoT.elf	6982cbf69a66fcd1
+8494	8957	7114873581113660	.bin_timestamp	9b8c6b1bb12c06bb
+8494	8957	7114873581113660	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
+8959	9125	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+8959	9125	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+77	440	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+77	440	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+77	440	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+77	440	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+77	440	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+77	440	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+77	440	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+77	440	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
+93	1169	7114874320549378	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
+84	1190	7114874320629395	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
+101	1337	7114874322229429	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
+1347	1506	7114874324753092	esp-idf/main/libmain.a	515fb97ac87a9e0d
+1507	6136	7114874370755772	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+1507	6136	7114874370755772	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+6136	7411	7114874383570717	Sonometro_IoT.elf	6982cbf69a66fcd1
+7411	7881	7114874388540687	.bin_timestamp	9b8c6b1bb12c06bb
+7411	7881	7114874388540687	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
+7882	8036	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+7882	8036	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+78	439	7114885299586072	esp-idf/main/CMakeFiles/__idf_main.dir/product_and_acu.S.obj	4f6f773b83ffe431
+68	569	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+68	569	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+68	569	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+68	569	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+68	569	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+68	569	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+68	569	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+68	569	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
+97	1292	7114885307907027	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
+86	1307	7114885308424570	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
+106	1384	7114885309057530	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
+1394	1626	7114885312222885	esp-idf/main/libmain.a	515fb97ac87a9e0d
+1626	6333	7114885358948387	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+1626	6333	7114885358948387	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+6333	7531	7114885371015998	Sonometro_IoT.elf	6982cbf69a66fcd1
+7531	7951	7114885375446042	.bin_timestamp	9b8c6b1bb12c06bb
+7531	7951	7114885375446042	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
+7952	8148	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+7952	8148	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+66	754	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+66	754	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+66	754	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+66	754	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+66	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+66	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+66	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+66	754	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379
+87	1385	7114886197064128	esp-idf/main/CMakeFiles/__idf_main.dir/logica_control.c.obj	6674335a40141229
+76	1418	7114886197194135	esp-idf/main/CMakeFiles/__idf_main.dir/aux_task.c.obj	945f91561d048b19
+96	1491	7114886197956432	esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj	929abc9dc5afb87d
+1501	1748	7114886201090087	esp-idf/main/libmain.a	515fb97ac87a9e0d
+1752	6294	7114886246296081	esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+1752	6294	7114886246296081	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/sections.ld	744c776e217e53c6
+6294	7435	7114886257716982	Sonometro_IoT.elf	6982cbf69a66fcd1
+7436	7864	7114886262328320	.bin_timestamp	9b8c6b1bb12c06bb
+7436	7864	7114886262328320	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/.bin_timestamp	9b8c6b1bb12c06bb
+7866	8034	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+7866	8034	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+97	299	0	esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+97	299	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esptool_py/CMakeFiles/app_check_size	3bf8cb6410c6032b
+87	417	7109546524254089	bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+87	417	7109546524254089	bootloader/bootloader.elf	67386af45c5f9379
+87	417	7109546524254089	bootloader/bootloader.bin	67386af45c5f9379
+87	417	7109546524254089	bootloader/bootloader.map	67386af45c5f9379
+87	417	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader-prefix/src/bootloader-stamp/bootloader-build	67386af45c5f9379
+87	417	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.elf	67386af45c5f9379
+87	417	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.bin	67386af45c5f9379
+87	417	7109546524254089	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/bootloader.map	67386af45c5f9379

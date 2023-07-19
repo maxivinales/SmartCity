@@ -55,6 +55,13 @@ typedef enum    //definimos un tipo de datos categoricos, para trabajar mas como
     SAVE
 } cmd_control_t;
 
+typedef enum    //definimos un tipo de datos categoricos, para trabajar mas comodamente
+{               //puede tomar uno de los valores a continuacion
+    Z,
+    A,
+    C
+} cmd_audio_weighting_t;
+
 
 struct data_t{
     cmd_control_t cmd;  //mensaje de control

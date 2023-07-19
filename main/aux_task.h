@@ -20,6 +20,7 @@ struct filtro_IIR_2ord
 
 esp_err_t aux_launch();
 esp_err_t aux_kill();
-void casting_y_escala(int* , float* , float);
+// void casting_y_escala(int* , float* , float);
+// void producto_y_acumulacion(float* _y, float *_acu, float _k);
 
 #endif

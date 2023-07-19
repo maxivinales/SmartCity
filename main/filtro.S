@@ -56,7 +56,6 @@ filtro_II_d_I:
   madd.s y_0, b_1, x_1      # y[n] = y[n] + b_1*x[n-1]
   msub.s y_0, a_2, y_2      # y[n] = y[n] - a_2*y[n-2]
   madd.s y_0, b_2, x_2      # y[n] = y[n] + b_2*x[n-2]
-  mul.s y_0, y_0, k_f       # aplico la constante k del filtro
   
   ssi x_0, x, 0             # guardo x[n] en memoria
   ssi x_1, x, 4             # guardo x[n-1] en memoria
