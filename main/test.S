@@ -18,7 +18,7 @@ test_asm:
   lsi y, p_y, 0
   lsi z, p_z, 0
 
-  msub.s x, y, x
+  msub.s x, y, z
 
   ssi x, p_x, 0
   retw          
