@@ -13,6 +13,7 @@ cmd_audio_weighting_t ponderacion = C;
 extern void filtro_II_d_I(float* muestra_p, float* _x, float* _y, float* _SOS);    // filtro
 extern void casting_y_escala(int muestra_cuentas, float* muestra_p, float* k_veces_to_p);
 extern void producto_y_acumulacion(float *_y, float *_acu, float *_k);
+extern void test_asm(float* x, float* y, float* z);
 
 // Ponderacion tipo A
 const struct filtro_IIR_2ord A_weighting_0 = {.b_0 = 0.197012037038803, .b_1 = 0.394024074077606, .b_2 = 0.197012037038803, .a_1 = -0.224558457732201, .a_2 = 0.012606625445187, .k_f = 1};
@@ -54,9 +55,9 @@ void aux_task(void *parameter){
 
     float _k_veces_to_p = 0.000003695;
 
-    float tuvieja = 0;
-    float tuhermana = 1.1;
-    float kaka = 1.25;
+    float tuvieja = 1;
+    float tuhermana = 0.2;
+    float kaka = 0.3;
 
     for(int i = 0; i<3; i++){
         *(x_1+i) = 0;
@@ -69,6 +70,7 @@ void aux_task(void *parameter){
 
     while (1)
     {
+        /*
         seno = _A*sin(omega_m*n);
 
         if(ponderacion != Z){
@@ -94,8 +96,10 @@ void aux_task(void *parameter){
        n++;
 
 
+        */
 
-
+        test_asm(&tuvieja, &tuhermana, &kaka);
+        printf("x = %f\ty = %f\t z = %f\n", tuvieja, tuhermana, kaka);
         vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
