@@ -10,23 +10,20 @@
 
 // Use defines to reference registers, los numeros mas bajos de a son las entradas
 #define m a2
-#define p_k_veces_to_p a3
-#define x a4
-#define y a5
-#define SOS a6
-#define k_veces_to_p f1
-#define x_0 f2
-#define x_1 f3
-#define x_2 f4
-#define y_0 f5
-#define y_1 f6
-#define y_2 f7
-#define b_0 f8
-#define b_1 f9
-#define b_2 f10
-#define a_1 f11
-#define a_2 f12
-#define k_f f13
+#define x a3
+#define y a4
+#define SOS a5
+#define x_0 f1
+#define x_1 f2
+#define x_2 f3
+#define y_0 f4
+#define y_1 f5
+#define y_2 f6
+#define b_0 f7
+#define b_1 f8
+#define b_2 f9
+#define a_1 f10
+#define a_2 f11
 
 
  
@@ -36,7 +33,6 @@
   .type   filtro_II_d_I,@function
 filtro_II_d_I:
   entry a1,    32           # Create a window for execution
-  lsi k_veces_to_p, p_k_veces_to_p, 0
   lsi x_2, x, 4             # x[2] = x[1] o x[n-2] = x[n-1]
   lsi x_1, x, 0             # x[1] = x[0] o x[n-1] = x[n]
   lsi y_2, y, 4             # y[2] = y[1] o y[n-2] = y[n-1]
@@ -47,7 +43,6 @@ filtro_II_d_I:
   lsi b_2, SOS, 8           # b_2 = SOS[2]
   lsi a_1, SOS, 12          # a_1 = SOS[3]
   lsi a_2, SOS, 16          # a_2 = SOS[4]
-  lsi k_f, SOS, 20          # tomo el valor de k_f de el primer elemento del vector
 
   lsi x_0, m, 0             # tomo la muestra ya en unidades de presion
   

@@ -10,7 +10,7 @@ TaskHandle_t TaskHandle_aux;                                    // "variable par
 
 cmd_audio_weighting_t ponderacion = C;
 
-extern void filtro_II_d_I(float* muestra_p, float* _k_veces_to_p, float* _x, float* _y, float* _SOS);    // filtro
+extern void filtro_II_d_I(float* muestra_p, float* _x, float* _y, float* _SOS);    // filtro
 extern void casting_y_escala(int muestra_cuentas, float* muestra_p, float* k_veces_to_p);
 extern void producto_y_acumulacion(float *_y, float *_acu, float *_k);
 
@@ -58,77 +58,38 @@ void aux_task(void *parameter){
     float tuhermana = 1.1;
     float kaka = 1.25;
 
+    for(int i = 0; i<3; i++){
+        *(x_1+i) = 0;
+        *(x_2+i) = 0;
+        *(x_3+i) = 0;
+        *(y_1+i) = 0;
+        *(y_2+i) = 0;
+        *(y_3+i) = 0;
+    }
+
     while (1)
     {
-        /*
-        seno = _A*sin(omega_m*n);
-        printf("%f\n", seno);
-        n++;
-        if(n>= (48000.0/_f)){
-            n=0;
-        }
-
-        float *punt_f;
-
-       for (int i=0; i<3; i++){
-        punt_f = &punt->b_0;
-        for(int j=0; j<6; j++){
-            printf(" filtro[%d][%d] = %f\n", i, j, *punt_f);
-            punt_f++;
-            vTaskDelay(100);
-        }
-        punt++;
-       }
-       punt = aux_punt;
-
-        */
-       // la idea es generar un seno y pasarlo por el filtro, luego acumular la salida del filtro, luego calcular el Leq y verificar que el filtro cumpla con la tabla IV de la IRAM4074-1
-
-        // seno = _A*sin(omega_m*n);
-        // filtro_II_d_I(A, &_k_veces_to_p, x_1, y_1, punt);
-        // punt++;
-        // filtro_II_d_I(A, &_k_veces_to_p, x_1, y_1, punt);
-        // punt++;
-
-        // n++;
-        // if(n>= ((48000.0/_f) - 1)){
-        //     n=0;
-        // }
-
-        // __asm__(
-        //     "float.s %[flotante], %[entero], 0\n\t"
-        //     :[flotante] "+f" (flotantesito)   // salidas
-        //     :[entero] "r" (enterito)          // entradas
-        // );
-        
-        // producto_y_acumulacion(&tuvieja, &acumulador, 1);
-        producto_y_acumulacion(&tuhermana, &tuvieja, &kaka);
-        printf("tuhermana = %f\ttuvieja = %f\n", tuhermana, tuvieja);
-
-        /*
-
         seno = _A*sin(omega_m*n);
 
         if(ponderacion != Z){
-            filtro_II_d_I(&seno, &_k_veces_to_p, x_1, y_1, (float*)punt);
+            filtro_II_d_I(&seno, x_1, y_1, &punt->b_0);
             punt++;
-            filtro_II_d_I(y_1, &_k_veces_to_p, x_2, y_2, (float*)punt);
+            filtro_II_d_I(y_1, x_2, y_2, &punt->b_0);
             if(ponderacion == A){
                 punt++;
-                filtro_II_d_I(y_2, &_k_veces_to_p, x_3, y_3, (float*)punt);
-                producto_y_acumulacion(y_3, &acumulador, K_Aw);
+                filtro_II_d_I(y_2, x_3, y_3, &punt->b_0);
+                producto_y_acumulacion(y_3, &acumulador, &k_aw);
             }else{
-                producto_y_acumulacion(y_2, &acumulador, K_Cw);
+                producto_y_acumulacion(y_2, &acumulador, &k_cw);
             }
             punt = aux_punt;
         }
 
-        */
 
         // casting_y_escala(&enterito, &flotantesito, _k_veces_to_p);
         
         
-        // printf("%f\t%f\n", seno, *y_1);
+        printf("%f\t%f\n", seno, k_cw*(*y_1));
 
        n++;
 
