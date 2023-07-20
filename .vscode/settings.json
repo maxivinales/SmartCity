@@ -25,6 +25,8 @@
         "aux_task.h": "c",
         "task.h": "c",
         "freertosconfig.h": "c",
-        "*.inc": "c"
+        "*.inc": "c",
+        "cmath": "c",
+        "complex": "c"
     }
 }
