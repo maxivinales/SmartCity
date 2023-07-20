@@ -56,6 +56,14 @@ void aux_task(void *parameter){
     y_2 = malloc(3*sizeof(float));
     y_3 = malloc(3*sizeof(float));
 
+    float *xa, *xb, *xc, *ya, *yb, *yc;
+    xa = malloc(3*sizeof(float));
+    xb = malloc(3*sizeof(float));
+    xc = malloc(3*sizeof(float));
+    ya = malloc(3*sizeof(float));
+    yb = malloc(3*sizeof(float));
+    yc = malloc(3*sizeof(float));
+
     float _k_veces_to_p = 0.000003695;
 
     float tuvieja = 1;
@@ -69,28 +77,14 @@ void aux_task(void *parameter){
         *(y_1+i) = 0;
         *(y_2+i) = 0;
         *(y_3+i) = 0;
-    }
 
-    // printf("b00 = %f\n", 1000000000.0*punt->b_0);
-    // printf("b10 = %f\n", 1000000000.0*punt->b_1);
-    // printf("b20 = %f\n", 1000000000.0*punt->b_2);
-    // printf("a10 = %f\n", 1000000000.0*punt->a_1);
-    // printf("a20 = %f\n", 1000000000.0*punt->a_2);
-    // punt++;
-    // printf("b01 = %f\n", 1000000000.0*punt->b_0);
-    // printf("b11 = %f\n", 1000000000.0*punt->b_1);
-    // printf("b21 = %f\n", 1000000000.0*punt->b_2);
-    // printf("a11 = %f\n", 1000000000.0*punt->a_1);
-    // printf("a21 = %f\n", 1000000000.0*punt->a_2);
-    // punt++;
-    // printf("b02 = %f\n", 1000000000.0*punt->b_0);
-    // printf("b12 = %f\n", 1000000000.0*punt->b_1);
-    // printf("b22 = %f\n", 1000000000.0*punt->b_2);
-    // printf("a12 = %f\n", 1000000000.0*punt->a_1);
-    // printf("a22 = %f\n", 10000000000.0*punt->a_2);
-    // punt = aux_punt;
-
-    // printf("tamaño flotante = %d\n", sizeof(punt->b_0));
+        *(xa+i) = 0;
+        *(xb+i) = 0;
+        *(xc+i) = 0;
+        *(ya+i) = 0;
+        *(yb+i) = 0;
+        *(yc+i) = 0;
+    } // voy a probar el filtro en el void
 
     int aux1 = 10;
     float aux2 = 1, aux3 = 1;
