@@ -46,7 +46,7 @@ filtro_II_d_I:
 
   lsi x_0, m, 0             # tomo la muestra ya en unidades de presion
   
-  madd.s y_0, b_0, x_0      # y[n] = b_0*x[n]
+  mul.s y_0, b_0, x_0      # y[n] = b_0*x[n]
   msub.s y_0, a_1, y_1      # y[n] = y[n] - a_1*y[n-1]
   madd.s y_0, b_1, x_1      # y[n] = y[n] + b_1*x[n-1]
   msub.s y_0, a_2, y_2      # y[n] = y[n] - a_2*y[n-2]
