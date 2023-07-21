@@ -1,4 +1,4 @@
-#include "aux_task.h"
+#include "audio_task.h"
 #include "freertos/projdefs.h"
 #include <math.h>
 
@@ -27,9 +27,9 @@ float k_cw = K_Cw;
 float k_aw = K_Aw;
 
 void aux_task(void *parameter){
-    printf("Iniciando aux_task\n"); 
+    printf("Iniciando audio_task\n"); 
 
-    test_filtro();
+    test_unitario_filtro();
 
     while (1)
     {
@@ -37,20 +37,23 @@ void aux_task(void *parameter){
     }
 }
 
-void test_filtro(void){
-    printf("test filtro");
-    float frecuencias[34] = {10, 12.59, 15.85, 19.95, 25.12, 31.62, 39.81, 50.12, 63.1, 79.43, 100, 125.9, 158.5, 199.5, 251.2, 316.2, 398.1, 501.2, 63, 794.3, 1000, 1259, 1585, 1995, 2512, 3162, 3981, 5012, 6310, 7943, 10000, 12590, 15850, 19950};
+void test_unitario_filtro(void){
+    printf("\n\ntest unitario filtro\n");
+    float frecuencias[34] = {10, 12.59, 15.85, 19.95, 25.12, 31.62, 39.81, 50.12, 63.1, 79.43, 100, 125.9, 158.5, 199.5, 251.2, 316.2, 398.1, 501.2, 631, 794.3, 1000, 1259, 1585, 1995, 2512, 3162, 3981, 5012, 6310, 7943, 10000, 12590, 15850, 19950};
     float atenuacion_A_IRAM[34] = {-70.4, -63.4, -56.7, -50.5, -44.7, -39.4, -34.6, -30.2, -26.2, -22.5, -19.1, -16.1, -13.4, -10.9, -8.6, -6.6, -4.8, -3.2, -1.9, -0.8, 0, 0.6, 1, 1.2, 1.3, 1.2, 1, 0.5, -0.1, -1.1, -2.5, -4.3, -6.6, -9.3};
     float atenuacion_C_IRAM[34] = {-14.3, -11.2, -8.5, -6.2, -4.4, -3, -2, -1.3, -0.8, -0.5, -0.3, -0.2, -0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.1, -0.2, -0.3, -0.5, -0.8, -1.3, -2, -3, -4.4, -6.2, -8.5, -11.2};
+    // String tolerancias_sonometro_clase_2[34][10];
     float atenuacion_A_nuestra[34], atenuacion_C_nuestra[34];
 
-    int ciclos_A, ciclos_C;
+    int ciclos_A, ciclos_C;         // para medir el tiempo de aplicacion de cada filtro
 
+    // punteros que contienen parametros del filtro
     struct filtro_IIR_2ord* punt_test = malloc(3*sizeof(struct filtro_IIR_2ord));
     *(punt_test+0) = A_weighting_0;
     *(punt_test+1) = A_weighting_1;
     *(punt_test+2) = A_weighting_2;
 
+    // buffers para los filtros
     float *x0, *x1, *x2, *y0, *y1, *y2;
     x0 = malloc(3*sizeof(float));
     x1 = malloc(3*sizeof(float));
@@ -67,6 +70,7 @@ void test_filtro(void){
     yb = malloc(3*sizeof(float));
     yc = malloc(3*sizeof(float));
 
+    // inicializacion de buffers
     for(int i=0; i<3; i++){
         *(x0+i) = 0;
         *(x1+i) = 0;
@@ -83,10 +87,9 @@ void test_filtro(void){
         *(yc+i) = 0;
     }
 
-    float frecuencia, omega, seno;
+    float omega, seno;
     int seno_int;
-    float Amplitud = 1;
-    float k_p_m = (1.0/10000.0);
+    float k_p_m = (1.0/10000.0);        
 
     float acumulador_seno, acumulador_A, acumulador_C;
     acumulador_seno = 0;
@@ -96,8 +99,13 @@ void test_filtro(void){
     for(int i=0; i<34; i++){
         omega = 2.0*MPI*frecuencias[i]/48000.0;
         
-        int N_muestras = (int)(15*F_sample/frecuencias[i]);    // defino la cantidad de muestras para 15 periodos
+        int N_muestras = (int)(5*F_sample/frecuencias[i]);    // defino la cantidad de muestras para 5 periodos
         for(int j=0;j<N_muestras;j++){
+            if(j == ((N_muestras/5)-1)){
+                acumulador_A = 0;
+                acumulador_C = 0;
+                acumulador_seno = 0;
+            }
             seno_int = (int)(10000.0*sin(omega*j));
             // Ponderacion A
             ciclos_A = esp_cpu_get_cycle_count(); 
@@ -123,13 +131,29 @@ void test_filtro(void){
         atenuacion_C_nuestra[i] = 20.0*log10(sqrt((acumulador_C)/(acumulador_seno)));
         vTaskDelay(pdMS_TO_TICKS(20));
     }
-    printf("ciclos_A = %d\tciclos_C = %d\n", ciclos_A, ciclos_C);
-    printf("dBA_filtro\tdBA_IRAM\tdBC_flitro\tdBC_IRAM\n");
+    printf("tiempo ponderacion A [ns] = %d\ttiempo ponderacion C [ns] = %d\n", 4*ciclos_A, 4*ciclos_C);
+    printf("f [Hz]\t\tdBA_filtro\tdBA_IRAM\tdBC_flitro\tdBC_IRAM\n");
     for(int i=0; i<34; i++){
         vTaskDelay(pdMS_TO_TICKS(20));
-        printf("%f\t%f\t%f\t%f\n", atenuacion_A_nuestra[i], atenuacion_A_IRAM[i], atenuacion_C_nuestra[i], atenuacion_C_IRAM[i]);
+        printf("%f\t%f\t%f\t%f\t%f\n", frecuencias[i], atenuacion_A_nuestra[i], atenuacion_A_IRAM[i], atenuacion_C_nuestra[i], atenuacion_C_IRAM[i]);
     }
+
+    free(x0);
+    free(x1);
+    free(x2);
+    free(y0);
+    free(y1);
+    free(y2);
+    free(xa);
+    free(xb);
+    free(xc);
+    free(ya);
+    free(yb);
+    free(yc);
+    free(punt_test);
 }
+
+
 
 esp_err_t aux_launch(){
     xTaskCreatePinnedToCore(             // Use xTaskCreate() in vanilla FreeRTOS

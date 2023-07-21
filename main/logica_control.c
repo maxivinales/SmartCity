@@ -1,7 +1,7 @@
 #include "logica_control.h"
 
 #include "Leq_task.c"
-#include "aux_task.c"
+#include "audio_task.c"
 #include "config.h"
 
 TaskHandle_t TaskHandle_control;

@@ -27,6 +27,7 @@
         "freertosconfig.h": "c",
         "*.inc": "c",
         "cmath": "c",
-        "complex": "c"
+        "complex": "c",
+        "string.h": "c"
     }
 }

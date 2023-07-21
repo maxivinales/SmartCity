@@ -18,6 +18,8 @@
 #include "xtensa/config/core-isa.h"
 #include "esp_err.h"
 
+#include <string.h>
+
 
 // incluir todas las tareas aca
 /*tareas*/
@@ -36,6 +38,7 @@
 
 #define MSG_QUEUE_LENGTH 20
 #define MSG_QUEUE_TOSENSOR_LENGTH 5
+
 
 
 

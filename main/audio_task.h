@@ -1,5 +1,5 @@
-#ifndef _AUX_TASK_H_
-#define _AUX_TASK_H_
+#ifndef _AUDIO_TASK_H_
+#define _AUDIO_TASK_H_
 
 #include "config.h"
 
@@ -20,6 +20,6 @@ struct filtro_IIR_2ord
 
 esp_err_t aux_launch();
 esp_err_t aux_kill();
-void test_filtro(void);
+void test_unitario_filtro(void);
 
 #endif
