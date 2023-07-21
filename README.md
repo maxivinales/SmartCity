@@ -36,14 +36,18 @@ They are not used or needed when building with CMake and idf.py. -->
 
 # Sonometro IoT
 ***
-Short Description about the project.
+Este es el firmware para uno de los sensores Smart City enmarcados en el ANR denominado ***Desarrollo De Sensores IOT-Ciudades Inteligentes para Implementación en el Municipio de Oberá-Misiones en áreas Urbanas, Rurales, Reservas Naturales e Industriales con investigación y análisis de aspectos integrales de Ciudad Inteligentes para mejora de procesos de Gobernanza y modernización tecnológica*** enmarcado en el PFIP2022.
+La idea es obtener un sonómetro de clase 2 o superior que sea certificable por IRAM y el INTI.
+Se decidió utilizar en este proyecto el IDE ***ESP IDF*** provisto por el mismo Espressif, el cual cuenta con muchos mas recursos para manejar el hardware del  los microcontroladores ESP32 y ESP8266, programandose en C y Assembler.
+El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está en (introducir enlace) y el set de introducciones en (introducir enlace).
 
-## Table of Contents
-1. [General Info](#general-info)
-2. [Technologies](#technologies)
-3. [Installation](#installation)
-4. [Collaboration](#collaboration)
-5. [FAQs](#faqs)
+(hablar algo de RTOS)
+## Tabla de contenidos
+1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#general-info)
+2. [RTOS](#technologies)
+3. [Filtro](#installation)
+4. [Comunicacion](#collaboration)
+5. [Sarasa](#faqs)
 
 # Headline H1
 ## Headline H2
