@@ -1,4 +1,4 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-S2 | ESP32-S3 |
+<!-- | Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-S2 | ESP32-S3 |
 | ----------------- | ----- | -------- | -------- | -------- | -------- |
 
 # _Sample project_
@@ -32,4 +32,22 @@ Below is short explanation of remaining files in the project folder.
 └── README.md                  This is the file you are currently reading
 ```
 Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+They are not used or needed when building with CMake and idf.py. -->
+
+# Sonometro IoT
+***
+Short Description about the project.
+
+## Table of Contents
+1. [General Info](#general-info)
+2. [Technologies](#technologies)
+3. [Installation](#installation)
+4. [Collaboration](#collaboration)
+5. [FAQs](#faqs)
+
+# Headline H1
+## Headline H2
+### Headline H3
+#### Headline H4 
+##### Headline H5
+###### Headline H6
