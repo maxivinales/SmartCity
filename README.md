@@ -45,7 +45,7 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 ## Tabla de contenidos
 
 - **Especificaciones Técnicas según IRAM4074 y otras IRAM**
-- **Estructura del proyecto de firmware**
+- [**Estructura del proyecto de firmware**](http://fabrica.faniot.ar:90/ImasD/Sonometro_IoT/src/branch/master/README.md#estructura-del-proyecto-de-firmware)
     - **RTOS**
     - **Filtro**
 <!-- 1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#ET) -->
@@ -129,19 +129,33 @@ En el presente proyecto se utiliza [Free RTOS](https://docs.espressif.com/projec
 ### Cosas básicas de RTOS
 Cada tarea debe tener al menos 2 métodos:
 - <sub>task_launch()</sup>: No necesariamente debe llamarse así, toma el nombre dependiendo de la tarea que lancemos. Generalmente tiene la siguiente estructura:
-
 ```c
 task_launch(){
     xTaskCreatePinnedToCore(    // comando que crea la tarea
-        aux_task,               // llama a la funcion que será el bucle de la tarea
-        "aux_task",             // nombre de la tarea dentro de RTOS a findes de debug
+        func_task,               // llama a la funcion que será el bucle de la tarea
+        "func_task",             // nombre de la tarea dentro de RTOS a findes de debug
         100000,                 // tamaño del stack, depende de la cantidad de variables que maneja mi tarea
         NULL,                   // Parameter to pass (generalmente no se usa)
         2,                      // TPrioridad de la tarea (de menor a mayor, creo que va hasta 15)
-        &TaskHandle_aux,        // Task handle, es como un puntero que apunta a la tarea en memoria
+        &TaskHandle_task,        // Task handle, es como un puntero que apunta a la tarea en memoria
         APP_CORE);              // Indica que nucleo usaremos
 }
 ```
+Depende de la tarea, también se pueden crear colas (qeue) en el task launch, en ese caso vayan a fijarse al script :)
+- <sub>task_kill()</sup>: Es para matar la tarea, a fin de liberar memoria si la misma ya no se usa. También se pueden matar colas, eso fijense en el código, no acá.
+```c
+task_kill(){
+    if (TaskHandle_task != NULL)
+    {
+        vTaskDelete(TaskHandle_task);
+        TaskHandle_task = NULL;
+    }
+}
+```
+(ver si agregar algo de colas mas adelante)
+las tareas generalmente tienen 2 archivos:
+- *task.h*: en el header se llaman a las dependencias de la tarea y se definen los métodos de la misma. También se definen constantes y lo que uno quiera definir y no tenga que estar dentro de una función de la tarea.
+- *task.c*: aca está el cuerpo de los métodos y la tarea principal que tiene el bucle. Esta es la que se llama desde donde se quiera lanzar la tarea.
 <!-- ## Headline H2
 ### Headline H3
 #### Headline H4 
