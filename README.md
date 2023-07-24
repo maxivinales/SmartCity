@@ -154,3 +154,56 @@ task_kill(){
 Las tareas generalmente tienen 2 archivos:
 - *task.h*: en el header se llaman a las dependencias de la tarea y se definen los métodos de la misma. También se definen constantes y lo que uno quiera definir y no tenga que estar dentro de una función de la tarea.
 - *task.c*: aca está el cuerpo de los métodos y la tarea principal que tiene el bucle. Esta es la que se llama desde donde se quiera lanzar la tarea.
+
+### ***main***
+aca simplemente se debería llamar a *config.c* y *logica_control.c*, quedando sin loop infinito, ya que de esto se encargarán las tareas.
+
+### ***config***
+Esta no es una tarea de RTOS propiamente dicha, en ella están los métodos:
+- *loadconfig()*: trae la información guardada en la spiffs (dcredenciales, calibraciones, datos de versionado, etc.) y actualiza los datos en RAM.
+- *saveconfig()*: guarda los datos importantes en la memoria spiffs.
+
+### ***logica_control***
+Lanza las demás tareas, y se encarga de recibir las peticiones del usuario y hacer en consecuencia lo que se necesite.
+
+### ***audio_task***
+Se encarga de calcular el nivel sonoro equivalente. También tiene implementado el test unitario del filtro de audio según la norma IRAM4074-1.
+
+### Archivos en Assembler
+#### Cast_and_scale.S
+Se encarga de recibir la muestra de audio en veces (numero entero sin signo generalmente) y pasarlo a unidades de presión. Para utilizarlo se lo encluye en el script.c, globalmente de la siguiente forma:
+```c
+extern void casting_y_escala(int muestra_cuentas, float* muestra_p, float* k_veces_to_p);
+```
+donde:
+- *muestra_cuentas*: es la muestra de audio en veces
+- *muestra_p*: puntero que apunta a la dirección de memoria donde se guardará la muestra en unidades de presión.
+- *k_veces_to_p*: puntero que apunta a la dirección de memoria donde está la constante de conversión de veces a unidades de presion.
+
+#### filtro.S
+Contiene un algoritmo correspondiente a un filtro IIR de grado 2 según la forma directa tipo I. Para utilizarlo se lo encluye en el script.c, globalmente de la siguiente forma:
+```c
+extern void filtro_II_d_I(float* muestra_p, float* _x, float* _y, float* _SOS);
+```
+donde:
+- *muestra_p*: puntero que apunta a la dirección de memoria donde se guardará la muestra en unidades de presión.
+- *_x*: apunta al primer elemento de un stack de 3 elementos correspondientes a x[n], x[n-1] y x[n-2], dicho stack es una pila FIFO.
+- *_y*: apunta al primer elemento de un stack de 3 elementos correspondientes a y[n], y[n-1] y y[n-2], dicho stack es una pila FIFO.
+- *_SOS*: apunta al primer elemento de array que contiene los parámetros del filtro a implementar. La disposición de los parámetros es la siguiente:
+    - *(_sos + 0) = b0
+    - *(_sos + 1) = b1
+    - *(_sos + 2) = b2
+    - *(_sos + 3) = a1
+    - *(_sos + 4) = a2
+    
+Si se pretende aplicar un filtro de grado mayor a 2 se debe implementar como una cascada de filtros de grado 2 según forma directa tipo I.
+
+#### product_and_acu.S
+Se encarga de realizar unqa escala a la salida de la etapa de filtrado y de realizar el acumulado del cuadrado de la presión. Para utilizarlo se lo encluye en el script.c, globalmente de la siguiente forma:
+```c
+extern void producto_y_acumulacion(float *_y, float *_acu, float *_k);
+```
+donde:
+- *_y*: apunta a la salida de la etapa de filtrado.
+- *_acu*: apunta a la direccion de memoria donde se guardará el acumulado de los cuadrados de la salida del filtro para calcular luego el Leq.
+- *_k*: constante a la que se multiplica *_y antes de realizar el cuadrado. Generalmente se especifica en el diseño del filtro.
