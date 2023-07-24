@@ -50,7 +50,7 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 5. [Sarasa](#faqs)
 
 ## Especificaciones Técnicas según IRAM4074 y otras IRAM
-***
+
 Debe ser de clase 2, para lo cual debe cumplir con las siguientes especificaciones:
 1. Medir mínimamente con ponderaciones A y C (ubicaciones de polos y ceros en IRAM 4074 - 1 pág 12 y 13), y lineal (sin filtro).
 1. Mínimamente ponderaciones tem
@@ -81,7 +81,7 @@ Debe ser de clase 2, para lo cual debe cumplir con las siguientes especificacion
 1. Debe cumplir con el ensayo de promediación temporal definido en la 9.3.2 de la IRAM 4074 - 3.
 1. Rango de linealidad y de pulsos (ver 9.3 de la IRAM 4074 - 3)
 1. Opcional: análisis con filtros de octavas, adaptativo mediante FFT.
-***
+
 En el manual de instrucciones se debe indicar:
 1. El tipo de micrófono y el método de montaje necesario para lograr las tolerancias requeridas para esa clase particular de medidor de nivel sonoro integrador
 1. La dirección de incidencia y la respuesta en frecuencia a campo libre en esa dirección para instrumentos calibrados en campo difuso
@@ -112,7 +112,7 @@ En el manual de instrucciones se debe indicar:
 1. Configuración para modo normal de funcionamiento
 1. Efectos de recibir una descarga eléctrica
 1. etc.
-***
+
 Si es posible:
 1. Sensibilidad del dispositivo en función de la frecuencia
 1. Comportamiento del medidor cuando se lo prueba con trenes de pulsos (“tone burst”), ver 7.2 y 7.3 de IRAM 4074 - 1
