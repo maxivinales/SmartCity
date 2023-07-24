@@ -82,7 +82,7 @@ Debe ser de clase 2, para lo cual debe cumplir con las siguientes especificacion
 1. Rango de linealidad y de pulsos (ver 9.3 de la IRAM 4074 - 3)
 1. Opcional: análisis con filtros de octavas, adaptativo mediante FFT.
 
-En el manual de instrucciones se debe indicar:
+#### En el manual de instrucciones se debe indicar:
 1. El tipo de micrófono y el método de montaje necesario para lograr las tolerancias requeridas para esa clase particular de medidor de nivel sonoro integrador
 1. La dirección de incidencia y la respuesta en frecuencia a campo libre en esa dirección para instrumentos calibrados en campo difuso
 1. Rango del instrumento para cada ponderación en frecuencia.
