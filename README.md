@@ -54,6 +54,7 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 <!-- 4. [Comunicacion](#collaboration)
 5. [Sarasa](#faqs) -->
 
+***
 ## Especificaciones Técnicas según IRAM4074 y otras IRAM
 
 Debe ser de clase 2, para lo cual debe cumplir con las siguientes especificaciones:
@@ -123,7 +124,11 @@ Si es posible:
 1. Comportamiento del medidor cuando se lo prueba con trenes de pulsos (“tone burst”), ver 7.2 y 7.3 de IRAM 4074 - 1
 
 ***
-
+## Estructura del proyecto de firmware
+En el presente proyecto se utiliza [Free RTOS](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos.html), y se decide separar las tareas en archivos separados por una cuestión de buenas prácticas, para no tener demasiadas lineas en pocos scrips. Se presenta a continuación una descripción de cada archivo y sus funciones principales, así como el funcionamiento de RTOS.
+### Cosas básicas de RTOS
+Cada tarea debe tener al menos 2 métodos:
+- <sub>task_launch()</sup>: No necesariamente debe llamarse así, toma el nombre dependiendo de la tarea que lancemos. 
 <!-- ## Headline H2
 ### Headline H3
 #### Headline H4 
