@@ -49,7 +49,7 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 4. [Comunicacion](#collaboration)
 5. [Sarasa](#faqs)
 
-## Especificaciones Técnicas según IRAM4074 y otras IRAM(#ET)
+## [Especificaciones Técnicas según IRAM4074 y otras IRAM](#ET)
 <!-- ## Headline H2
 ### Headline H3
 #### Headline H4 
