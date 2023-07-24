@@ -43,11 +43,16 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 
 (hablar algo de RTOS)
 ## Tabla de contenidos
-1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#ET)
-2. [RTOS](#technologies)
-3. [Filtro](#installation)
-4. [Comunicacion](#collaboration)
-5. [Sarasa](#faqs)
+
+- **Especificaciones Técnicas según IRAM4074 y otras IRAM**
+- **Estructura del proyecto de firmware**
+    - **RTOS**
+    - **Filtro**
+<!-- 1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#ET) -->
+<!-- 2. [RTOS](#technologies) -->
+<!-- 3. [Filtro](#installation) -->
+<!-- 4. [Comunicacion](#collaboration)
+5. [Sarasa](#faqs) -->
 
 ## Especificaciones Técnicas según IRAM4074 y otras IRAM
 
@@ -116,6 +121,8 @@ Debe ser de clase 2, para lo cual debe cumplir con las siguientes especificacion
 Si es posible:
 1. Sensibilidad del dispositivo en función de la frecuencia
 1. Comportamiento del medidor cuando se lo prueba con trenes de pulsos (“tone burst”), ver 7.2 y 7.3 de IRAM 4074 - 1
+
+***
 
 <!-- ## Headline H2
 ### Headline H3
