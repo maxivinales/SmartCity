@@ -128,7 +128,20 @@ Si es posible:
 En el presente proyecto se utiliza [Free RTOS](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos.html), y se decide separar las tareas en archivos separados por una cuestión de buenas prácticas, para no tener demasiadas lineas en pocos scrips. Se presenta a continuación una descripción de cada archivo y sus funciones principales, así como el funcionamiento de RTOS.
 ### Cosas básicas de RTOS
 Cada tarea debe tener al menos 2 métodos:
-- <sub>task_launch()</sup>: No necesariamente debe llamarse así, toma el nombre dependiendo de la tarea que lancemos. 
+- <sub>task_launch()</sup>: No necesariamente debe llamarse así, toma el nombre dependiendo de la tarea que lancemos. Generalmente tiene la siguiente estructura:
+
+```c
+task_launch(){
+    xTaskCreatePinnedToCore(    // comando que crea la tarea
+        aux_task,               // llama a la funcion que será el bucle de la tarea
+        "aux_task",             // nombre de la tarea dentro de RTOS a findes de debug
+        100000,                 // tamaño del stack, depende de la cantidad de variables que maneja mi tarea
+        NULL,                   // Parameter to pass (generalmente no se usa)
+        2,                      // TPrioridad de la tarea (de menor a mayor, creo que va hasta 15)
+        &TaskHandle_aux,        // Task handle, es como un puntero que apunta a la tarea en memoria
+        APP_CORE);              // Indica que nucleo usaremos
+}
+```
 <!-- ## Headline H2
 ### Headline H3
 #### Headline H4 
