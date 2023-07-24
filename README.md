@@ -45,14 +45,12 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 ## Tabla de contenidos
 
 - **Especificaciones Técnicas según IRAM4074 y otras IRAM**
-- [**Estructura del proyecto de firmware**](http://fabrica.faniot.ar:90/ImasD/Sonometro_IoT/src/branch/master/README.md#estructura-del-proyecto-de-firmware)
+- **Estructura del proyecto de firmware**
     - **RTOS**
-    - **Filtro**
-<!-- 1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#ET) -->
-<!-- 2. [RTOS](#technologies) -->
-<!-- 3. [Filtro](#installation) -->
-<!-- 4. [Comunicacion](#collaboration)
-5. [Sarasa](#faqs) -->
+    - **main**
+    - **config**
+    - **logica_control**
+    - **audio_task**
 
 ***
 ## Especificaciones Técnicas según IRAM4074 y otras IRAM
@@ -152,12 +150,7 @@ task_kill(){
     }
 }
 ```
-(ver si agregar algo de colas mas adelante)
-las tareas generalmente tienen 2 archivos:
+(ver si agregar algo de colas mas adelante).
+Las tareas generalmente tienen 2 archivos:
 - *task.h*: en el header se llaman a las dependencias de la tarea y se definen los métodos de la misma. También se definen constantes y lo que uno quiera definir y no tenga que estar dentro de una función de la tarea.
 - *task.c*: aca está el cuerpo de los métodos y la tarea principal que tiene el bucle. Esta es la que se llama desde donde se quiera lanzar la tarea.
-<!-- ## Headline H2
-### Headline H3
-#### Headline H4 
-##### Headline H5
-###### Headline H6 -->
