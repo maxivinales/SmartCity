@@ -43,15 +43,15 @@ El microcontrolador a utilizarse es la ESP32, la hoja de datos del mismo está e
 
 (hablar algo de RTOS)
 ## Tabla de contenidos
-1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#general-info)
+1. [Especificaciones Técnicas según IRAM4074 y otras IRAM](#ET)
 2. [RTOS](#technologies)
 3. [Filtro](#installation)
 4. [Comunicacion](#collaboration)
 5. [Sarasa](#faqs)
 
-# Headline H1
-## Headline H2
+## Especificaciones Técnicas según IRAM4074 y otras IRAM(#ET)
+<!-- ## Headline H2
 ### Headline H3
 #### Headline H4 
 ##### Headline H5
-###### Headline H6
+###### Headline H6 -->
