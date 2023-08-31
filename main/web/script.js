@@ -1,0 +1,68 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const networkList = document.getElementById('network-list');
+    const networkForm = document.getElementById('connect-form');
+    const networkSelect = document.getElementById('network');
+
+    // Realizar la solicitud HTTP para obtener la lista de redes
+    fetch('http://192.168.4.1/index.js/PullNets')
+        .then(response => response.json())
+        .then(data => {
+            if (data && Array.isArray(data.Nets)) {
+                const networks = data.Nets;
+                const ul = document.createElement('ul');
+
+                networks.forEach(network => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <button>
+                            ${network.SSID}
+                            <img class="signal-image" src="${getSignalImage(network.rssi)}" alt="Signal Icon">
+                        </button>`;
+                    li.dataset.private = network.authmode !== "0"; // Si authmode no es 0, entonces es privada
+                    ul.appendChild(li);
+                });
+
+            networkList.appendChild(ul);
+
+            // Actualizar formulario cuando se selecciona una red
+            ul.addEventListener('click', function (e) {
+                if (e.target.tagName === 'BUTTON') {
+                    const selectedNetworkName = e.target.textContent.split(' ')[0]; // Nombre de la red
+                    const selectedNetwork = networks.find(network => network.SSID === selectedNetworkName);
+
+                    // Resto del código
+                }
+            });
+        } else {
+            console.error('La respuesta del servidor no contiene una lista de redes válida.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al obtener la lista de redes:', error);
+    });
+
+    networkForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const selectedOption = networkSelect.options[networkSelect.selectedIndex];
+        const password = document.getElementById('password').value;
+        const selectedNetwork = {
+            name: selectedOption.value,
+            private: selectedOption.dataset.private === 'true',
+            strength: selectedOption.textContent.match(/\(RSSI: ([-\d]+)\)/)[1]
+        };
+
+        // Aquí puedes implementar la lógica para conectarte a la red utilizando los datos proporcionados
+        console.log(`Conectando a la red ${selectedNetwork.name} con contraseña ${password}`);
+    });
+});
+
+function getSignalImage(rssi) {
+    if (rssi >= -60) {          // excelent
+        return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAkCAQAAADS8YmmAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+cIDhApNG7udUYAAAH1SURBVDjL7dPLSxRQFMfxz0yj5phQFOZjQAjCMDOiiaBFYEItIiFwEQRR/4C1cFcu2xUUQRLSJmgTCBIiCj0WYhAqEgkFvShF0h4gOeKIzG3hNKmZj01t/J7F5Z7L7557z/1dNvivRJbJFSlRpticPJM+Gze9smy7pDpJu2yXLyMq7bt3Bj014Ntydcs06ZMSspExJ5ObpfRpUra4WoFGFyVF8NWwl0Z8Ma1IiYQaNXYgGHBDu/S8tNxtKUHGkMsOKl5yjmJJLV7ICFJalUO1LkHwXrOKBX2JKYjGFogTmn0QBF2qIzqdRLcrBkGhakcieyIlmbiUca8988oMOOiqE3jITRPa7ARxp3WYyDViPsa1a1AISrUZd41i+xSBve5nOznjo+ee6DcqLQim3FOVfdUaW36f/ZhhQTDillN22ypumyoNWo0JgiFHl75aoW7BrPsO/OGcqEMemBP0iM+nNmWXgl0qXNfiE5GYSvvVKsWUjDE9ZiV0eios3nOzRHaTw+56a0raD2/ckQQxCQV/s3bUBaM5e82PH50VXfkH7PBYrWmPPDFpmzr14obVm7AC+Vr0Ov/r6oqc0+uKfKsQy3kyL+fJ2GqinCU163ApV3WNnJEWzGj8W+eWp1I+Chb+ibVQa0Bav9r1yah0XOV6RRv8I34CCGOjMOKz0ysAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDgtMTRUMTY6NDE6NDcrMDA6MDBMzkeQAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA4LTE0VDE2OjQxOjQ3KzAwOjAwPZP/LAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wOC0xNFQxNjo0MTo1MiswMDowMPQU8coAAAAASUVORK5CYII=';
+    } else if (rssi >= -70) {   // good
+        return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAkCAQAAADS8YmmAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+cIDhApNG7udUYAAAHdSURBVDjL7dM7axRhFMbx38zs7K7ZFWVVQjBFiDe8RC1EghY2KoJa2dj4MSy0E+zMNxAL05nCImBhYSUaUWRBxEJFMBjYRANKou5md2csnGwubBKsbPIfGDjznIdz3nPmZZP/StDlWygUCQVSibZEsr4tFIuRIJUKBAjR1FxuXrJFCgItLe2Olna0WCTVWNSC7F0QWdDMUmJtxFnc1MzivERd+tcWKWpaQF5eItGSZJUCoZxQ0MmI1bUDsVhDW05BYqHT4koieaGGlkhBM1DyW6IoUs8svfY7pF/ZvC/e+mAmsxa11YXKlOUUFbKWjrmt6oe083z32i1DWdWCLXK2klcSgx1umsyS676ZMquRxZ/dUAGxknhpAQfccVGo7qXH3pjyS1m/IRecUJAYd93HlUcuGJNKvXLV9lXjqLimKpUaU1wp5d0z576BLC7pM6hPTxbv9cC8u/Kr/5JeA96Zw25XXNavx0+Txj1UwzYHfcpm2oUzJiTLJpl46tRGN6DikWG8N2Fan2H78MIls9ahZFTNiEEhInuMmDaqZAMqDmd7XBzWkWxj6zS5SM55w555orVRneWc81VqxtnucriG7aSd2OXov9km1FBT7S6vdbbIacdVPV/j/m3yf/kDPt+TPB8V1ekAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDgtMTRUMTY6NDE6NDYrMDA6MDDquUwkAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA4LTE0VDE2OjQxOjQ2KzAwOjAwm+T0mAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wOC0xNFQxNjo0MTo1MiswMDowMPQU8coAAAAASUVORK5CYII=';
+    } else if (rssi >= -80) {   // middle
+        return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAkCAQAAADS8YmmAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+cIDhApNG7udUYAAAGvSURBVDjL7dMxbtRAFMbx39hjezebICFRIaFwAaBBoicFJ0BCSkOOQEGZi1BwB3qUBsqUdIgiUioqEBFZe20PxQ7JEhJIGmjyNeN5nv9738yb4Vr/VeGcSCkqJXNTDHqDdDEWRLVglAxGg1KhFJRGnf4UPsVqlaTLmQsFGI3ZQS1Y6Fax0sSoNQoqFRlagiwsJIVGYW5YYpVKp1doRL1+1Y4giqJeaxQ1OougEbSSRsxZl4sLQTKezCuVXiuYGIN1R4KpUSshqkS9CHpRrzMgaBSOJevBul6ps8h7DDq98cRkIaqNWgMqtUEVRFXO1ih1+lxxaXLQ50ij1+Z/3WkDJpijUeXOJUEpKCy0giavWFFphtKaycrh/7Q5tabATPlru4OZkbyD6I5NG746cJgjjST4fvaalZpc55HXPjnS+uajVx7mms1vPlYM7TiUpNyzJDmwfRY4+wJu2XPPsbf2fHHTY1umPtjy+U8PqbbrnedmeT6z471dtb8o2shfVR5v5BtzCc289MaLk6qX1DOtZO7pRSd3vjbVaNy+WrUH9rX23b8axl1PbF4VutY/0g9e9YvbfiwvtgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wOC0xNFQxNjo0MTo0NyswMDowMEzOR5AAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDgtMTRUMTY6NDE6NDcrMDA6MDA9k/8sAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTA4LTE0VDE2OjQxOjUyKzAwOjAw9BTxygAAAABJRU5ErkJggg==';
+    } else  // low
+        return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAkCAQAAADS8YmmAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+cIDhApNG7udUYAAAGSSURBVDjL7dNNctQwEAXgT7Jlzw8XgE3gAnAMTkAVx2DBMbPjIOzC2JYlFlYmQypDJRvY5O2k1ut+3f3EK/4rwhM3nV6nOtljla3qdVrQGwRFtSpWnagTRNUsP5AfaIOkmlvmKIKiNAWDYDE3WlDp7BSTIkgSjbQRWSyqaBSdrFu1JJll0aiX5Us5gl6vl02K3mi2hDAKdVKN+pZ1exwFVTmfkySbBDulC/sPdz+DA1t5vdFeNEqSaK9TFausN8gW++CNrDNbbD0Gs6ycRUa9QTFZkQxWKeglsxWjziyjl5rIVW43o2xqsflhATucMEptc1VoW1tMgrG9uEDniM7B7mL49zL3DiKOuj/XHRwVWgdR0guqbFGayCq42yYbLnImiyIYdVZFEUWd1aSe41esfTScLR2a7Q6PLd8/oiXMOjtEq+Bkbj76y8eJ9oLSFqH9CX5dk3fZYzhX3mz1eLb3A71AVXD0zXdv/TCfffkMfDWpTr5ck/Q0bgwYvXtunQ2f3Jrc+vgyGu99dvNS0iv+EX4DAIaMIv2h9RwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDgtMTRUMTY6NDE6NDYrMDA6MDDquUwkAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTA4LTE0VDE2OjQxOjQ2KzAwOjAwm+T0mAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wOC0xNFQxNjo0MTo1MiswMDowMPQU8coAAAAASUVORK5CYII=';
+}

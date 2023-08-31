@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="header">
+        <img class="logo" alt="Logo" id="logo" src="data:image/png;base64,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" alt="Logo FANIoT">
+
+    </div>
+    <div class="container">
+        <h1>WiFi Manager</h1>
+        <div id="connect-form">
+            <input type="text" class="net-name" id="selected-network" placeholder="Seleccionar Red">
+            <input type="password" id="password" name="password" placeholder="Ingrese la contraseña">
+            <input type="text" id="user-name" placeholder="Ingrese su nombre de usuario">
+            <input type="password" name="login-pass" id="login-pass" placeholder="Ingrese la contraseña de la cuenta">
+            <div id="button-container">
+                <button id="connect-button">Conectar</button>
+                <button id="finish-button">Terminar Configuración</button>
+            </div>
+        </div>
+        <div class="container">
+        <div id="network-list" style="margin-top: 1px;">
+            
+            <!-- La lista de redes disponibles se mostrará aquí -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
