@@ -105,4 +105,6 @@ struct data_t{
 esp_err_t loadConfig();
 esp_err_t saveConfig();
 
+uint8_t mac_address_or_chipid[6];   // MAC o CHIP ID
+char ChipId[13];                    // ChipID en char
 #endif

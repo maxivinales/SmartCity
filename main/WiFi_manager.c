@@ -1,4 +1,5 @@
 #include "WiFi_manager.h"
+#include "esp_err.h"
 
 void buildJsonNets(char* _Json, wifi_ap_record_t* _redes, uint32_t _size) {
     // Calcula el tamaño total necesario para almacenar el JSON
@@ -59,6 +60,18 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
         return(0);
     }
 
+    cJSON *get_chipid = cJSON_GetObjectItemCaseSensitive(Jsonsito, "get_chipid");
+    if (get_chipid != NULL) {
+        printf("get_chipid: %d\n", get_chipid->valueint);
+        if(get_chipid->valueint == 1){
+            ret = ret|1;            // escribo 1 bit
+        }
+    } else {
+        ESP_LOGW(TAG, "Objeto get_chipid no encontrado o no válido\n");
+    }
+
+    ret = ret<<1;           // desplazo todos los bits hacia la izquierda
+
     cJSON *off_WM_mode = cJSON_GetObjectItemCaseSensitive(Jsonsito, "off_WM_mode");
     if (off_WM_mode != NULL) {
         printf("off_WM_mode: %d\n", off_WM_mode->valueint);
@@ -66,7 +79,7 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
             ret = ret|1;            // escribo 1 bit
         }
     } else {
-        ESP_LOGW(TAG, "Objeto WM no encontrado o no válido\n");
+        ESP_LOGW(TAG, "Objeto off_WM_mode no encontrado o no válido\n");
     }
 
     ret = ret<<1;           // desplazo todos los bits hacia la izquierda
@@ -691,6 +704,7 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                 al cliente
         2   ->  si está seteado quiere decir que tenemos datos para conectarnos al broker MQTT
         3   ->  Si está seteado quiere decir que deberíamos apagar el WiFi manager
+        4   ->  Solicitud del chipid
         LOS DEMAS BITS POR AHORA ESTAN RESERVADOS
         */
         if(requested_actions == 0){ // si es cero se produjo un error
@@ -798,6 +812,23 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                     // wifi_init_sta(data_WiFi_SC);
                 }
 
+            }
+
+            requested_actions = requested_actions>>1;   // corro 1 bit a la derecha
+            if(requested_actions&1){    // bit 4
+                ESP_LOGW(TAG, "bit 4: Se envía \n");// debug Cukla
+                char *aux_s;
+                // aux_s = &mac_address_or_chipid[0];
+                esp_err_t _err;
+                _err = esp_efuse_mac_get_default(&mac_address_or_chipid[0]);
+                if(_err != ESP_OK){
+                    ESP_LOGI(TAG, "error solicitando la MAC/ChipID. err = %d\n", (int)_err);
+                }else{
+                    snprintf(&ChipId[0], 13, "%02X%02X%02X%02X%02X%02X", mac_address_or_chipid[0], mac_address_or_chipid[1], mac_address_or_chipid[2], mac_address_or_chipid[3], mac_address_or_chipid[4], mac_address_or_chipid[5]);
+                    ESP_LOGI(TAG, "ChipID / MAC = %s\n", ChipId);
+                    aux_s = &ChipId[0];
+                    httpd_resp_send(req, aux_s, strlen(aux_s));  // supuestamente es 200
+                }
             }
         }
 

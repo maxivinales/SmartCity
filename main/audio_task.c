@@ -29,7 +29,7 @@ float k_aw = K_Aw;
 void aux_task(void *parameter){
     printf("Iniciando audio_task\n"); 
 
-    test_unitario_filtro();
+    // test_unitario_filtro();      // este era para probar esta funcionalidad nada mas
 
     while (1)
     {
