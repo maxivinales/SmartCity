@@ -250,8 +250,8 @@ void wifi_init_softap(void)
 
     wifi_config_t wifi_config = {                       // configuraciones del AP
         .ap = {
-            .ssid = WIFI_SSID,
-            .ssid_len = strlen(WIFI_SSID),
+            //.ssid = WIFI_SSID,
+            .ssid_len = strlen(SSID_WiFi_Manager.value_str),
             .channel = WIFI_CHANNEL,
             .password = WIFI_PASS,
             .max_connection = MAX_STA_CONN,
@@ -261,6 +261,12 @@ void wifi_init_softap(void)
             },
         },
     };
+
+    uint8_t* aux_u8;
+    aux_u8 = &wifi_config.ap.ssid[0]; 
+    char* aux_S;
+    aux_S = (char*)aux_u8;
+    strcpy(aux_S, SSID_WiFi_Manager.value_str);
     
     // wifi_config_SC = &wifi_config;
 
@@ -273,7 +279,7 @@ void wifi_init_softap(void)
     ESP_ERROR_CHECK(esp_wifi_start());                                                  // pongo en marcha el AP
 
     ESP_LOGI(TAG, "wifi_init_softap finished. SSID:%s password:%s channel:%d",
-             WIFI_SSID, WIFI_PASS, WIFI_CHANNEL);
+             SSID_WiFi_Manager.value_str, WIFI_PASS, WIFI_CHANNEL);
 }
 
 void wifi_deinit_softap(void){
@@ -720,7 +726,7 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                 // guardo datos de la red
                 esp_err_t _err;
                 // storage se llama el lugar donde guardo las variables
-                _err = nvs_open("storage", NVS_READWRITE, &handle_wifi);
+                _err = nvs_open("storage", NVS_READWRITE, &handle_NVS);
                 if (_err != ESP_OK) {
                     printf("Error (%s) opening NVS handle!\n", esp_err_to_name(_err));
                 } else {
@@ -728,19 +734,19 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                     // Write
                     printf("Updating WiFi data in NVS ... ");
 
-                    _err = nvs_set_str(handle_wifi, "SSID", data_WiFi_SC.SSID);
+                    _err = nvs_set_str(handle_NVS, "SSID", data_WiFi_SC.SSID);
                     printf((_err != ESP_OK) ? "save SSID failed!\n" : "save SSID done\n");
 
-                    _err = nvs_set_str(handle_wifi, "pass", data_WiFi_SC.pass);
+                    _err = nvs_set_str(handle_NVS, "pass", data_WiFi_SC.pass);
                     printf((_err != ESP_OK) ? "save pass failed!\n" : "save pass done\n");
 
-                    _err =nvs_set_u32(handle_wifi, "authmode", (uint32_t)data_WiFi_SC.authmode);
+                    _err =nvs_set_u32(handle_NVS, "authmode", (uint32_t)data_WiFi_SC.authmode);
 
                     printf("Committing updates in NVS ... ");
-                    _err = nvs_commit(handle_wifi);
+                    _err = nvs_commit(handle_NVS);
                     printf((_err != ESP_OK) ? "Committing failed!\n" : "Committing done\n");
                     // Close
-                    nvs_close(handle_wifi);
+                    nvs_close(handle_NVS);
                 }
                 // wifi_deinit_softap();
                 // aca tengo que trabajar
@@ -785,7 +791,7 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                 }else{
                     // wifi_deinit_softap();
                     // corroboro que esté guardado ok la red
-                    _err = nvs_open("storage", NVS_READWRITE, &handle_wifi);
+                    _err = nvs_open("storage", NVS_READWRITE, &handle_NVS);
                     if (_err != ESP_OK) {
                         printf("Error (%s) opening NVS handle!\n", esp_err_to_name(_err));
                     }else{
@@ -795,19 +801,22 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                             // Write
                             printf("guardo dato que indica que la ESP debe iniciar en modo STA");
 
-                            _err = nvs_set_u32(handle_wifi, "WifiMode", 1);         // 1 = Wifi manager apagado, 0 = encendido
+                            mode_WiFi_manager.value = 1;                                            // guardo el valor en la configuración
+
+                            _err = nvs_set_u32(handle_NVS, "WifiMode", 1);       // 1 = Wifi manager apagado, 0 = encendido
                             printf((_err != ESP_OK) ? "save WifiMode failed!\n" : "save SSID done\n");
-                            nvs_commit(handle_wifi);
-                            nvs_close(handle_wifi);
+                            nvs_commit(handle_NVS);
+                            nvs_close(handle_NVS);
                             ESP_LOGW(TAG, "Reinicio la ESP...");
+                            saveConfig();
                             esp_restart();
                         }
 
                         // Close
-                        // nvs_close(handle_wifi);
+                        // nvs_close(handle_NVS);
                     }   // me quede haciendo el tema de guardar la ssid
 
-                    nvs_close(handle_wifi);
+                    nvs_close(handle_NVS);
 
                     // wifi_init_sta(data_WiFi_SC);
                 }

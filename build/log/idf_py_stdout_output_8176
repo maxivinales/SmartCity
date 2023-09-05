@@ -1,5 +1,4 @@
 -- Found Git: C:/Users/lucas/.espressif/tools/idf-git/2.30.1/cmd/git.exe (found version "2.30.1.windows.1") 
--- ccache will be used for faster recompilation
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- The ASM compiler identification is GNU
@@ -14,7 +13,6 @@
 -- Check for working CXX compiler: C:/Users/lucas/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Project is not inside a git repository, or git repository has no commits; will not use 'git describe' to determine PROJECT_VER.
 -- Building ESP-IDF components for target esp32
 -- Project sdkconfig file C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/sdkconfig
 -- Looking for sys/types.h
@@ -28,7 +26,7 @@
 -- Found Python3: C:/Users/lucas/.espressif/python_env/idf5.0_py3.8_env/Scripts/python.exe (found version "3.8.7") found components: Interpreter 
 -- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
 -- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
--- App "Sonometro_IoT" version: 1
+-- App "Sonometro_IoT" version: c5354b6-dirty
 -- Adding linker script C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/esp-idf/esp_system/ld/memory.ld
 -- Adding linker script C:/Users/lucas/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
 -- Adding linker script C:/Users/lucas/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld

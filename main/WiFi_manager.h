@@ -26,7 +26,7 @@
 
 // #include <cJSON.h>      // librerpia para manejar Json
 
-#define WIFI_SSID      "Test SC "
+// #define WIFI_SSID      "Test SC "
 #define WIFI_PASS      ""
 #define WIFI_CHANNEL   1
 #define MAX_STA_CONN       4
@@ -43,19 +43,7 @@
 // crea instancias para eventos referidos al WiFi
 esp_event_handler_instance_t instance_any_id = NULL;
 esp_event_handler_instance_t instance_got_ip = NULL;
-nvs_handle_t handle_wifi;   // para guardar SSID y pass
-
-
-struct WiFi_data_t{
-    char SSID[32];
-    char pass[64];
-    wifi_auth_mode_t authmode;
-};
-
-struct MQTT_user_data_t{
-    char User[32];
-    char pass[64];
-};
+// nvs_handle_t handle_wifi;   // para guardar SSID y pass
 
 typedef enum{
     OK_WME,         // sin errores, WiFi Manager sigue encendido
@@ -97,10 +85,11 @@ static httpd_handle_t server = NULL;        // handler para el servidor HTTP
 
 int num_clientes_TCPIP = 0;
 
-
-struct WiFi_data_t data_WiFi_SC;
-struct MQTT_user_data_t data_MQTT_SC;
 wifi_config_t *wifi_config_SC;
+
+// chip id
+uint8_t mac_address_or_chipid[6];   // MAC o CHIP ID
+char ChipId[13];                    // ChipID en char
 
 void buildJsonNets(char* jsonBuffer, wifi_ap_record_t* _redes, uint32_t _size);
 uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQTT_user_data_t *MQTT_data);

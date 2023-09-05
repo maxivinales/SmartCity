@@ -68,6 +68,20 @@
 #define MSG_QUEUE_LENGTH 20
 #define MSG_QUEUE_TOSENSOR_LENGTH 5
 
+//// Cuestiones referidas al WiFi
+struct WiFi_data_t{
+    char SSID[32];
+    char pass[64];
+    wifi_auth_mode_t authmode;
+};
+
+struct MQTT_user_data_t{
+    char User[32];
+    char pass[64];
+};
+
+
+
 
 
 
@@ -99,12 +113,24 @@ struct data_t{
     cmd_control_t cmd;  //mensaje de control
     int value;          //valor entero que se puede usar depende de lo que uno necesite
     float value_f;      //valor flotante que se puede usar depende de lo que uno necesite
-    char  value_str[20]; //string que se puede usar depende de lo que uno necesite
+    char  value_str[32]; //string que se puede usar depende de lo que uno necesite
 };
 
 esp_err_t loadConfig();
 esp_err_t saveConfig();
 
-uint8_t mac_address_or_chipid[6];   // MAC o CHIP ID
-char ChipId[13];                    // ChipID en char
+esp_err_t get_chipid();
+
+// Variables
+struct WiFi_data_t data_WiFi_SC;
+struct MQTT_user_data_t data_MQTT_SC;
+
+nvs_handle_t handle_NVS;   // para guardar SSID y pass
+
+struct data_t MAC;          // la diferencia entre CHIPID y MAC es que CHIPID está en ascii y MAC en hex
+struct data_t CHIPID;
+struct data_t mode_WiFi_manager = {.value = 0};    // .value = 0 -> WiFi manager encendido, .value = 1 -> WiFi manager apagado
+struct data_t SSID_WiFi_Manager = {.value_str  = "Smart City"}; // nombre de la red WiFi, se cambia luego por el nombre del dispositivo y el chipid
+
+
 #endif

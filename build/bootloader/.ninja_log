@@ -1,255 +1,137 @@
 # ninja log v5
-6477	7606	7109546603087781	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32/bootloader_sha.c.obj	4d31180818aae001
-21	668	7109546532380293	project_elf_src_esp32.c	11990d980d30e347
-832	1669	7109546543475952	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/i2c_periph.c.obj	28c53026d62dcd26
-6464	7483	7109546600443667	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_panic.c.obj	e5c93a21f8d9e699
-4206	5730	7109546583930252	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash_config_esp32.c.obj	8455d81c16839009
-3111	4369	7109546569504916	esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32/efuse_hal.c.obj	e5584227eb8a7e50
-934	1855	7109546544576229	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/interrupts.c.obj	4932fa6d6bd786c6
-50	843	7109546534769673	esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/xt_trax.c.obj	182dac7acfc1404e
-21	668	7109546532380293	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/project_elf_src_esp32.c	11990d980d30e347
-5455	6547	7109546588674634	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console_loader.c.obj	30c492ab6577af5d
-60	750	7109546534380281	esp-idf/soc/CMakeFiles/__idf_soc.dir/dport_access_common.c.obj	3b2b922bbee8780e
-4705	6474	7109546587092698	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/flash_qio_mode.c.obj	59fd39a2a9c1365a
-40	859	7109546535381482	esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/eri.c.obj	82efde200ba28340
-172	965	7109546536557344	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/adc_periph.c.obj	5e24802aa0a19bb0
-190	1057	7109546537456555	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/sdm_periph.c.obj	27da6d7af62d8776
-7538	8596	7109546612907069	esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_err.c.obj	9b83d6ea3690442a
-5214	6602	7109546589474338	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_encrypt.c.obj	d7a9664e9665b06f
-70	933	7109546536253383	esp-idf/soc/CMakeFiles/__idf_soc.dir/lldesc.c.obj	cb48a98cddcf54a7
-1723	3110	7109546557703389	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/timer_periph.c.obj	e009e5dfa1e9d768
-153	1102	7109546537613182	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/dport_access.c.obj	52bc7a0466792a56
-7622	8547	7109546612437292	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/esp_memory_utils.c.obj	7f7e5e3f6f3a8598
-164	1122	7109546538071935	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/dac_periph.c.obj	ad41ac195784ab70
-4829	6698	7109546593928799	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp_image_format.c.obj	3d1b50f7b3ac2ef3
-181	1184	7109546538613209	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/gpio_periph.c.obj	b537438efa0dc70
-669	1343	7109546540021753	CMakeFiles/bootloader.elf.dir/project_elf_src_esp32.c.obj	cc07cc182c0da35d
-845	1684	7109546543455976	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/ledc_periph.c.obj	4fd2926c60c29ec8
-3302	4204	7109546569484911	esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj	407108dff7c55769
-860	1722	7109546543861604	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/i2s_periph.c.obj	bdc5dd07587d8a95
-966	1791	7109546544329770	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/lcd_periph.c.obj	7c6008742045b906
-6639	7693	7109546603205372	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_api.c.obj	3887271cb2aad88c
-1104	1735	7109546544263202	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/pcnt_periph.c.obj	4bf609d7e6758ed2
-5033	6564	7109546588835592	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/secure_boot.c.obj	2fac4f5276c76ba3
-1059	1833	7109546544819785	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/mcpwm_periph.c.obj	5331b3cb69933143
-1123	1866	7109546545192934	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/rtc_io_periph.c.obj	375451a44c29f29b
-6565	8074	7109546607826936	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32/bootloader_esp32.c.obj	4405e243d1d290c8
-1186	1953	7109546546486659	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/spi_periph.c.obj	ad8fa4cb579e620f
-1344	3075	7109546547389376	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/sdmmc_periph.c.obj	9efdbf8659e33b2e
-1792	3296	7109546559879387	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/uart_periph.c.obj	41045e51c152e445
-6700	7814	7109546604665227	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_utility.c.obj	392d64339ad8ea5b
-3368	5014	7109546576788110	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common.c.obj	80812622388bf53e
-1671	3366	7109546559899392	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/sdio_slave_periph.c.obj	ba7f1c88cdcfeb7b
-1736	3424	7109546560642148	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/touch_sensor_periph.c.obj	53ae5b393bea3cfe
-3481	4703	7109546573954909	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random.c.obj	c6ba467c60fecde8
-3093	3931	7109546566455147	esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj	98c2f18daf02af1a
-1685	3434	7109546559742391	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/rmt_periph.c.obj	26195a7bb7d3ad65
-4811	6499	7109546588150870	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_efuse.c.obj	7f8b5ff0034471e1
-1856	3480	7109546560242429	esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj	9a00c3405b3c71d
-1835	3773	7109546564428509	esp-idf/hal/CMakeFiles/__idf_hal.dir/mpu_hal.c.obj	732e977800b11b2
-1982	4053	7109546567485172	esp-idf/hal/CMakeFiles/__idf_hal.dir/wdt_hal_iram.c.obj	cbce21a4393c14b0
-3435	4587	7109546572929525	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_mem.c.obj	25e9de0b9c6436d5
-3774	5454	7109546581133376	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash.c.obj	29fcd6aff4ecf8c6
-9735	10481	7109546631738563	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_regi2c.c.obj	203cb27dc426a8e0
-6615	7757	7109546604640176	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32/esp_efuse_fields.c.obj	80b4d8cba7f0074f
-8628	9781	7109546623775520	esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/src/esp_err_to_name.c.obj	580d34a7c1235c0a
-3426	4809	7109546573711607	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_init.c.obj	c320874a4cd7dcec
-1867	4827	7109546574848932	esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj	11c4360d27d79414
-4055	5148	7109546577984106	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random_esp32.c.obj	98c6a81173c34718
-5391	6625	7109546589849258	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_partitions.c.obj	53a176d5de5d0a56
-4589	6487	7109546587307811	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_init.c.obj	51e4c24774cb2219
-4371	5212	7109546579302966	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_loader.c.obj	43e1570e65981218
-3933	5389	7109546580308033	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common_loader.c.obj	89c13d673b2bbb8e
-5150	6637	7109546593250775	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_utility.c.obj	279ee8fd1eaf5916
-6549	7420	7109546600382177	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32/bootloader_soc.c.obj	4cb365b77eac95c0
-6489	7537	7109546600912186	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console.c.obj	66d7272f43f9312
-6500	7804	7109546604600494	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32/esp_efuse_table.c.obj	d7c98f66c71fcdc8
-6627	7838	7109546604464275	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c.obj	3a8d607d702ea414
-7422	8626	7109546613048847	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_fields.c.obj	f2546c65130b614f
-7840	9282	7109546619867025	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_clk.c.obj	b37528bed16fba5a
-7695	8644	7109546613344137	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/cpu.c.obj	5b6775205c567c7a
-7816	8790	7109546614639791	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_pm.c.obj	828c2053d288ca38
-7805	8820	7109546614953137	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_init.c.obj	c2ff14308e85a48c
-7485	8929	7109546616330047	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32/esp_efuse_utility.c.obj	b6814cf4aeb00dbe
-7758	9046	7109546617306412	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_clk_init.c.obj	dca999c981de5bbc
-8076	9490	7109546621847042	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_sleep.c.obj	50cfbdb148116468
-8792	9745	7109546622472782	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj	ed12cbc7da9f6b92
-8705	9755	7109546623088005	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj	eb6a3fd38dabd208
-8822	9769	7109546623583073	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj	81fa28a1edf2f540
-8548	9793	7109546624249437	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/chip_info.c.obj	4fb233663a2d14e7
-8597	9805	7109546624542564	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_time.c.obj	5905446dfeddb530
-8930	9807	7109546624603424	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj	11b250e61cb73a5d
-9048	9810	7109546624845775	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_longjmp.S.obj	d631988fea629a91
-9783	10519	7109546631981978	esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj	af01e55e85ebf3db
-13617	14190	7109546668413390	esp-idf/efuse/libefuse.a	747ba4b82a27d655
-9771	10587	7109546632749030	esp-idf/log/CMakeFiles/__idf_log.dir/log.c.obj	ca26fecd3228df49
-9284	10632	7109546633355244	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj	a16980f47ad3261
-9758	10651	7109546633295300	esp-idf/log/CMakeFiles/__idf_log.dir/log_noos.c.obj	9f75818899dc4a43
-9746	10750	7109546634461928	esp-idf/log/CMakeFiles/__idf_log.dir/log_buffers.c.obj	6a982d29d527b459
-10752	11412	7109546641026989	esp-idf/log/liblog.a	229812d3f0bb7573
-11412	11941	7109546646227353	esp-idf/esp_rom/libesp_rom.a	a6193fdaf99892c
-11942	12408	7109546650698698	esp-idf/esp_common/libesp_common.a	c48a308ef792846f
-12409	12947	7109546656306749	esp-idf/esp_hw_support/libesp_hw_support.a	63a13762364f9e04
-12952	13537	7109546662075948	esp-idf/esp_system/libesp_system.a	a920629df297c362
-14191	14774	7109546674206618	esp-idf/bootloader_support/libbootloader_support.a	422fd6b0d6d22842
-14776	15245	7109546679500025	esp-idf/esp_app_format/libesp_app_format.a	f6aa25344498c2a4
-15246	15669	7109546683393131	esp-idf/hal/libhal.a	ee06b98a855d1ff6
-15669	16231	7109546688605487	esp-idf/micro-ecc/libmicro-ecc.a	82e0963c43c5861f
-16232	16917	7109546695439437	esp-idf/soc/libsoc.a	71bd641ac7bfccf0
-17262	17745	7109546703922099	esp-idf/xtensa/libxtensa.a	e920d4c3bbb439af
-17746	18341	7109546710104767	esp-idf/main/libmain.a	58df59726c8a5f7e
-18341	19492	7109546721153280	bootloader.elf	7a2302fdadafd42c
-19492	22415	7109546750182804	.bin_timestamp	8349decee391e7b7
-19492	22415	7109546750182804	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/.bin_timestamp	8349decee391e7b7
-14	185	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	185	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	175	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	175	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	186	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	186	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	180	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	180	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	198	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	198	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	214	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	214	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	208	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	208	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	189	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	189	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	197	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	197	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	196	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	196	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	243	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	243	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	198	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	198	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	184	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	184	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	165	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	165	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	178	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	178	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	160	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	160	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	162	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	162	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	174	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	174	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	148	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	148	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	158	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	158	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	153	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	153	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	173	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	173	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	190	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	190	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	201	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	201	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	187	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	187	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	198	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	198	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	178	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	178	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	159	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	159	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	143	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	143	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	159	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	159	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	147	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	147	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	162	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	162	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	190	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	190	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	128	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	128	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	158	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	158	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-18	233	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-18	233	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	146	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	146	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	156	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	156	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	186	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	186	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-23	285	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-23	285	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	136	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	136	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	175	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	175	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	157	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	157	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	151	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	151	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-9	135	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-9	135	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	144	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	144	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	153	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	153	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	128	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	128	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	209	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	209	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	189	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	189	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	205	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	205	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	222	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	222	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-33	1081	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-33	1081	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	203	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	203	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	228	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	228	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	407	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	407	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	196	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	196	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	256	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-13	256	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	536	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	536	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	238	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	238	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	213	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	213	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-9	193	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-9	193	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	190	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-11	190	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	221	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	221	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-9	204	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-9	204	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	212	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-14	212	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-22	313	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-22	313	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-78	445	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-78	445	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-18	204	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-18	204	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	216	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-17	216	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-48	487	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-48	487	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	233	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-16	233	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	222	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-15	222	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	247	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	247	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	190	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-12	190	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	186	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
-10	186	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+7	516	7155483332960624	project_elf_src_esp32.c	11990d980d30e347
+7	516	7155483332960624	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/project_elf_src_esp32.c	11990d980d30e347
+57	973	7155483339759457	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32/bootloader_soc.c.obj	4cb365b77eac95c0
+17	3798	7155483339699555	esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/eri.c.obj	82efde200ba28340
+24	3810	7155483339139470	esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/xt_trax.c.obj	182dac7acfc1404e
+33	3823	7155483341735430	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console_loader.c.obj	30c492ab6577af5d
+47	3836	7155483344514901	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_panic.c.obj	e5c93a21f8d9e699
+432	3849	7155483344554932	esp-idf/soc/CMakeFiles/__idf_soc.dir/dport_access_common.c.obj	3b2b922bbee8780e
+264	3866	7155483344910945	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/adc_periph.c.obj	5e24802aa0a19bb0
+518	3879	7155483345058972	CMakeFiles/bootloader.elf.dir/project_elf_src_esp32.c.obj	cc07cc182c0da35d
+172	3896	7155483347634517	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32/bootloader_sha.c.obj	4d31180818aae001
+183	3909	7155483350500020	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32/bootloader_esp32.c.obj	4405e243d1d290c8
+3800	4845	7155483378104724	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/dport_access.c.obj	52bc7a0466792a56
+3813	4892	7155483378884166	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/dac_periph.c.obj	ad41ac195784ab70
+3898	6186	7155483379524467	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/rmt_periph.c.obj	26195a7bb7d3ad65
+3826	6224	7155483380097476	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/sdm_periph.c.obj	27da6d7af62d8776
+3758	6283	7155483380611368	esp-idf/soc/CMakeFiles/__idf_soc.dir/lldesc.c.obj	cb48a98cddcf54a7
+3912	6304	7155483381015430	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/mcpwm_periph.c.obj	5331b3cb69933143
+3851	6451	7155483381437952	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/i2s_periph.c.obj	bdc5dd07587d8a95
+3838	6462	7155483381741259	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/i2c_periph.c.obj	28c53026d62dcd26
+3881	6475	7155483382604934	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/ledc_periph.c.obj	4fd2926c60c29ec8
+3868	6487	7155483382754960	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/gpio_periph.c.obj	b537438efa0dc70
+4847	6509	7155483384466528	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/interrupts.c.obj	4932fa6d6bd786c6
+6188	6873	7155483398769619	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/lcd_periph.c.obj	7c6008742045b906
+6177	7390	7155483403285962	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/pcnt_periph.c.obj	4bf609d7e6758ed2
+6226	9338	7155483404216607	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/sdio_slave_periph.c.obj	ba7f1c88cdcfeb7b
+6290	9395	7155483404266075	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/sdmmc_periph.c.obj	9efdbf8659e33b2e
+6464	9407	7155483406896422	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/timer_periph.c.obj	e009e5dfa1e9d768
+6510	9452	7155483407286431	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/uart_periph.c.obj	41045e51c152e445
+6452	9536	7155483407769493	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/spi_periph.c.obj	ad8fa4cb579e620f
+6477	9555	7155483407659466	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/rtc_io_periph.c.obj	375451a44c29f29b
+6312	11188	7155483408867594	esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32/touch_sensor_periph.c.obj	53ae5b393bea3cfe
+6875	11200	7155483409027593	esp-idf/hal/CMakeFiles/__idf_hal.dir/mpu_hal.c.obj	732e977800b11b2
+9278	11253	7155483433626484	esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32/efuse_hal.c.obj	e5584227eb8a7e50
+6489	11326	7155483423035810	esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj	11c4360d27d79414
+9372	11386	7155483433960076	esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj	9a00c3405b3c71d
+9397	11398	7155483436051808	esp-idf/hal/CMakeFiles/__idf_hal.dir/wdt_hal_iram.c.obj	cbce21a4393c14b0
+9409	11410	7155483436101784	esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj	98c2f18daf02af1a
+9454	11469	7155483436861236	esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj	407108dff7c55769
+9538	11580	7155483441878945	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common.c.obj	80812622388bf53e
+11201	12885	7155483458469056	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random_esp32.c.obj	98c6a81173c34718
+11102	13556	7155483459345736	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_init.c.obj	c320874a4cd7dcec
+11568	13572	7155483460679916	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_loader.c.obj	43e1570e65981218
+11582	13587	7155483461439824	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console.c.obj	66d7272f43f9312
+11387	13682	7155483461249601	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_mem.c.obj	25e9de0b9c6436d5
+11190	13800	7155483461349570	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common_loader.c.obj	89c13d673b2bbb8e
+11412	13865	7155483462471296	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_init.c.obj	51e4c24774cb2219
+11400	13879	7155483462709673	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_utility.c.obj	279ee8fd1eaf5916
+11329	13890	7155483463065018	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random.c.obj	c6ba467c60fecde8
+11255	13901	7155483463451784	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash.c.obj	29fcd6aff4ecf8c6
+13519	14853	7155483478254053	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_efuse.c.obj	7f8b5ff0034471e1
+13589	17740	7155483479095169	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_partitions.c.obj	53a176d5de5d0a56
+13574	17755	7155483477791383	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_encrypt.c.obj	d7a9664e9665b06f
+13892	17767	7155483479509329	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32/esp_efuse_table.c.obj	d7c98f66c71fcdc8
+13802	17811	7155483480599314	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/flash_qio_mode.c.obj	59fd39a2a9c1365a
+13867	17838	7155483481346599	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash_config_esp32.c.obj	8455d81c16839009
+13558	17915	7155483482684736	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/secure_boot.c.obj	2fac4f5276c76ba3
+13903	19915	7155483484907783	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_fields.c.obj	f2546c65130b614f
+13881	19930	7155483484431679	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32/esp_efuse_fields.c.obj	80b4d8cba7f0074f
+13684	19942	7155483484027095	esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp_image_format.c.obj	3d1b50f7b3ac2ef3
+17722	19955	7155483520784714	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_api.c.obj	3887271cb2aad88c
+17743	19966	7155483521120358	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c.obj	3a8d607d702ea414
+17757	19979	7155483522341267	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32/esp_efuse_utility.c.obj	b6814cf4aeb00dbe
+17769	19991	7155483523906886	esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_utility.c.obj	392d64339ad8ea5b
+17813	20004	7155483519751068	esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_err.c.obj	9b83d6ea3690442a
+17841	20172	7155483522321319	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/cpu.c.obj	5b6775205c567c7a
+19981	21154	7155483541424941	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/chip_info.c.obj	4fb233663a2d14e7
+19968	21805	7155483542525795	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_pm.c.obj	828c2053d288ca38
+19993	21855	7155483543017952	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_time.c.obj	5905446dfeddb530
+19903	21868	7155483542900669	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/esp_memory_utils.c.obj	7f7e5e3f6f3a8598
+20173	21981	7155483544296196	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj	eb6a3fd38dabd208
+19931	21991	7155483545083383	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_sleep.c.obj	50cfbdb148116468
+19944	22064	7155483544921273	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_clk_init.c.obj	dca999c981de5bbc
+20005	22168	7155483545671013	esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/src/esp_err_to_name.c.obj	580d34a7c1235c0a
+19956	22217	7155483545922619	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_init.c.obj	c2ff14308e85a48c
+19916	22232	7155483549819914	esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32/rtc_clk.c.obj	b37528bed16fba5a
+21796	22794	7155483557707851	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj	ed12cbc7da9f6b92
+21870	25690	7155483561450114	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj	11b250e61cb73a5d
+21994	25694	7155483562634597	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_regi2c.c.obj	203cb27dc426a8e0
+21857	25697	7155483561523291	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_uart.c.obj	81fa28a1edf2f540
+21983	25700	7155483562457478	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_longjmp.S.obj	d631988fea629a91
+21807	25703	7155483563171822	esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj	a16980f47ad3261
+22065	25706	7155483566582499	esp-idf/log/CMakeFiles/__idf_log.dir/log.c.obj	ca26fecd3228df49
+22233	25708	7155483566437104	esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj	af01e55e85ebf3db
+22169	25711	7155483567754976	esp-idf/log/CMakeFiles/__idf_log.dir/log_noos.c.obj	9f75818899dc4a43
+22219	25713	7155483568223253	esp-idf/log/CMakeFiles/__idf_log.dir/log_buffers.c.obj	6a982d29d527b459
+25715	26565	7155483594060373	esp-idf/log/liblog.a	229812d3f0bb7573
+26566	27709	7155483606490996	esp-idf/esp_rom/libesp_rom.a	a6193fdaf99892c
+27710	29029	7155483619892602	esp-idf/esp_common/libesp_common.a	c48a308ef792846f
+29408	31022	7155483636398170	esp-idf/esp_hw_support/libesp_hw_support.a	63a13762364f9e04
+31921	33203	7155483660761528	esp-idf/esp_system/libesp_system.a	a920629df297c362
+35766	37439	7155483703003136	esp-idf/efuse/libefuse.a	747ba4b82a27d655
+37640	39105	7155483719159404	esp-idf/bootloader_support/libbootloader_support.a	422fd6b0d6d22842
+39306	40821	7155483737404047	esp-idf/esp_app_format/libesp_app_format.a	f6aa25344498c2a4
+40868	41188	7155483742428079	esp-idf/hal/libhal.a	ee06b98a855d1ff6
+41189	41596	7155483745760677	esp-idf/micro-ecc/libmicro-ecc.a	82e0963c43c5861f
+41597	41821	7155483748651700	esp-idf/soc/libsoc.a	71bd641ac7bfccf0
+41822	42002	7155483750614558	esp-idf/xtensa/libxtensa.a	e920d4c3bbb439af
+42003	42252	7155483752982304	esp-idf/main/libmain.a	58df59726c8a5f7e
+42254	43479	7155483762532909	bootloader.elf	7a2302fdadafd42c
+44174	46028	7155483790904395	.bin_timestamp	8349decee391e7b7
+44174	46028	7155483790904395	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/.bin_timestamp	8349decee391e7b7
+46029	46435	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+46029	46435	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+25	394	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+25	394	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+17	423	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+17	423	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+12	172	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+12	172	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+15	191	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+15	191	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	246	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	246	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	216	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	216	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+12	179	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+12	179	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	200	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	200	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+15	206	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+15	206	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+17	193	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+17	193	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	197	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	197	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+17	235	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+17	235	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+13	189	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+13	189	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	219	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+14	219	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+15	319	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+15	319	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+24	334	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca
+24	334	0	C:/Users/lucas/OneDrive/Escritorio/Lucas/Sonometro IoT/Firmware/V0/Sonometro_IoT/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	146d862d9b95e6ca

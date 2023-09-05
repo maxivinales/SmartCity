@@ -28,6 +28,7 @@
         "*.inc": "c",
         "cmath": "c",
         "complex": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "crypto.h": "c"
     }
 }
