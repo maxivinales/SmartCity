@@ -29,6 +29,8 @@
         "cmath": "c",
         "complex": "c",
         "string.h": "c",
-        "crypto.h": "c"
+        "crypto.h": "c",
+        "esp_wifi_types.h": "c",
+        "esp_err.h": "c"
     }
 }

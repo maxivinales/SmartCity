@@ -7,18 +7,14 @@
 #include <string.h>
 #include "driver/gpio.h"
 
-// #include <stdio.h>
-
 #include "esp_err.h"
 #include "esp_wifi_types.h"
 #include "esp_wifi_default.h"
-// #include "freertos/FreeRTOS.h"
-// #include "freertos/projdefs.h"
-// #include "freertos/task.h"
 #include "esp_mac.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_log.h"
+#include "nvs.h"
 #include "nvs_flash.h"
 
 #include "lwip/err.h"
@@ -30,18 +26,20 @@
 #include "esp_tls_crypto.h"
 #include <esp_http_server.h>
 
-
 #include <cJSON.h>      // librerpia para manejar Json
 
-// #include "freertos/FreeRTOSConfig.h"
+#include <inttypes.h>
+#include "esp_ota_ops.h"
+#include "esp_http_client.h"
+#include "esp_https_ota.h"
+// #include "protocol_examples_common.h"
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/projdefs.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "freertos/event_groups.h"
 
-
-// #include "esp_log.h"
 #include "sdkconfig.h"
 
 #include "xtensa/config/core-isa.h"
