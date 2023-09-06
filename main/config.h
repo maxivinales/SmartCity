@@ -66,6 +66,8 @@
 #define MSG_QUEUE_LENGTH 20
 #define MSG_QUEUE_TOSENSOR_LENGTH 5
 
+#define OTA_URL_FANIOT  "http://fabrica.faniot.ar:1880"
+
 //// Cuestiones referidas al WiFi
 struct WiFi_data_t{
     char SSID[32];

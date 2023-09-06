@@ -31,6 +31,9 @@
         "string.h": "c",
         "crypto.h": "c",
         "esp_wifi_types.h": "c",
-        "esp_err.h": "c"
+        "esp_err.h": "c",
+        "ota.h": "c",
+        "audio_task.h": "c",
+        "wifi_manager.h": "c"
     }
 }

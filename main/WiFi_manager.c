@@ -1,6 +1,11 @@
 #include "WiFi_manager.h"
 #include "esp_err.h"
 
+#include "freertos/projdefs.h"
+// #include "ota.c"
+
+static const char *TAG_WiFi_Manager = "prueba WiFi manager";
+
 void buildJsonNets(char* _Json, wifi_ap_record_t* _redes, uint32_t _size) {
     // Calcula el tamaño total necesario para almacenar el JSON
     // size_t jsonSize = strlen("{\"Nets\":[") + (_size - 1) * (strlen("{\"SSID\":\"\",\"authmode\":,\"rssi\":},") + 20) + strlen("]}") + 1;
@@ -41,18 +46,18 @@ void buildJsonNets(char* _Json, wifi_ap_record_t* _redes, uint32_t _size) {
 
 
 uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQTT_user_data_t *MQTT_data){
-    ESP_LOGW(TAG, "decode_Json\n");
+    ESP_LOGW(TAG_WiFi_Manager, "decode_Json\n");
 
     uint32_t ret = 0;
     
     if (_Json == NULL) {
-        ESP_LOGW(TAG, "No se proporcionó un JSON válido\n");
+        ESP_LOGW(TAG_WiFi_Manager, "No se proporcionó un JSON válido\n");
         return(0);
     }
 
     cJSON *Jsonsito = cJSON_Parse(_Json);
     if(Jsonsito == NULL) {
-        ESP_LOGW(TAG, "Error al analizar el JSON\n");
+        ESP_LOGW(TAG_WiFi_Manager, "Error al analizar el JSON\n");
         const char *error_ptr = cJSON_GetErrorPtr();
         if (error_ptr != NULL) {
             printf("Error: %s\n", error_ptr);
@@ -67,7 +72,7 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
             ret = ret|1;            // escribo 1 bit
         }
     } else {
-        ESP_LOGW(TAG, "Objeto get_chipid no encontrado o no válido\n");
+        ESP_LOGW(TAG_WiFi_Manager, "Objeto get_chipid no encontrado o no válido\n");
     }
 
     ret = ret<<1;           // desplazo todos los bits hacia la izquierda
@@ -79,7 +84,7 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
             ret = ret|1;            // escribo 1 bit
         }
     } else {
-        ESP_LOGW(TAG, "Objeto off_WM_mode no encontrado o no válido\n");
+        ESP_LOGW(TAG_WiFi_Manager, "Objeto off_WM_mode no encontrado o no válido\n");
     }
 
     ret = ret<<1;           // desplazo todos los bits hacia la izquierda
@@ -100,11 +105,11 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
 
             ret = ret|1;            // escribo 1 bit
         } else {
-            ESP_LOGW(TAG, "Valores inválidos para MQTT User o Pass\n");
+            ESP_LOGW(TAG_WiFi_Manager, "Valores inválidos para MQTT User o Pass\n");
             MQTT_data = NULL;
         }
     } else {
-        ESP_LOGW(TAG, "Objeto MQTT no encontrado o no válido\n");
+        ESP_LOGW(TAG_WiFi_Manager, "Objeto MQTT no encontrado o no válido\n");
     }
 
 
@@ -116,7 +121,7 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
             ret = ret|1;            // escribo 1 bit
         }
     } else {
-        ESP_LOGW(TAG, "Objeto WiFi_connection_request no encontrado o no válido\n");
+        ESP_LOGW(TAG_WiFi_Manager, "Objeto WiFi_connection_request no encontrado o no válido\n");
     }
 
     ret = ret<<1;           // desplazo todos los bits hacia la izquierda
@@ -140,15 +145,15 @@ uint32_t decode_Json(const char* _Json, struct WiFi_data_t *WiFi_data, struct MQ
             
             ret = ret|1;            // escribo 1 bit
         } else {
-            ESP_LOGW(TAG, "Valores inválidos para WiFi SSID o Pass\n");
+            ESP_LOGW(TAG_WiFi_Manager, "Valores inválidos para WiFi SSID o Pass\n");
             WiFi_data = NULL;
         }
     } else {
-        ESP_LOGW(TAG, "Objeto WiFi no encontrado o no válido\n");
+        ESP_LOGW(TAG_WiFi_Manager, "Objeto WiFi no encontrado o no válido\n");
     }
 
     cJSON_Delete(Jsonsito);
-    ESP_LOGW(TAG, "Fin decode_Json\n");
+    ESP_LOGW(TAG_WiFi_Manager, "Fin decode_Json\n");
     printf("ret -> %lu\n", ret);
     return(ret);
 }
@@ -158,7 +163,7 @@ esp_err_t tcpip_init_AP(void){
     esp_err_t _err = ESP_OK;
     _err = esp_netif_init();                  // inicia TCP/IP
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 414, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 414, Error: %d", _err);
         return _err;
     }
 
@@ -182,7 +187,7 @@ esp_err_t tcpip_init_STA(void){
     _err = esp_netif_init();                  // inicia TCP/IP
 
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 414, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 414, Error: %d", _err);
         return _err;
     }
 
@@ -207,7 +212,7 @@ esp_err_t init_loop_default(void){
     if(loop_flag == false){
         _err = esp_event_loop_create_default();   // crea el loop para la tarea
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 420, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 420, Error: %d", _err);
             return _err;
         }
         loop_flag = true;
@@ -278,7 +283,7 @@ void wifi_init_softap(void)
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &wifi_config));     // guardo la configuracion
     ESP_ERROR_CHECK(esp_wifi_start());                                                  // pongo en marcha el AP
 
-    ESP_LOGI(TAG, "wifi_init_softap finished. SSID:%s password:%s channel:%d",
+    ESP_LOGI(TAG_WiFi_Manager, "wifi_init_softap finished. SSID:%s password:%s channel:%d",
              SSID_WiFi_Manager.value_str, WIFI_PASS, WIFI_CHANNEL);
 }
 
@@ -298,13 +303,13 @@ void wifi_deinit_softap(void){
 }
 
 esp_err_t wifi_init_sta(struct WiFi_data_t _net){
-    ESP_LOGE(TAG, "Net -> SSID =  %s\tpass: %s", _net.SSID, _net.pass);
+    ESP_LOGE(TAG_WiFi_Manager, "Net -> SSID =  %s\tpass: %s", _net.SSID, _net.pass);
     esp_err_t _err = ESP_OK;
 
     if(loop_flag == false){
         _err = init_loop_default();
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 559, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 559, Error: %d", _err);
             return _err;
         }
     }
@@ -312,21 +317,21 @@ esp_err_t wifi_init_sta(struct WiFi_data_t _net){
     if(netif_wifi_STA == NULL){
         _err = tcpip_init_STA();
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 551, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 551, Error: %d", _err);
             return _err;
         }
     }
     
     // _err = esp_event_loop_create_default();   // crea el loop para la tarea
     // if(_err != ESP_OK){
-    //     ESP_LOGE(TAG, "LINEA 420, Error: %d", _err);
+    //     ESP_LOGE(TAG_WiFi_Manager, "LINEA 420, Error: %d", _err);
     //     return _err;
     // }
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();    // inicializa las configuraciones WiFi por defecto
     _err = (esp_wifi_init(&cfg));
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 430, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 430, Error: %d", _err);
         return _err;
     }
 
@@ -338,7 +343,7 @@ esp_err_t wifi_init_sta(struct WiFi_data_t _net){
                                                     NULL,
                                                     &instance_any_id);
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 443, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 443, Error: %d", _err);
             return _err;
         }
     }
@@ -350,7 +355,7 @@ esp_err_t wifi_init_sta(struct WiFi_data_t _net){
                                                     NULL,
                                                     &instance_got_ip);
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 453, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 453, Error: %d", _err);
             return _err;
         }
     }
@@ -385,7 +390,7 @@ esp_err_t wifi_init_sta(struct WiFi_data_t _net){
         //     wifi_config.sta.ssid[i] = (uint8_t)("\0");
         // }
     }
-    ESP_LOGW(TAG, "SSID -> %s", wifi_config_sta.sta.ssid);
+    ESP_LOGW(TAG_WiFi_Manager, "SSID -> %s", wifi_config_sta.sta.ssid);
 
     aux1 = (uint8_t*)_net.pass;    
     for(int i = 0; i<strlen(_net.pass); i++){
@@ -395,26 +400,26 @@ esp_err_t wifi_init_sta(struct WiFi_data_t _net){
         //     wifi_config.sta.password[i] = (uint8_t)("\0");
         // }
     }
-    ESP_LOGW(TAG, "pass -> %s", wifi_config_sta.sta.password);
+    ESP_LOGW(TAG_WiFi_Manager, "pass -> %s", wifi_config_sta.sta.password);
 
     
 
     _err = esp_wifi_set_mode(WIFI_MODE_STA);
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 473, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 473, Error: %d", _err);
         return _err;
     }
 
 
     _err = (esp_wifi_set_config(WIFI_IF_STA, &wifi_config_sta) );
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 479, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 479, Error: %d", _err);
         return _err;
     }
 
     _err = (esp_wifi_start() );
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 485, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 485, Error: %d", _err);
         return _err;
     }
 
@@ -450,7 +455,7 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
     if(netif_wifi_AP == NULL){
         _err = (tcpip_init_AP());
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 699, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 699, Error: %d", _err);
             return _err;
         }
     }
@@ -458,7 +463,7 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
      if(netif_wifi_STA == NULL){
         _err = tcpip_init_STA();
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 704, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 704, Error: %d", _err);
             return _err;
         }
     }
@@ -476,7 +481,7 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
                                                     NULL,
                                                     &instance_any_id);
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 443, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 443, Error: %d", _err);
             return _err;
         }
     }
@@ -488,7 +493,7 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
                                                     NULL,
                                                     &instance_got_ip);
         if(_err != ESP_OK){
-            ESP_LOGE(TAG, "LINEA 453, Error: %d", _err);
+            ESP_LOGE(TAG_WiFi_Manager, "LINEA 453, Error: %d", _err);
             return _err;
         }
     }
@@ -537,7 +542,7 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
         //     wifi_config.sta.ssid[i] = (uint8_t)("\0");
         // }
     }
-    ESP_LOGW(TAG, "SSID -> %s", wifi_config_sta.sta.ssid);
+    ESP_LOGW(TAG_WiFi_Manager, "SSID -> %s", wifi_config_sta.sta.ssid);
 
     aux1 = (uint8_t*)_net.pass;    
     for(int i = 0; i<strlen(_net.pass); i++){
@@ -547,7 +552,7 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
         //     wifi_config.sta.password[i] = (uint8_t)("\0");
         // }
     }
-    ESP_LOGW(TAG, "pass -> %s", wifi_config_sta.sta.password);
+    ESP_LOGW(TAG_WiFi_Manager, "pass -> %s", wifi_config_sta.sta.password);
 
     // strcpy(wifi_config.sta.ssid, _ssid);
     // strcpy(wifi_config.sta.password, _password);
@@ -555,38 +560,38 @@ esp_err_t wifi_init_apsta(struct WiFi_data_t _net){
     
     // aux1 = (char*)(&(wifi_config.sta.ssid));
     // strcpy(aux1, _net.SSID);
-    // ESP_LOGW(TAG, "SSID -> %s", aux1);
+    // ESP_LOGW(TAG_WiFi_Manager, "SSID -> %s", aux1);
     // aux1 = (char*)(&(wifi_config.sta.password));
     // strcpy(aux1, _net.pass);
-    //  ESP_LOGW(TAG, "pass -> %s", aux1);
+    //  ESP_LOGW(TAG_WiFi_Manager, "pass -> %s", aux1);
 
     
 
     _err = esp_wifi_set_mode(WIFI_MODE_APSTA);
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 473, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 473, Error: %d", _err);
         return _err;
     }
 
     // _err = esp_wifi_set_config(WIFI_IF_AP, &wifi_config_ap);
     // if(_err != ESP_OK){
-    //     ESP_LOGE(TAG, "LINEA 591, Error: %d", _err);
+    //     ESP_LOGE(TAG_WiFi_Manager, "LINEA 591, Error: %d", _err);
     //     return _err;
     // }
 
     _err = (esp_wifi_set_config(WIFI_IF_STA, &wifi_config_sta) );
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 479, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 479, Error: %d", _err);
         return _err;
     }
 
     _err = (esp_wifi_start() );
     if(_err != ESP_OK){
-        ESP_LOGE(TAG, "LINEA 485, Error: %d", _err);
+        ESP_LOGE(TAG_WiFi_Manager, "LINEA 485, Error: %d", _err);
         return _err;
     }
 
-    ESP_LOGI(TAG, "wifi_init_apsta finished.");
+    ESP_LOGI(TAG_WiFi_Manager, "wifi_init_apsta finished.");
 
     
     return _err;
@@ -610,15 +615,15 @@ void wifi_deinit_apsta(void){
 
 void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data) {
     if(event_base == WIFI_EVENT){
-        ESP_LOGW(TAG,"Evento -> WIFI_EVENT");
+        ESP_LOGW(TAG_WiFi_Manager,"Evento -> WIFI_EVENT");
         switch (event_id)
         {
         case WIFI_EVENT_STA_START:
-            ESP_LOGI(TAG, "WiFi STA started");
+            ESP_LOGI(TAG_WiFi_Manager, "WiFi STA started");
             esp_wifi_connect();
             break;
         case WIFI_EVENT_STA_DISCONNECTED:
-            ESP_LOGI(TAG, "WiFi STA disconnected");
+            ESP_LOGI(TAG_WiFi_Manager, "WiFi STA disconnected");
             // esp_wifi_connect();
             // esp_netif_destroy_default_wifi(netif_wifi_STA);// destruyo el objeto que en teoria no uso mas
             // esp_event_loop_delete_default();
@@ -628,40 +633,40 @@ void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id
             break;
         
         case WIFI_EVENT_AP_START:
-            ESP_LOGI(TAG, "WiFi AP started");
+            ESP_LOGI(TAG_WiFi_Manager, "WiFi AP started");
             break;
         case WIFI_EVENT_AP_STOP:
-            ESP_LOGI(TAG, "WiFi AP stopped");
+            ESP_LOGI(TAG_WiFi_Manager, "WiFi AP stopped");
             break;
         
         case WIFI_EVENT_AP_STACONNECTED:
             wifi_event_ap_staconnected_t* event_apstaconnnected = (wifi_event_ap_staconnected_t*) event_data;
-            ESP_LOGI(TAG, "station "MACSTR" join, AID=%d",                                          // imprime el dispositivo que se conecto
+            ESP_LOGI(TAG_WiFi_Manager, "station "MACSTR" join, AID=%d",                                          // imprime el dispositivo que se conecto
                     MAC2STR(event_apstaconnnected->mac), event_apstaconnnected->aid);
             
             break;
         
         case WIFI_EVENT_AP_STADISCONNECTED:
             wifi_event_ap_stadisconnected_t* event_ap_sta_disconnected = (wifi_event_ap_stadisconnected_t*) event_data;
-            ESP_LOGI(TAG, "station "MACSTR" leave, AID=%d",
+            ESP_LOGI(TAG_WiFi_Manager, "station "MACSTR" leave, AID=%d",
                     MAC2STR(event_ap_sta_disconnected->mac), event_ap_sta_disconnected->aid);                                              // imprime el dispositivo que se desconecto
             break;
         
         case IP_EVENT_STA_GOT_IP:
             ip_event_got_ip_t *event_stagotip = (ip_event_got_ip_t *)event_data;
-            ESP_LOGI(TAG, "Got IP:" IPSTR, IP2STR(&event_stagotip->ip_info.ip));
+            ESP_LOGI(TAG_WiFi_Manager, "Got IP:" IPSTR, IP2STR(&event_stagotip->ip_info.ip));
             break;
         
         default:
             break;
         }
     }else if(event_base == IP_EVENT){
-        ESP_LOGW(TAG,"Evento -> IP_EVENT");
+        ESP_LOGW(TAG_WiFi_Manager,"Evento -> IP_EVENT");
         switch (event_id)
         {
         case IP_EVENT_STA_GOT_IP:
             ip_event_got_ip_t *event_stagotip = (ip_event_got_ip_t *)event_data;
-            ESP_LOGI(TAG, "Got IP:" IPSTR, IP2STR(&event_stagotip->ip_info.ip));
+            ESP_LOGI(TAG_WiFi_Manager, "Got IP:" IPSTR, IP2STR(&event_stagotip->ip_info.ip));
             break;
         
         default:
@@ -679,16 +684,16 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
     char buf[req->content_len + 1];
     int ret, remaining = req->content_len;
 
-    ESP_LOGW(TAG, "linea 348");// debug Cukla
+    ESP_LOGW(TAG_WiFi_Manager, "linea 348");// debug Cukla
 
     while (remaining > 0) {
         /* Read the data for the request */
         if ((ret = httpd_req_recv(req, buf,
                         MIN(remaining, sizeof(buf)))) <= 0) {
-            ESP_LOGW(TAG, "linea 354");// debug Cukla
+            ESP_LOGW(TAG_WiFi_Manager, "linea 354");// debug Cukla
             if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
                 /* Retry receiving if timeout occurred */
-                ESP_LOGW(TAG, "linea 357");// debug Cukla
+                ESP_LOGW(TAG_WiFi_Manager, "linea 357");// debug Cukla
                 continue;
             }
             return ESP_FAIL;
@@ -717,7 +722,7 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
             httpd_resp_send_404(req);   // devuelvo un 404
         }else{
             if(requested_actions&1){    // bit 0
-                ESP_LOGW(TAG, "bit 0: me conecto a una red WiFi\n");// debug Cukla
+                ESP_LOGW(TAG_WiFi_Manager, "bit 0: me conecto a una red WiFi\n");// debug Cukla
                 char *aux_s = "Datos recibidos";
                 httpd_resp_send(req, aux_s, strlen(aux_s));  // supuestamente es 200
                 vTaskDelay(pdMS_TO_TICKS(250));
@@ -756,11 +761,11 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
             }
             requested_actions = requested_actions>>1;   // corro 1 bit a la derecha
             if(requested_actions&1){    // bit 1
-                ESP_LOGW(TAG, "bit 1: me piden la red WiFi a la que estoy conectado\n");// debug Cukla
+                ESP_LOGW(TAG_WiFi_Manager, "bit 1: me piden la red WiFi a la que estoy conectado\n");// debug Cukla
                 wifi_ap_record_t AP_data;
                 esp_err_t err_conn = ESP_OK;
                 err_conn = esp_wifi_sta_get_ap_info(&AP_data);
-                ESP_LOGW(TAG, "WiFi conectado -> %s\n", AP_data.ssid);
+                ESP_LOGW(TAG_WiFi_Manager, "WiFi conectado -> %s\n", AP_data.ssid);
                 char* aux;
                 uint8_t *aux2;
                 aux2 = &AP_data.ssid[0];
@@ -769,12 +774,12 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
             }   
             requested_actions = requested_actions>>1;   // corro 1 bit a la derecha
             if(requested_actions&1){    // bit 2
-                ESP_LOGW(TAG, "bit 2: pendiente aún, acá debería conectarse al broker mqtt\n");// debug Cukla
+                ESP_LOGW(TAG_WiFi_Manager, "bit 2: pendiente aún, acá debería conectarse al broker mqtt\n");// debug Cukla
                 // ACA DEBO TRABAJAR
             }
             requested_actions = requested_actions>>1;   // corro 1 bit a la derecha
             if(requested_actions&1){    // bit 3
-                ESP_LOGW(TAG, "bit 3: acá debería pasar todalmente a modo STA\n");// debug Cukla
+                ESP_LOGW(TAG_WiFi_Manager, "bit 3: acá debería pasar todalmente a modo STA\n");// debug Cukla
 
                 esp_err_t _err;
                 // storage se llama el lugar donde guardo las variables
@@ -807,7 +812,7 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
                             printf((_err != ESP_OK) ? "save WifiMode failed!\n" : "save SSID done\n");
                             nvs_commit(handle_NVS);
                             nvs_close(handle_NVS);
-                            ESP_LOGW(TAG, "Reinicio la ESP...");
+                            ESP_LOGW(TAG_WiFi_Manager, "Reinicio la ESP...");
                             saveConfig();
                             esp_restart();
                         }
@@ -825,16 +830,16 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
 
             requested_actions = requested_actions>>1;   // corro 1 bit a la derecha
             if(requested_actions&1){    // bit 4
-                ESP_LOGW(TAG, "bit 4: Se envía \n");// debug Cukla
+                ESP_LOGW(TAG_WiFi_Manager, "bit 4: Se envía \n");// debug Cukla
                 char *aux_s;
                 // aux_s = &mac_address_or_chipid[0];
                 esp_err_t _err;
                 _err = esp_efuse_mac_get_default(&mac_address_or_chipid[0]);
                 if(_err != ESP_OK){
-                    ESP_LOGI(TAG, "error solicitando la MAC/ChipID. err = %d\n", (int)_err);
+                    ESP_LOGI(TAG_WiFi_Manager, "error solicitando la MAC/ChipID. err = %d\n", (int)_err);
                 }else{
                     snprintf(&ChipId[0], 13, "%02X%02X%02X%02X%02X%02X", mac_address_or_chipid[0], mac_address_or_chipid[1], mac_address_or_chipid[2], mac_address_or_chipid[3], mac_address_or_chipid[4], mac_address_or_chipid[5]);
-                    ESP_LOGI(TAG, "ChipID / MAC = %s\n", ChipId);
+                    ESP_LOGI(TAG_WiFi_Manager, "ChipID / MAC = %s\n", ChipId);
                     aux_s = &ChipId[0];
                     httpd_resp_send(req, aux_s, strlen(aux_s));  // supuestamente es 200
                 }
@@ -850,15 +855,15 @@ static esp_err_t connect_post_handler(httpd_req_t *req)
 
 esp_err_t http_404_error_handler(httpd_req_t *req, httpd_err_code_t err)
 {
-    ESP_LOGW(TAG, "linea 398");// debug Cukla
+    ESP_LOGW(TAG_WiFi_Manager, "linea 398");// debug Cukla
     if (strcmp("/hello", req->uri) == 0) {
         httpd_resp_send_err(req, HTTPD_404_NOT_FOUND, "/hello URI is not available");
         // Return ESP_OK to keep underlying socket open
-        ESP_LOGW(TAG, "linea 402");// debug Cukla
+        ESP_LOGW(TAG_WiFi_Manager, "linea 402");// debug Cukla
         return ESP_OK;
     } else if (strcmp("/connect", req->uri) == 0) {
         httpd_resp_send_err(req, HTTPD_404_NOT_FOUND, "/connect URI is not available");
-        ESP_LOGW(TAG, "linea 406");// debug Cukla
+        ESP_LOGW(TAG_WiFi_Manager, "linea 406");// debug Cukla
         // Return ESP_FAIL to close underlying socket
         return ESP_FAIL;
     }
@@ -883,7 +888,7 @@ static esp_err_t WiFi_Manager_handler(httpd_req_t *req)
     /* After sending the HTTP response the old HTTP request
      * headers are lost. Check if HTTP request headers can be read now. */
     if (httpd_req_get_hdr_value_len(req, "Host") == 0) {
-        ESP_LOGI(TAG, "Request headers lost");
+        ESP_LOGI(TAG_WiFi_Manager, "Request headers lost");
     }
     return ESP_OK;
 }
@@ -902,7 +907,7 @@ static esp_err_t JS_handler(httpd_req_t *req)
     /* After sending the HTTP response the old HTTP request
      * headers are lost. Check if HTTP request headers can be read now. */
     if (httpd_req_get_hdr_value_len(req, "Host") == 0) {
-        ESP_LOGI(TAG, "Request headers lost");
+        ESP_LOGI(TAG_WiFi_Manager, "Request headers lost");
     }
     return ESP_OK;
 }
@@ -920,7 +925,7 @@ static esp_err_t CSS_handler(httpd_req_t *req)
     /* After sending the HTTP response the old HTTP request
      * headers are lost. Check if HTTP request headers can be read now. */
     if (httpd_req_get_hdr_value_len(req, "Host") == 0) {
-        ESP_LOGI(TAG, "Request headers lost");
+        ESP_LOGI(TAG_WiFi_Manager, "Request headers lost");
     }
 
     return ESP_OK;
@@ -940,7 +945,7 @@ static esp_err_t WiFi_PullNets(httpd_req_t *req)
     esp_wifi_scan_start(NULL, true);
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_records(&number, ap_info));        // guardo las redes WiFi en una lista
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_num(&ap_count));                               // toma la cantidad de redes que leyó
-    ESP_LOGI(TAG, "Total APs scanned = %u", ap_count);
+    ESP_LOGI(TAG_WiFi_Manager, "Total APs scanned = %u", ap_count);
 
     char*  buf;
     size_t buf_len;
@@ -948,13 +953,13 @@ static esp_err_t WiFi_PullNets(httpd_req_t *req)
     /* Get header value string length and allocate memory for length + 1,
      * extra byte for null termination */
     buf_len = httpd_req_get_hdr_value_len(req, "Host") + 1;
-    ESP_LOGW(TAG, "linea 793");// debug Cukla
+    ESP_LOGW(TAG_WiFi_Manager, "linea 793");// debug Cukla
     if (buf_len > 1) {
         buf = malloc(buf_len);
-        ESP_LOGW(TAG, "linea 796");// debug Cukla
+        ESP_LOGW(TAG_WiFi_Manager, "linea 796");// debug Cukla
         /* Copy null terminated value string into buffer */
         if (httpd_req_get_hdr_value_str(req, "Host", buf, buf_len) == ESP_OK) {
-            ESP_LOGI(TAG, "Found header => Host: %s", buf);
+            ESP_LOGI(TAG_WiFi_Manager, "Found header => Host: %s", buf);
         }
         free(buf);
     }
@@ -992,9 +997,9 @@ static esp_err_t WiFi_PullNets(httpd_req_t *req)
     
     httpd_resp_set_status(req, http_200_hdr);
     httpd_resp_set_type(req, http_content_type_json);
-    ESP_LOGW(TAG, "Envio de Json ->[APP] Free memory: %lu bytes", esp_get_free_heap_size());
+    ESP_LOGW(TAG_WiFi_Manager, "Envio de Json ->[APP] Free memory: %lu bytes", esp_get_free_heap_size());
 	httpd_resp_send(req, resp_str, (int)strlen(resp_str));
-    ESP_LOGW(TAG, "longitud del testito -> %d\n", (int)strlen(resp_str));
+    ESP_LOGW(TAG_WiFi_Manager, "longitud del testito -> %d\n", (int)strlen(resp_str));
     // httpd_resp_send_chunk(req, resp_str, (int)strlen(resp_str)+1);
     // httpd_resp_sendstr(req, resp_str);
     // if (resp_str != NULL){
@@ -1005,7 +1010,7 @@ static esp_err_t WiFi_PullNets(httpd_req_t *req)
     /* After sending the HTTP response the old HTTP request
      * headers are lost. Check if HTTP request headers can be read now. */
     if (httpd_req_get_hdr_value_len(req, "Host") == 0) {
-        ESP_LOGI(TAG, "Request headers lost");
+        ESP_LOGI(TAG_WiFi_Manager, "Request headers lost");
         // free(buf);
     }
     return ESP_OK;
@@ -1022,7 +1027,7 @@ static esp_err_t cors_options_handler(httpd_req_t *req)
 
 static httpd_handle_t start_webserver(void)
 {
-    ESP_LOGW(TAG, "linea 552");// debug Cukla
+    ESP_LOGW(TAG_WiFi_Manager, "linea 552");// debug Cukla
     esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &connect_handler, &server);
 
     httpd_handle_t server = NULL;                   // creo el puntero que maneja el servidor
@@ -1033,13 +1038,13 @@ static httpd_handle_t start_webserver(void)
     
 
     // Start the httpd server
-    ESP_LOGI(TAG, "Starting server on port: '%d'", config.server_port);
+    ESP_LOGI(TAG_WiFi_Manager, "Starting server on port: '%d'", config.server_port);
     if (httpd_start(&server, &config) == ESP_OK) {  // inicia el servidor
         // Set URI handlers
-        ESP_LOGI(TAG, "Registering URI handlers");
+        ESP_LOGI(TAG_WiFi_Manager, "Registering URI handlers");
         // registra los URI para cada caso
         // httpd_register_uri_handler(server, &hello); // get
-        httpd_register_uri_handler(server, &connect);  // post
+        httpd_register_uri_handler(server, &connect_WM);  // post
         // httpd_register_uri_handler(server, &ctrl);  // put
         httpd_register_uri_handler(server, &wifimanager);  // pseudo wifi manager
         httpd_register_uri_handler(server, &jswifimanager); 
@@ -1053,14 +1058,14 @@ static httpd_handle_t start_webserver(void)
         return server;                      // si llegó hasta acá está todo ok
     }
 
-    ESP_LOGI(TAG, "Error starting server!");// si llegó hasta acá está todo mal xD
+    ESP_LOGI(TAG_WiFi_Manager, "Error starting server!");// si llegó hasta acá está todo mal xD
     return NULL;
 }
 
 static esp_err_t stop_webserver(httpd_handle_t server)  // para detener el servidor
 {
     // Stop the httpd server
-    ESP_LOGW(TAG, "linea 493");// debug Cukla
+    ESP_LOGW(TAG_WiFi_Manager, "linea 493");// debug Cukla
     // httpd_unregister_uri_handler()
     return httpd_stop(server);
 }
@@ -1070,7 +1075,7 @@ static void connect_handler(void* arg, esp_event_base_t event_base,
 {
     httpd_handle_t* server = (httpd_handle_t*) arg;
     if (*server == NULL) {
-        ESP_LOGI(TAG, "Starting webserver");
+        ESP_LOGI(TAG_WiFi_Manager, "Starting webserver");
         *server = start_webserver();
     }
 }
@@ -1080,13 +1085,13 @@ static void disconnect_handler(void* arg, esp_event_base_t event_base,
                                int32_t event_id, void* event_data)
 {
     httpd_handle_t* server = (httpd_handle_t*) arg;
-    ESP_LOGW(TAG, "linea 502");// debug Cukla
+    ESP_LOGW(TAG_WiFi_Manager, "linea 502");// debug Cukla
     if (*server) {
-        ESP_LOGI(TAG, "Stopping webserver");
+        ESP_LOGI(TAG_WiFi_Manager, "Stopping webserver");
         if (stop_webserver(*server) == ESP_OK) {
             *server = NULL;
         } else {
-            ESP_LOGE(TAG, "Failed to stop http server");
+            ESP_LOGE(TAG_WiFi_Manager, "Failed to stop http server");
         }
     }
 }

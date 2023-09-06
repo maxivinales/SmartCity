@@ -2,7 +2,17 @@
 
 #include "Leq_task.c"
 #include "audio_task.c"
-#include "config.h"
+#include "WiFi_manager.c"
+#include "freertos/projdefs.h"
+#include "ota.c"
+
+// #include "config.h"
+// #include "Leq_task.c"
+// #include "audio_task.c"
+// #include "WiFi_manager.c"
+// #include "ota.c"
+
+static const char *TAG_CONTROL = "Logica de control";
 
 TaskHandle_t TaskHandle_control;
 QueueHandle_t msg_queue_toControl = NULL;
@@ -10,7 +20,29 @@ QueueHandle_t msg_queue_toControl = NULL;
 void control_task(void *parameter){
     struct data_t msd_control_buffer;
     printf("Iniciando control_task\n");
-    aux_launch();   // lanzo mi tarea auxiliar
+
+    loadConfig();                                   // traigo la configuración guardada en ROM
+    vTaskDelay(pdMS_TO_TICKS(200));
+
+    if(mode_WiFi_manager.value == 0){
+        ESP_LOGI(TAG_CONTROL, "ESP_WIFI_MODE_AP");          // mensaje de debug por serial
+        wifi_init_softap();                         // inicia el WiFi en Modo AP
+        ESP_LOGW(TAG_CONTROL, "Luego del WiFi ->[APP] Free memory: %lu bytes", esp_get_free_heap_size());
+        if(server == NULL){
+            server = start_webserver();
+        }
+        while(1){
+            vTaskDelay(pdMS_TO_TICKS(30000));
+        }
+    }else{
+        mode_WiFi_manager.value = 0;
+        wifi_init_sta(data_WiFi_SC);
+        init_OTA();
+        aux_launch();   // lanzo mi tarea auxiliar, TENGO QUE CAMBIARLE EL NOMBRE
+        saveConfig();
+        vTaskDelay(1000);
+        update_firmware(CHIPID.value_str);
+    }
 
     TickType_t xPeriod = pdMS_TO_TICKS(30000);
 

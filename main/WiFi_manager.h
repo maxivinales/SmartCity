@@ -26,6 +26,8 @@
 
 // #include <cJSON.h>      // librerpia para manejar Json
 
+#include "ota.h"
+
 // #define WIFI_SSID      "Test SC "
 #define WIFI_PASS      ""
 #define WIFI_CHANNEL   1
@@ -78,8 +80,6 @@ const static char http_cache_control_hdr[] = "Cache-Control";
 const static char http_cache_control_cache[] = "public, max-age=31536000";
 // const static char http_pragma_hdr[] = "Pragma";
 // const static char http_pragma_no_cache[] = "no-cache";
-
-static const char *TAG = "prueba WiFi manager";
 
 static httpd_handle_t server = NULL;        // handler para el servidor HTTP
 
@@ -155,7 +155,7 @@ static void disconnect_handler(void* arg, esp_event_base_t event_base,
                                int32_t event_id, void* event_data);
 
 // URIS
-static const httpd_uri_t connect = {
+static const httpd_uri_t connect_WM = {
     .uri       = "/connect",
     .method    = HTTP_POST,
     .handler   = connect_post_handler,
