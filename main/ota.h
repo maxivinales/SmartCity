@@ -15,11 +15,9 @@ static esp_err_t _http_client_init_cb(esp_http_client_handle_t http_client);
 // void advanced_ota_example_task(void *pvParameter);      // este lo tengo que cambiar
 
 // esp_err_t get_firmware_version(char* _chipid, char* _dest_firmware_version);
-esp_err_t update_firmware(char* _chipid, void *pvParameter);               // este hereda la mayoria de las cosas de advanced_ota_example_task
+esp_err_t update_firmware(char* _chipid);               // este hereda la mayoria de las cosas de advanced_ota_example_task
 
 esp_err_t init_OTA(void);
 
-// esp_err_t OTA_launch();
-// esp_err_t OTA_kill();
 
 #endif

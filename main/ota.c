@@ -120,7 +120,7 @@ esp_err_t init_OTA(void){
     return errorcito;
 }
 
-esp_err_t update_firmware(char* _chipid, void *pvParameter){
+esp_err_t update_firmware(char* _chipid){
     ESP_LOGI(TAG_ota, "Starting Advanced OTA example");
 
     char url_ota[OTA_URL_SIZE]; // genero la url

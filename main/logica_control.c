@@ -50,7 +50,7 @@ void control_task(void *parameter){
         vTaskDelay(1000);
         init_OTA();
         saveConfig();
-        update_firmware(CHIPID.value_str, NULL);
+        update_firmware(CHIPID.value_str);
     }
 
     aux_launch();   // lanzo mi tarea auxiliar, TENGO QUE CAMBIARLE EL NOMBRE
