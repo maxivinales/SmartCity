@@ -107,7 +107,7 @@ esp_err_t init_OTA(void){
 
     if(instance_OTA == NULL){
         errorcito = esp_event_handler_instance_register(ESP_HTTPS_OTA_EVENT,
-                                                    IP_EVENT_STA_GOT_IP,
+                                                    NULL,//IP_EVENT_STA_GOT_IP,
                                                     event_handler_OTA,//&wifi_event_handler,
                                                     NULL,
                                                     &instance_OTA);
