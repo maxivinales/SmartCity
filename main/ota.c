@@ -1,9 +1,10 @@
 #include "ota.h"
+#include "esp_err.h"
 #include "freertos/projdefs.h"
 
 static const char *TAG_ota = "OTA tool";
 
-extern void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
+// extern void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
 
 extern const uint8_t server_cert_pem_start[] asm("_binary_ca_cert_pem_start");
 extern const uint8_t server_cert_pem_end[] asm("_binary_ca_cert_pem_end");
@@ -107,7 +108,7 @@ esp_err_t init_OTA(void){
     if(instance_OTA == NULL){
         errorcito = esp_event_handler_instance_register(ESP_HTTPS_OTA_EVENT,
                                                     IP_EVENT_STA_GOT_IP,
-                                                    &wifi_event_handler,
+                                                    event_handler_OTA,//&wifi_event_handler,
                                                     NULL,
                                                     &instance_OTA);
         if(errorcito != ESP_OK){
@@ -119,7 +120,7 @@ esp_err_t init_OTA(void){
     return errorcito;
 }
 
-void update_firmware(char* _chipid, void *pvParameter){
+esp_err_t update_firmware(char* _chipid, void *pvParameter){
     ESP_LOGI(TAG_ota, "Starting Advanced OTA example");
 
     char url_ota[OTA_URL_SIZE]; // genero la url
@@ -135,46 +136,6 @@ void update_firmware(char* _chipid, void *pvParameter){
         .keep_alive_enable = true,
     };
 
-    
-
-    // config.url = malloc(sizeof(char)*strlen(&url_ota[0]));
-    
-    // uint8_t *aux_81, *aux_82;
-    // aux_81 = (uint8_t*)(&url_ota[0]);
-    // aux_82 = (uint8_t*)(config.url);
-
-    
-    // uint32_t len_url = 0;
-    // do{
-    //     if(len_url != 0){
-    //         aux_81++;
-    //         aux_82++;
-    //     }
-    //     len_url++;
-    //     *aux_82 = *aux_81;
-    // }while (aux_81 != 0);
-    
-    // -----------------------
-
-    // char* aux_S1;
-
-    // strcpy(config.url, &url_ota[0]);
-    // uint8_t *aux_8;
-    // aux_S1 = config.url;
-    // // aux1 = (uint8_t*)_chipid;    
-    // for(int i = 0; i<strlen(&url_ota[0]); i++){
-    //     *aux_S1 = url_ota[i];
-    //     aux_S1++;
-    //     // aux1++;
-    //     // if(i == strlen(_net.SSID)){
-    //     //     wifi_config.sta.ssid[i] = (uint8_t)("\0");
-    //     // }
-    // }
-
-
-    // aux_S1 = &config.url;
-    // strcpy(aux_S1, &url_ota[0]);
-    // strcat(aux_S1, NULL);
     ESP_LOGI(TAG_ota, "URL cfg -> %s\n", config.url);
 
 #ifdef CONFIG_EXAMPLE_FIRMWARE_UPGRADE_URL_FROM_STDIN
@@ -209,6 +170,7 @@ void update_firmware(char* _chipid, void *pvParameter){
     if (err != ESP_OK) {
         ESP_LOGE(TAG_ota, "ESP HTTPS OTA Begin failed");
         // vTaskDelete(NULL);
+        return(err);
     }
 
     esp_app_desc_t app_desc;
@@ -249,6 +211,7 @@ void update_firmware(char* _chipid, void *pvParameter){
             }
             ESP_LOGE(TAG_ota, "ESP_HTTPS_OTA upgrade failed 0x%x", ota_finish_err);
             // vTaskDelete(NULL);
+            return(err);
         }
     }
 
@@ -256,6 +219,7 @@ ota_end:
     esp_https_ota_abort(https_ota_handle);
     ESP_LOGE(TAG_ota, "ESP_HTTPS_OTA upgrade failed");
     // vTaskDelete(NULL);
+    return(err);
 }
 
 /*
