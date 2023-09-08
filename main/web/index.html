@@ -16,16 +16,20 @@
     <div class="container">
         <h1>WiFi Manager</h1>
         <div id="connect-form">
+            <div id="label-input">
+            <label for="">Configuración WiFi</label>
             <input type="text" class="net-name" id="selected-network" placeholder="Seleccionar Red">
             <input type="password" id="password" name="password" placeholder="Ingrese la contraseña">
+            <label for="">Configuración MQTT</label>
             <input type="text" id="user-name" placeholder="Ingrese su nombre de usuario">
             <input type="password" name="login-pass" id="login-pass" placeholder="Ingrese la contraseña de la cuenta">
+        </div>
             <div id="button-container">
                 <button id="connect-button">Conectar</button>
                 <button id="finish-button">Terminar Configuración</button>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="list-container">
         <div id="network-list" style="margin-top: 1px;">
             
             <!-- La lista de redes disponibles se mostrará aquí -->

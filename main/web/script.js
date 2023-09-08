@@ -2,41 +2,34 @@ document.addEventListener('DOMContentLoaded', function () {
     const networkList = document.getElementById('network-list');
     const networkForm = document.getElementById('connect-form');
     const networkSelect = document.getElementById('network');
-
-
+    const selectedNetworkInput = document.getElementById('selected-network'); // Nuevo
     // Realizar la solicitud HTTP para obtener la lista de redes
     fetch('http://192.168.4.1/index.js/PullNets')
         .then(response => response.json())
         .then(data => {
             if (data && Array.isArray(data.Nets)) {
                 const networks = data.Nets;
-                const ul = document.createElement('ul');
+                const table = document.createElement('table');
 
                 networks.forEach(network => {
-                    const li = document.createElement('li');
-                    // ${network.SSID}
-                    // <img class="signal-image" src="${getSignalImage(network.rssi)}" alt="Signal Icon">
-                    li.innerHTML = `
-                        <button>
-                            <tr><td class="network-name">${network.SSID}</td></tr>
-                            <tr><td><img src="${getLockerImage(network.authmode)}" width="14px"></td></tr>
-                            <tr><td><img class="signal-image" src="${getSignalImage(network.rssi)}" alt="Signal Icon"></td></tr>
-                        </button>`;
-                    li.dataset.private = network.authmode !== "0"; // Si authmode no es 0, entonces es privada
-                    ul.appendChild(li);
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <tr><td id = "SSID" class="network-name">${network.SSID}</td></tr>
+                        <tr><td id = "lock_icon"><img src="${getLockerImage(network.authmode)}" width="14px"></td></tr>
+                        <tr><td id = "signal_icon"><img class="signal-image" src="${getSignalImage(network.rssi)}" alt="Signal Icon"></td></tr>
+                    `;
+                    tr.dataset.private = network.authmode !== "0";
+                    table.appendChild(tr);
+        
+                    // Captura los clics en el nombre de la red
+                    const networkNameCell = tr.querySelector('.network-name');
+                    networkNameCell.addEventListener('click', function () {
+                        selectedNetworkInput.value = network.SSID;
+                    });
                 });
-
-            networkList.appendChild(ul);
-
-            // Actualizar formulario cuando se selecciona una red
-            ul.addEventListener('click', function (e) {
-                if (e.target.tagName === 'BUTTON') {
-                    const selectedNetworkName = e.target.textContent.split(' ')[0]; // Nombre de la red
-                    const selectedNetwork = networks.find(network => network.SSID === selectedNetworkName);
-
-                    // Resto del código
-                }
-            });
+        
+                networkList.appendChild(table);
+            
         } else {
             console.error('La respuesta del servidor no contiene una lista de redes válida.');
         }
@@ -45,20 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Error al obtener la lista de redes:', error);
     });
 
-    networkForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const selectedOption = networkSelect.options[networkSelect.selectedIndex];
-        const password = document.getElementById('password').value;
-        const selectedNetwork = {
-            name: selectedOption.value,
-            private: selectedOption.dataset.private === 'true',
-            strength: selectedOption.textContent.match(/\(RSSI: ([-\d]+)\)/)[1]
-        };
 
-        // Aquí puedes implementar la lógica para conectarte a la red utilizando los datos proporcionados
-        console.log(`Conectando a la red ${selectedNetwork.name} con contraseña ${password}`);
-    });
 });
+
 
 networkForm.addEventListener('submit', function (e) {
     e.preventDefault();

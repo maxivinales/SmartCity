@@ -1,10 +1,20 @@
 #include "ota.h"
 #include "freertos/projdefs.h"
 
-static const char *TAG_ota = "OTA task";
+static const char *TAG_ota = "OTA tool";
 
-static void event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
+extern void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
+
+extern const uint8_t server_cert_pem_start[] asm("_binary_ca_cert_pem_start");
+extern const uint8_t server_cert_pem_end[] asm("_binary_ca_cert_pem_end");
+
+// recursos RTOS
+extern SemaphoreHandle_t mutex_handles;
+
+static void event_handler_OTA(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
+    xSemaphoreTake(mutex_handles, portMAX_DELAY);   // tomo el semaforo
+
     if (event_base == ESP_HTTPS_OTA_EVENT) {
         switch (event_id) {
             case ESP_HTTPS_OTA_START:
@@ -36,6 +46,8 @@ static void event_handler(void* arg, esp_event_base_t event_base, int32_t event_
                 break;
         }
     }
+
+    xSemaphoreGive(mutex_handles);   // suelto el semaforo
 }
 
 
@@ -85,21 +97,175 @@ static esp_err_t _http_client_init_cb(esp_http_client_handle_t http_client)
 esp_err_t init_OTA(void){
     ESP_LOGI(TAG_ota, "OTA tool start");
     // a esta altura netif debe estar iniciada
-    esp_err_t _err;
-    _err = (esp_event_handler_register(ESP_HTTPS_OTA_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
-    if(_err != ESP_OK){
-        ESP_LOGE(TAG_ota, "Error iniciando OTA :(");
+    esp_err_t errorcito = ESP_OK;
+
+    // _err = (esp_event_handler_register(ESP_HTTPS_OTA_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
+    // if(_err != ESP_OK){
+    //     ESP_LOGE(TAG_ota, "Error iniciando OTA :(");
+    // }
+
+    if(instance_OTA == NULL){
+        errorcito = esp_event_handler_instance_register(ESP_HTTPS_OTA_EVENT,
+                                                    IP_EVENT_STA_GOT_IP,
+                                                    &wifi_event_handler,
+                                                    NULL,
+                                                    &instance_OTA);
+        if(errorcito != ESP_OK){
+            ESP_LOGE(TAG_ota, "LINEA 114, Error: %d", errorcito);
+            return errorcito;
+        }
     }
-    return _err;
+    
+    return errorcito;
 }
 
+void update_firmware(char* _chipid, void *pvParameter){
+    ESP_LOGI(TAG_ota, "Starting Advanced OTA example");
+
+    char url_ota[OTA_URL_SIZE]; // genero la url
+    snprintf(url_ota, OTA_URL_SIZE, "%s/ota/update?chip_id=%s", OTA_URL_FANIOT, _chipid);
+    ESP_LOGI(TAG_ota, "URL OTA -> %s\n", url_ota);
+
+    esp_err_t ota_finish_err = ESP_OK;
+    esp_http_client_config_t config = {
+        .url = url_ota,
+        // .url = "http://fabrica.faniot.ar:1880/ota/update?chip_id=C44F33605219",     // este tiene que ser por parámetro
+        .cert_pem = (char *)server_cert_pem_start,                                  // ver si es necesario
+        .timeout_ms = CONFIG_OTA_RECV_TIMEOUT,
+        .keep_alive_enable = true,
+    };
+
+    
+
+    // config.url = malloc(sizeof(char)*strlen(&url_ota[0]));
+    
+    // uint8_t *aux_81, *aux_82;
+    // aux_81 = (uint8_t*)(&url_ota[0]);
+    // aux_82 = (uint8_t*)(config.url);
+
+    
+    // uint32_t len_url = 0;
+    // do{
+    //     if(len_url != 0){
+    //         aux_81++;
+    //         aux_82++;
+    //     }
+    //     len_url++;
+    //     *aux_82 = *aux_81;
+    // }while (aux_81 != 0);
+    
+    // -----------------------
+
+    // char* aux_S1;
+
+    // strcpy(config.url, &url_ota[0]);
+    // uint8_t *aux_8;
+    // aux_S1 = config.url;
+    // // aux1 = (uint8_t*)_chipid;    
+    // for(int i = 0; i<strlen(&url_ota[0]); i++){
+    //     *aux_S1 = url_ota[i];
+    //     aux_S1++;
+    //     // aux1++;
+    //     // if(i == strlen(_net.SSID)){
+    //     //     wifi_config.sta.ssid[i] = (uint8_t)("\0");
+    //     // }
+    // }
+
+
+    // aux_S1 = &config.url;
+    // strcpy(aux_S1, &url_ota[0]);
+    // strcat(aux_S1, NULL);
+    ESP_LOGI(TAG_ota, "URL cfg -> %s\n", config.url);
+
+#ifdef CONFIG_EXAMPLE_FIRMWARE_UPGRADE_URL_FROM_STDIN
+    char url_buf[OTA_URL_SIZE];
+    if (strcmp(config.url, "FROM_STDIN") == 0) {
+        example_configure_stdin_stdout();
+        fgets(url_buf, OTA_URL_SIZE, stdin);
+        int len = strlen(url_buf);
+        url_buf[len - 1] = '\0';
+        config.url = url_buf;
+    } else {
+        ESP_LOGE(TAG, "Configuration mismatch: wrong firmware upgrade image url");
+        abort();
+    }
+#endif
+
+#ifdef CONFIG_EXAMPLE_SKIP_COMMON_NAME_CHECK
+    config.skip_cert_common_name_check = true;
+#endif
+
+    esp_https_ota_config_t ota_config = {
+        .http_config = &config,
+        .http_client_init_cb = _http_client_init_cb, // Register a callback to be invoked after esp_http_client is initialized
+#ifdef CONFIG_EXAMPLE_ENABLE_PARTIAL_HTTP_DOWNLOAD
+        .partial_http_download = true,
+        .max_http_request_size = CONFIG_EXAMPLE_HTTP_REQUEST_SIZE,
+#endif
+    };
+
+    esp_https_ota_handle_t https_ota_handle = NULL;
+    esp_err_t err = esp_https_ota_begin(&ota_config, &https_ota_handle);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG_ota, "ESP HTTPS OTA Begin failed");
+        // vTaskDelete(NULL);
+    }
+
+    esp_app_desc_t app_desc;
+    err = esp_https_ota_get_img_desc(https_ota_handle, &app_desc);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG_ota, "esp_https_ota_read_img_desc failed");
+        goto ota_end;
+    }
+    err = validate_image_header(&app_desc);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG_ota, "image header verification failed");
+        goto ota_end;
+    }
+
+    while (1) {
+        err = esp_https_ota_perform(https_ota_handle);
+        if (err != ESP_ERR_HTTPS_OTA_IN_PROGRESS) {
+            break;
+        }
+        // esp_https_ota_perform returns after every read operation which gives user the ability to
+        // monitor the status of OTA upgrade by calling esp_https_ota_get_image_len_read, which gives length of image
+        // data read so far.
+        ESP_LOGD(TAG_ota, "Image bytes read: %d", esp_https_ota_get_image_len_read(https_ota_handle));
+    }
+
+    if (esp_https_ota_is_complete_data_received(https_ota_handle) != true) {
+        // the OTA image was not completely received and user can customise the response to this situation.
+        ESP_LOGE(TAG_ota, "Complete data was not received.");
+    } else {
+        ota_finish_err = esp_https_ota_finish(https_ota_handle);
+        if ((err == ESP_OK) && (ota_finish_err == ESP_OK)) {
+            ESP_LOGI(TAG_ota, "ESP_HTTPS_OTA upgrade successful. Rebooting ...");
+            vTaskDelay(1000 / portTICK_PERIOD_MS);
+            esp_restart();
+        } else {
+            if (ota_finish_err == ESP_ERR_OTA_VALIDATE_FAILED) {
+                ESP_LOGE(TAG_ota, "Image validation failed, image is corrupted");
+            }
+            ESP_LOGE(TAG_ota, "ESP_HTTPS_OTA upgrade failed 0x%x", ota_finish_err);
+            // vTaskDelete(NULL);
+        }
+    }
+
+ota_end:
+    esp_https_ota_abort(https_ota_handle);
+    ESP_LOGE(TAG_ota, "ESP_HTTPS_OTA upgrade failed");
+    // vTaskDelete(NULL);
+}
+
+/*
 esp_err_t update_firmware(char* _chipid){
     ESP_LOGI(TAG_ota, "Starting Advanced OTA example");
 
     esp_err_t ota_finish_err = ESP_OK;
     esp_http_client_config_t config = {
         // .url = "http://fabrica.faniot.ar:1880/ota/update?chip_id=C44F33605219",     // este tiene que ser por parámetro
-        .cert_pem = NULL,//(char *)server_cert_pem_start,                                  // ver si es necesario
+        .cert_pem = (char *)server_cert_pem_start,                                  // ver si es necesario
         .timeout_ms = CONFIG_OTA_RECV_TIMEOUT,
         .keep_alive_enable = true,
     };
@@ -195,3 +361,4 @@ ota_end:
     // vTaskDelete(NULL);
     return(ESP_FAIL);
 }
+*/

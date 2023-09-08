@@ -3,6 +3,7 @@
 #include "Leq_task.c"
 #include "audio_task.c"
 #include "WiFi_manager.c"
+#include "esp_wifi.h"
 #include "freertos/projdefs.h"
 #include "ota.c"
 
@@ -32,17 +33,27 @@ void control_task(void *parameter){
             server = start_webserver();
         }
         while(1){
+            // esp_err_t _err;
+            // wifi_ap_record_t _ap_info;
+            // _err = esp_wifi_sta_get_ap_info(&_ap_info);
+            // if(_err == ESP_OK){
+            //     if(strcmp((char*)(&_ap_info.ssid[0]), "") != 0){
+            //         init_OTA();
+            //         update_firmware(CHIPID.value_str);
+            //     }
+            // }
             vTaskDelay(pdMS_TO_TICKS(30000));
         }
     }else{
         mode_WiFi_manager.value = 0;
         wifi_init_sta(data_WiFi_SC);
-        init_OTA();
-        aux_launch();   // lanzo mi tarea auxiliar, TENGO QUE CAMBIARLE EL NOMBRE
-        saveConfig();
         vTaskDelay(1000);
-        update_firmware(CHIPID.value_str);
+        init_OTA();
+        saveConfig();
+        update_firmware(CHIPID.value_str, NULL);
     }
+
+    aux_launch();   // lanzo mi tarea auxiliar, TENGO QUE CAMBIARLE EL NOMBRE
 
     TickType_t xPeriod = pdMS_TO_TICKS(30000);
 
