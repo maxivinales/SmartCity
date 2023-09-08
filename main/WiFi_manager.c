@@ -677,37 +677,6 @@ void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id
         default:
             break;
         }
-    }else if (event_base == ESP_HTTPS_OTA_EVENT) {
-        ESP_LOGW(TAG_WiFi_Manager,"Evento -> ESP_HTTPS_OTA_EVENT");
-        switch (event_id) {
-            case ESP_HTTPS_OTA_START:
-                ESP_LOGI(TAG_WiFi_Manager, "OTA started");
-                break;
-            case ESP_HTTPS_OTA_CONNECTED:
-                ESP_LOGI(TAG_WiFi_Manager, "Connected to server");
-                break;
-            case ESP_HTTPS_OTA_GET_IMG_DESC:
-                ESP_LOGI(TAG_WiFi_Manager, "Reading Image Description");
-                break;
-            case ESP_HTTPS_OTA_VERIFY_CHIP_ID:
-                ESP_LOGI(TAG_WiFi_Manager, "Verifying chip id of new image: %d", *(esp_chip_id_t *)event_data);
-                break;
-            case ESP_HTTPS_OTA_DECRYPT_CB:
-                ESP_LOGI(TAG_WiFi_Manager, "Callback to decrypt function");
-                break;
-            case ESP_HTTPS_OTA_WRITE_FLASH:
-                ESP_LOGD(TAG_WiFi_Manager, "Writing to flash: %d written", *(int *)event_data);
-                break;
-            case ESP_HTTPS_OTA_UPDATE_BOOT_PARTITION:
-                ESP_LOGI(TAG_WiFi_Manager, "Boot partition updated. Next Partition: %d", *(esp_partition_subtype_t *)event_data);
-                break;
-            case ESP_HTTPS_OTA_FINISH:
-                ESP_LOGI(TAG_WiFi_Manager, "OTA finish");
-                break;
-            case ESP_HTTPS_OTA_ABORT:
-                ESP_LOGI(TAG_WiFi_Manager, "OTA abort");
-                break;
-        }
     }
 
     xSemaphoreGive(mutex_handles);   // suelto el semaforo
