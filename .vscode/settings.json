@@ -34,6 +34,8 @@
         "esp_err.h": "c",
         "ota.h": "c",
         "audio_task.h": "c",
-        "wifi_manager.h": "c"
+        "wifi_manager.h": "c",
+        "http_client.h": "c",
+        "cjson.h": "c"
     }
 }

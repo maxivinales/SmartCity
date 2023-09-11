@@ -43,6 +43,9 @@
 #include "sdkconfig.h"
 
 #include "xtensa/config/core-isa.h"
+
+#include "cJSON.h" 
+
 // #include "esp_err.h"
 
 // #include <string.h>
@@ -66,6 +69,7 @@
 #define MSG_QUEUE_LENGTH 20
 #define MSG_QUEUE_TOSENSOR_LENGTH 5
 
+#define FIRMWARE_VERSION_DEFAULT "0.0.0"
 #define OTA_URL_FANIOT  "http://fabrica.faniot.ar:1880"
 
 //// Cuestiones referidas al WiFi
@@ -131,6 +135,8 @@ struct data_t MAC;          // la diferencia entre CHIPID y MAC es que CHIPID es
 struct data_t CHIPID;
 struct data_t mode_WiFi_manager = {.value = 0};    // .value = 0 -> WiFi manager encendido, .value = 1 -> WiFi manager apagado
 struct data_t SSID_WiFi_Manager = {.value_str  = "Smart City"}; // nombre de la red WiFi, se cambia luego por el nombre del dispositivo y el chipid
+struct data_t new_firmware_version = {.value_str = FIRMWARE_VERSION_DEFAULT};
 
+struct data_t wifi_connection_status = {.value = 0};
 
 #endif

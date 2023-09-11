@@ -6,6 +6,7 @@
 #include "esp_wifi.h"
 #include "freertos/projdefs.h"
 #include "ota.c"
+#include "http_client.c"
 
 // #include "config.h"
 // #include "Leq_task.c"
@@ -47,10 +48,24 @@ void control_task(void *parameter){
     }else{
         mode_WiFi_manager.value = 0;
         wifi_init_sta(data_WiFi_SC);
-        vTaskDelay(1000);
-        init_OTA();
+        // vTaskDelay(pdMS_TO_TICKS(5000));
+        // init_OTA();
         saveConfig();
-        update_firmware(CHIPID.value_str);
+        // update_firmware(CHIPID.value_str);
+        uint8_t cont_timeout = 0;
+        while(wifi_connection_status.value == 0){
+            vTaskDelay(pdMS_TO_TICKS(100));
+            cont_timeout++;
+            if(cont_timeout >= 100){
+                continue;
+            }
+        }
+        
+        if(wifi_connection_status.value == 1){
+            get_firmware_version();
+        }
+        // rest_get();
+        
     }
 
     aux_launch();   // lanzo mi tarea auxiliar, TENGO QUE CAMBIARLE EL NOMBRE

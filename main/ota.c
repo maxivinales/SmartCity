@@ -1,4 +1,5 @@
 #include "ota.h"
+#include "config.h"
 #include "esp_err.h"
 #include "freertos/projdefs.h"
 
@@ -222,107 +223,84 @@ ota_end:
     return(err);
 }
 
-/*
-esp_err_t update_firmware(char* _chipid){
-    ESP_LOGI(TAG_ota, "Starting Advanced OTA example");
+esp_err_t get_firmware_version(void){
+    // esp_http_client_config_t config = {
+    //     .url = "http://fabrica.faniot.ar:1880/ota/firmwareversion?chip_id=C44F33605219",
+    // };
 
-    esp_err_t ota_finish_err = ESP_OK;
-    esp_http_client_config_t config = {
-        // .url = "http://fabrica.faniot.ar:1880/ota/update?chip_id=C44F33605219",     // este tiene que ser por parámetro
-        .cert_pem = (char *)server_cert_pem_start,                                  // ver si es necesario
-        .timeout_ms = CONFIG_OTA_RECV_TIMEOUT,
-        .keep_alive_enable = true,
-    };
+    //  // Inicializa el cliente HTTP
+    // esp_http_client_handle_t client = esp_http_client_init(&config);
 
-    char url_ota[OTA_URL_SIZE]; // genero la url
-    snprintf(url_ota, OTA_URL_SIZE, "%s/ota/update?chip_id=%s", OTA_URL_FANIOT, _chipid);
-    ESP_LOGI(TAG_ota, "URL OTA -> %s\n", url_ota);
-    char* aux_S1;
-    aux_S1 = &config.url;
-    strcpy(aux_S1, &url_ota[0]);
+    // // Realiza la solicitud HTTP GET
+    // esp_err_t err = esp_http_client_perform(client);
 
-#ifdef CONFIG_EXAMPLE_FIRMWARE_UPGRADE_URL_FROM_STDIN
-    char url_buf[OTA_URL_SIZE];
-    if (strcmp(config.url, "FROM_STDIN") == 0) {
-        example_configure_stdin_stdout();
-        fgets(url_buf, OTA_URL_SIZE, stdin);
-        int len = strlen(url_buf);
-        url_buf[len - 1] = '\0';
-        config.url = url_buf;
-    } else {
-        ESP_LOGE(TAG_ota, "Configuration mismatch: wrong firmware upgrade image url");
-        abort();
+    //  if (err == ESP_OK) {
+    //     ESP_LOGI("HTTP_CLIENT", "Solicitud HTTP completada con éxito");
+
+    //     // Lee y procesa la respuesta JSON
+    //     int content_length = esp_http_client_get_content_length(client);
+    //     char *response_buffer = (char *)malloc(content_length + 1);
+    //     int read_len = esp_http_client_read_response(client, response_buffer, content_length);
+        
+    //     if (read_len >= 0) {
+    //         response_buffer[read_len-1] = '\0'; // Agrega el terminador nulo al final de la cadena
+    //         ESP_LOGI(TAG_ota, "response -> %s", response_buffer);
+    //         process_json_response(response_buffer);
+    //     } else {
+    //         ESP_LOGE("HTTP_CLIENT", "Error al leer la respuesta HTTP");
+    //     }
+
+    //     free(response_buffer);
+    // } else {
+    //     ESP_LOGE("HTTP_CLIENT", "Error durante la solicitud HTTP");
+    // }
+
+    // // Libera los recursos del cliente HTTP
+    // esp_http_client_cleanup(client);
+
+    uint8_t timer_timeout_wifi_connection = 0;
+
+    while(wifi_connection_status.value == 0 && timer_timeout_wifi_connection >= 100){
+        vTaskDelay(1);
+        timer_timeout_wifi_connection++;
+        ESP_LOGW("HTTP_CLIENT", "timer_timeout_wifi_connection = %u", timer_timeout_wifi_connection);
     }
-#endif
 
-#ifdef CONFIG_EXAMPLE_SKIP_COMMON_NAME_CHECK
-    config.skip_cert_common_name_check = true;
-#endif
-
-    esp_https_ota_config_t ota_config = {
-        .http_config = &config,
-        .http_client_init_cb = _http_client_init_cb, // Register a callback to be invoked after esp_http_client is initialized
-#ifdef CONFIG_EXAMPLE_ENABLE_PARTIAL_HTTP_DOWNLOAD
-        .partial_http_download = true,
-        .max_http_request_size = CONFIG_EXAMPLE_HTTP_REQUEST_SIZE,
-#endif
-    };
-
-    esp_https_ota_handle_t https_ota_handle = NULL;
-    esp_err_t err = esp_https_ota_begin(&ota_config, &https_ota_handle);
-    vTaskDelay(pdMS_TO_TICKS(2500));
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG_ota, "ESP HTTPS OTA Begin failed");
-        // vTaskDelete(NULL);
+    if(wifi_connection_status.value == 0 ){
+        ESP_LOGE("HTTP_CLIENT", "No conectado a WiFi, no se puede obtener ultima version de firmware");
         return(ESP_FAIL);
-    }
-
-    esp_app_desc_t app_desc;
-    err = esp_https_ota_get_img_desc(https_ota_handle, &app_desc);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG_ota, "esp_https_ota_read_img_desc failed");
-        goto ota_end;
-    }
-    err = validate_image_header(&app_desc);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG_ota, "image header verification failed");
-        goto ota_end;
-    }
-
-    while (1) {
-        err = esp_https_ota_perform(https_ota_handle);
-        if (err != ESP_ERR_HTTPS_OTA_IN_PROGRESS) {
-            break;
+    }else{
+        timer_timeout_wifi_connection = 0;
+        rest_get();
+        while(new_firmware_version.value == 0 && timer_timeout_wifi_connection >= 100){
+            vTaskDelay(1);
+            timer_timeout_wifi_connection++;
         }
-        // esp_https_ota_perform returns after every read operation which gives user the ability to
-        // monitor the status of OTA upgrade by calling esp_https_ota_get_image_len_read, which gives length of image
-        // data read so far.
-        ESP_LOGD(TAG_ota, "Image bytes read: %d", esp_https_ota_get_image_len_read(https_ota_handle));
-    }
 
-    if (esp_https_ota_is_complete_data_received(https_ota_handle) != true) {
-        // the OTA image was not completely received and user can customise the response to this situation.
-        ESP_LOGE(TAG_ota, "Complete data was not received.");
-    } else {
-        ota_finish_err = esp_https_ota_finish(https_ota_handle);
-        if ((err == ESP_OK) && (ota_finish_err == ESP_OK)) {
-            ESP_LOGI(TAG_ota, "ESP_HTTPS_OTA upgrade successful. Rebooting ...");
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
-            esp_restart();
-        } else {
-            if (ota_finish_err == ESP_ERR_OTA_VALIDATE_FAILED) {
-                ESP_LOGE(TAG_ota, "Image validation failed, image is corrupted");
-            }
-            ESP_LOGE(TAG_ota, "ESP_HTTPS_OTA upgrade failed 0x%x", ota_finish_err);
-            // vTaskDelete(NULL);
+        if(new_firmware_version.value == 0){
+            ESP_LOGE("HTTP_CLIENT", "Error durante la solicitud HTTP");
             return(ESP_FAIL);
+        }else{
+            ESP_LOGI("HTTP_CLIENT", "Nuevo firmware disponible: %s\n", new_firmware_version.value_str);
+            return(ESP_OK);
         }
     }
-
-ota_end:
-    esp_https_ota_abort(https_ota_handle);
-    ESP_LOGE(TAG_ota, "ESP_HTTPS_OTA upgrade failed");
-    // vTaskDelete(NULL);
-    return(ESP_FAIL);
 }
-*/
+
+void process_json_response(const char *json_str) {
+    cJSON *root = cJSON_Parse(json_str);
+    if (root == NULL) {
+        ESP_LOGE("JSON", "Error al analizar JSON");
+        return;
+    }
+
+    cJSON *value = cJSON_GetObjectItem(root, "campo_json"); // Reemplaza "campo_json" con el nombre del campo que deseas obtener
+
+    if (value != NULL) {
+        ESP_LOGI("JSON", "Valor del campo JSON: %s", value->valuestring);
+    } else {
+        ESP_LOGE("JSON", "Campo JSON no encontrado");
+    }
+
+    cJSON_Delete(root);
+}

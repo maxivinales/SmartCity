@@ -627,8 +627,15 @@ void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id
             ESP_LOGI(TAG_WiFi_Manager, "WiFi STA started");
             esp_wifi_connect();
             break;
+        
+        case WIFI_EVENT_STA_CONNECTED:
+            ESP_LOGI(TAG_WiFi_Manager, "WiFi STA Connected to %s", data_WiFi_SC.SSID);
+            wifi_connection_status.value = 1;   // levanto mi bandera de que WiFi está conectado
+            break;
+        
         case WIFI_EVENT_STA_DISCONNECTED:
             ESP_LOGI(TAG_WiFi_Manager, "WiFi STA disconnected");
+            wifi_connection_status.value = 0;   // bajo mi bandera de que WiFi está conectado
             // esp_wifi_connect();
             // esp_netif_destroy_default_wifi(netif_wifi_STA);// destruyo el objeto que en teoria no uso mas
             // esp_event_loop_delete_default();
@@ -649,17 +656,25 @@ void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id
             ESP_LOGI(TAG_WiFi_Manager, "station "MACSTR" join, AID=%d",                                          // imprime el dispositivo que se conecto
                     MAC2STR(event_apstaconnnected->mac), event_apstaconnnected->aid);
             
+            wifi_connection_status.value = 1;   // levanto mi bandera de que WiFi está conectado
+            
             break;
         
         case WIFI_EVENT_AP_STADISCONNECTED:
             wifi_event_ap_stadisconnected_t* event_ap_sta_disconnected = (wifi_event_ap_stadisconnected_t*) event_data;
             ESP_LOGI(TAG_WiFi_Manager, "station "MACSTR" leave, AID=%d",
                     MAC2STR(event_ap_sta_disconnected->mac), event_ap_sta_disconnected->aid);                                              // imprime el dispositivo que se desconecto
+            
+            wifi_connection_status.value = 0;   // bajo mi bandera de que WiFi está conectado
+
             break;
         
         case IP_EVENT_STA_GOT_IP:
             ip_event_got_ip_t *event_stagotip = (ip_event_got_ip_t *)event_data;
             ESP_LOGI(TAG_WiFi_Manager, "Got IP:" IPSTR, IP2STR(&event_stagotip->ip_info.ip));
+
+            wifi_connection_status.value = 1;   // levanto mi bandera de que WiFi está conectado
+
             break;
         
         default:
