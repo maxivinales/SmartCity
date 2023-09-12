@@ -1,4 +1,5 @@
 #include "mqtt.h"
+#include "mqtt_client.h"
 
 TaskHandle_t TaskHandle_mqtt;
 // QueueHandle_t msg_queue_toControl = NULL;
@@ -73,7 +74,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 void mqtt_task(void *parameter)
 {
     esp_mqtt_client_config_t mqtt_cfg = {
-        .broker.address.uri = "mqtt://mqtt.eclipseprojects.io",//CONFIG_BROKER_URL,
+        .broker.address.uri = "mqtt://192.168.1.66:1883",//CONFIG_BROKER_URL,
     };
 
     esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt_cfg);
@@ -109,7 +110,8 @@ void mqtt_task(void *parameter)
     while (1)
     {        
         vTaskDelay(pdMS_TO_TICKS(10000));
-        printf("xD hasta aqui llego");
+        esp_mqtt_client_publish(client, "teste", "1234", 5, 0, 0);
+        // printf("xD hasta aqui llego");
     }
 }
 esp_err_t mqtt_launch(){
