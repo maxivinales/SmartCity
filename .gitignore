@@ -1,0 +1,22 @@
+# Ignorar todas las carpetas y archivos excepto "main" y sus contenidos
+/*
+!/main/
+
+# Ignorar estas carpetas específicas
+.cache/
+.devcontainer/
+.vscode/
+.build/
+
+# Ignorar todo lo que no tenga extensión y archivos .md, .txt, .py, .c, .h, .cpp, .S, .html, .js y .css
+*.*
+!*.md
+!*.txt
+!*.py
+!*.c
+!*.h
+!*.cpp
+!*.S
+!*.html
+!*.js
+!*.css
