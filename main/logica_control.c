@@ -91,7 +91,7 @@ esp_err_t control_launch(){
         "control_task",          // Name of task
         10000,             // Stack size (bytes in ESP32, words in FreeRTOS)
         NULL,              // Parameter to pass
-        1,                   // Task priority
+        10,                   // Task priority
         &TaskHandle_control, // Task handle
         APP_CORE);              // Run on one core for demo purposes (ESP32 only)
 

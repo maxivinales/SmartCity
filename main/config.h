@@ -67,9 +67,8 @@
 // #include "esp_log.h"
 #include "mqtt_client.h"
 
-// #include "esp_err.h"
+//// para JSON
 
-// #include <string.h>
 
 
 // incluir todas las tareas aca
@@ -93,6 +92,7 @@
 #define NOMBRE_PRODUCTO "Sonometro"
 #define FIRMWARE_VERSION_DEFAULT "0.0.0"
 #define OTA_URL_FANIOT  "http://fabrica.faniot.ar:1880"
+#define MQTT_URL_FANIOT "mqtt://192.168.1.66:1883"
 
 //// Cuestiones referidas al WiFi
 struct WiFi_data_t{
