@@ -49,7 +49,7 @@ esp_err_t loadConfig(){
     // construyo el nombre de la red WiFi
     char* aux_S1;
     aux_S1 = malloc(2*sizeof(CHIPID.value_str)+1);
-    snprintf(aux_S1, 2*sizeof(CHIPID.value_str)+1,  "Sonometro (%s)", CHIPID.value_str);
+    snprintf(aux_S1, 2*sizeof(CHIPID.value_str)+1,  "%s (%s)", NOMBRE_PRODUCTO, CHIPID.value_str);
     strcpy(SSID_WiFi_Manager.value_str, aux_S1);
     free(aux_S1);
     // aux_S1 = &SSID_WiFi_Manager.value_str[0];

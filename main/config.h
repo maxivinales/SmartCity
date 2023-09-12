@@ -69,6 +69,7 @@
 #define MSG_QUEUE_LENGTH 20
 #define MSG_QUEUE_TOSENSOR_LENGTH 5
 
+#define NOMBRE_PRODUCTO "TUVIEJA"
 #define FIRMWARE_VERSION_DEFAULT "0.0.0"
 #define OTA_URL_FANIOT  "http://fabrica.faniot.ar:1880"
 
