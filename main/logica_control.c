@@ -7,6 +7,7 @@
 #include "freertos/projdefs.h"
 #include "ota.c"
 #include "http_client.c"
+#include "mqtt.c"
 
 // #include "config.h"
 // #include "Leq_task.c"
@@ -63,6 +64,7 @@ void control_task(void *parameter){
         
         if(wifi_connection_status.value == 1){
             get_firmware_version();
+            mqtt_launch();
         }
         // rest_get();
         
