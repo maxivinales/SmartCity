@@ -3,12 +3,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+char fecha_k[11]; // 10 caracteres para la fecha y 1 para el terminador nulo '\0'
+char hora_k[9];   // 8 caracteres para la hora y 1 para el terminador nulo '\0'
+cJSON* createTemperatureJSON(float temperature, char* magnitud);
 
 const char *TAG_http_client = "HTTTP client";
 
 bool http_receiving = false;
 char *recv_http = NULL; // Inicializa a NULL
-
 esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
 {
     switch (evt->event_id)
@@ -69,6 +71,32 @@ esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
                 printf("datetime: %s\n", datetime->valuestring);
                 strcpy(fecha_y_hora.value_str, datetime->valuestring);
                 // TRABAJAR DESDE ACA
+
+            // Copias los primeros 10 caracteres de fecha_y_hora.value_str a fecha_k
+            strncpy(fecha_k, fecha_y_hora.value_str, 10);
+            fecha_k[10] = '\0'; // Añadis el terminador nulo para indicar el fin de la cadena
+            // Copias los caracteres del 11 al 18 de fecha_y_hora.value_str a hora_k
+            strncpy(hora_k, &fecha_y_hora.value_str[11], 8);
+            hora_k[8] = '\0'; // Añadis el terminador nulo para indicar el fin de la cadena
+            // Imprimes las cadenas resultantes
+            printf("fecha_k: %s\n", fecha_k);
+            printf("hora_k: %s\n", hora_k);
+
+                float temperature = 25.5; // Cambia esto por el valor real del sensor
+                char* magnitud = "C"; // Cambia esto por la magnitud real del sensor
+              // Crear un objeto JSON con los datos del sensor de temperatura, fecha y hora
+                cJSON* temperatureJSON = createTemperatureJSON(temperature, magnitud);
+
+                // Convertir el objeto JSON a una cadena
+                char* jsonStr = cJSON_PrintUnformatted(temperatureJSON);
+
+                // Imprimir el JSON resultante
+                printf("JSON resultante: %s\n", jsonStr);
+
+                // Liberar la memoria del objeto JSON y la cadena
+                cJSON_Delete(temperatureJSON);
+                free(jsonStr);
+
             } else {
                 ESP_LOGW(TAG_http_client, "Objeto datetime no encontrado o no válido\n");
                 // return ESP_FAIL;
@@ -111,4 +139,20 @@ void get_data_time(char* _URL){
     esp_http_client_perform(client);
     esp_http_client_cleanup(client);
     // esp_http_client_close(client);
+    
+}
+// Función para crear un objeto JSON con los datos del sensor de temperatura, fecha y hora
+cJSON* createTemperatureJSON(float temperature, char* magnitud) {
+    // Crear un objeto JSON
+    cJSON* json = cJSON_CreateObject();
+
+    // Agregar el valor de temperatura al objeto JSON
+    cJSON_AddNumberToObject(json, "temperature", temperature);
+    cJSON_AddStringToObject(json, "magnitud", magnitud);
+    // Agregar la fecha y hora al objeto JSON
+    cJSON_AddStringToObject(json, "fecha", fecha_k);
+    cJSON_AddStringToObject(json, "hora", hora_k);
+   
+
+    return json;
 }
