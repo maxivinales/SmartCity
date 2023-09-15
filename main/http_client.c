@@ -142,7 +142,7 @@ void get_data_time(char* _URL){
     
 }
 // Función para crear un objeto JSON con los datos del sensor de temperatura, fecha y hora
-cJSON* createTemperatureJSON(float temperature, char* magnitud) {
+cJSON* createTemperatureJSON(float temperature, char* magnitud) {//cambiar nombre por jsonsito
     // Crear un objeto JSON
     cJSON* json = cJSON_CreateObject();
 
@@ -156,3 +156,18 @@ cJSON* createTemperatureJSON(float temperature, char* magnitud) {
 
     return json;
 }
+/*
+esp_err_t add_to_JSON(cJSON *JSON_to_send, const char *titulo, const char *value) {
+    // Parsea el valor JSON proporcionado como una cadena
+    cJSON *value_json = cJSON_Parse(value);
+    if (value_json == NULL) {
+        // Si falla el análisis, registra un error y devuelve ESP_FAIL
+        ESP_LOGE(TAG, "Failed to parse value JSON");
+        return ESP_FAIL;
+    }
+
+    // Agrega el valor JSON parseado al objeto JSON con el título proporcionado
+    cJSON_AddItemToObject(JSON_to_send, titulo, value_json);
+    return ESP_OK;
+}
+*/
