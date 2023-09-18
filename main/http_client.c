@@ -14,7 +14,7 @@ struct sensor sensor_data;
 //struct sensor ;
 //struct sensor //etc 
 
-cJSON* add_to_JSON(struct sensor* sensor_data);
+esp_err_t add_to_JSON(struct sensor* sensor_data, cJSON **json);
 const char *TAG_http_client = "HTTTP client";
 
 bool http_receiving = false;
@@ -96,19 +96,20 @@ sensor_data.unidad="pascal";
 sensor_data.magnitud=47.5;
 
 // Crear un objeto JSON con los datos del sensor de temperatura, fecha y hora
-cJSON* sensorJSON = add_to_JSON(&sensor_data);
-
-// Convertir el objeto JSON a una cadena
-char* jsonStr = cJSON_PrintUnformatted(sensorJSON);
-
-// Imprimir el JSON resultante
-printf("JSON resultante: %s\n", jsonStr);
-
-// Liberar la memoria del objeto JSON y la cadena
-cJSON_Delete(sensorJSON);
-free(jsonStr);
-
+cJSON *sensorJSON = NULL;
+esp_err_t result = add_to_JSON(&sensor_data, &sensorJSON);
+if (result == ESP_OK) {
+    // Todo salió bien; sensorJSON contiene tu objeto JSON
+    char* jsonStr = cJSON_PrintUnformatted(sensorJSON);
+    printf("JSON resultante: %s\n", jsonStr);
+    free(jsonStr);
 } else {
+    // Ocurrió un error durante la creación del objeto JSON
+}
+cJSON_Delete(sensorJSON);
+
+} 
+else {
 ESP_LOGW(TAG_http_client, "Objeto datetime no encontrado o no válido\n");
 // return ESP_FAIL;
 }
@@ -153,33 +154,28 @@ esp_http_client_cleanup(client);
 
 }
 // Función para crear un objeto JSON con los datos del sensor de temperatura, fecha y hora
-cJSON* add_to_JSON(struct sensor* sensor_data) {//cambiar nombre por jsonsito
-// Crear un objeto JSON
-cJSON* json = cJSON_CreateObject();
+esp_err_t add_to_JSON(struct sensor* sensor_data, cJSON **json) {
+    if(sensor_data == NULL || json == NULL) {
+        return ESP_FAIL;
+    }
 
-// Agregar el valor de temperatura al objeto JSON
-cJSON_AddNumberToObject(json, "magnitud", sensor_data->magnitud);
-cJSON_AddStringToObject(json, "unidad", sensor_data->unidad);
+    *json = cJSON_CreateObject();
+    if (*json == NULL) {
+        return ESP_FAIL;
+    }
 
-// Agregar la fecha y hora al objeto JSON
-cJSON_AddStringToObject(json, "fecha", fecha_k);
-cJSON_AddStringToObject(json, "hora", hora_k);
+    cJSON_AddNumberToObject(*json, "magnitud", sensor_data->magnitud);
 
+    if (sensor_data->unidad != NULL) {
+        cJSON_AddStringToObject(*json, "unidad", sensor_data->unidad);
+    } else {
+        cJSON_AddNullToObject(*json, "unidad");
+    }
 
-return json;
+    cJSON_AddStringToObject(*json, "fecha", fecha_k);
+    cJSON_AddStringToObject(*json, "hora", hora_k);
+
+    return ESP_OK;
 }
-/*
-esp_err_t add_to_JSON(cJSON *JSON_to_send, const char *titulo, const char *value) {
-// Parsea el valor JSON proporcionado como una cadena
-cJSON *value_json = cJSON_Parse(value);
-if (value_json == NULL) {
-// Si falla el análisis, registra un error y devuelve ESP_FAIL
-ESP_LOGE(TAG, "Failed to parse value JSON");
-return ESP_FAIL;
-}
 
-// Agrega el valor JSON parseado al objeto JSON con el título proporcionado
-cJSON_AddItemToObject(JSON_to_send, titulo, value_json);
-return ESP_OK;
-}
-*/
+
